@@ -1,0 +1,39 @@
+app-login{
+  width: 100%;
+}
+#content::part(background) {
+  background: rgb(122,111,249);
+  background: linear-gradient(180deg, rgba(122,111,249,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+}
+ion-grid {
+  height: 100%;
+
+  ion-row {
+    height: 50%;
+  }
+}
+.logo{
+  padding: 25% 0;
+}
+form{
+  padding: 0 5%;
+  text-align: center;
+  ion-list{
+    padding-bottom: 5%;
+    ion-item{
+      --background: transparent;
+    }
+  }
+  ion-button{
+  --color: white;
+    --background: #15AB90;
+  }
+  a{
+    display: block;
+    color: #15AB90;
+  }
+  .bg-transparent {
+    background: transparent;
+  }
+
+}
