@@ -23,6 +23,7 @@ import { LoginRequestError } from 'src/app/core/interfaces/login';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
+import { LocalStorageService } from 'src/app/core/services/local-strorage.service';
 
 @Component({
   selector: 'app-login',
@@ -49,6 +50,7 @@ export class LoginPage implements OnInit {
   error = '';
   submitForm = false;
 
+  private localStore = inject(LocalStorageService);
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   private serviceAuth = inject(AuthentificationService);
@@ -78,6 +80,8 @@ export class LoginPage implements OnInit {
             this.error = data.message;
           } else {
             // Add LocalStorage User
+            this.localStore.setItem('user',data.user)
+            this.localStore.setItem('token',data.token);
             this.router.navigateByUrl('/home');
           }
           console.log(data);
@@ -86,6 +90,7 @@ export class LoginPage implements OnInit {
   }
 
   async onPasswordLostModal() {
+    console.log('test');
     const modal = await this.modalCtl.create({
       component: PasswordLostComponent,
     });
