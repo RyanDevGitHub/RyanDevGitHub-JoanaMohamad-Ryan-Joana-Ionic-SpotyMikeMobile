@@ -41,7 +41,7 @@
   }
   <br>
   <ion-button type="submit" [disabled]="!form.valid && !submitForm">Se Connecter</ion-button>
-  <a href="/auth/register">Mot de passe oublier ?</a>
+  <a (click)="onPasswordLostModal()">Mot de passe oublier ?</a>
   <a href="/auth/register">Pas encore inscrit ?</a>
   
 </form>
