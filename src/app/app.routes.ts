@@ -22,7 +22,7 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    canActivate:[authGuard],
+    //canActivate:[authGuard],
     loadComponent: () =>
       import('./shared/tabs/tabs.page').then((m) => m.TabsPage),
     children:[
@@ -34,6 +34,11 @@ export const routes: Routes = [
   },
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: 'auth/login',
+  },
+  {
+    path: '**',
     pathMatch: 'full',
     redirectTo: 'auth/login',
   },
