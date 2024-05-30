@@ -25,12 +25,15 @@ export const routes: Routes = [
     //canActivate:[authGuard],
     loadComponent: () =>
       import('./shared/tabs/tabs.page').then((m) => m.TabsPage),
-    children:[
+    children: [
       {
         path: 'play-song',
-        loadComponent: () => import('./layouts/play-song/play-song.page').then( m => m.PlaySongPage),
+        loadComponent: () =>
+          import('./shared/modal/play-song/play-song.page').then(
+            (m) => m.PlaySongPage
+          ),
       },
-    ]
+    ],
   },
   {
     path: '',
