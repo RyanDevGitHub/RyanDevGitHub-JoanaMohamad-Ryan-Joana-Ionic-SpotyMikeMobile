@@ -1,0 +1,34 @@
+<ion-content >
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <app-back-button></app-back-button>
+            </ion-buttons>
+            <ion-title>Olivia Lyric</ion-title>
+            <ion-buttons slot="end">
+              <app-song-option></app-song-option>
+            </ion-buttons>
+          </ion-toolbar> </ion-header
+      ></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row id="cover">
+      <ion-col><ion-img src="/assets/icon/coverTest.jpg"></ion-img></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Island Getaway<br />Olivia Lyric</ion-col>
+      <ion-col class="ion-align-self-start" style="display: contents"
+        ><app-like-song></app-like-song> <app-share-song></app-share-song
+      ></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><app-music-nav-bar></app-music-nav-bar></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><app-lyrics-box></app-lyrics-box></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
