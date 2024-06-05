@@ -1,3 +1,5 @@
+import { IUser } from './../../core/interfaces/user';
+import { spotytestFirebase } from './../../core/services/spotyTestFirebase.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -54,6 +56,7 @@ export class LoginPage implements OnInit {
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   private serviceAuth = inject(AuthentificationService);
+  private spotytestFirebase = inject(spotytestFirebase);
 
   form: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -67,7 +70,9 @@ export class LoginPage implements OnInit {
   });
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('Init');
+  }
 
   onSubmit() {
     this.error = '';
