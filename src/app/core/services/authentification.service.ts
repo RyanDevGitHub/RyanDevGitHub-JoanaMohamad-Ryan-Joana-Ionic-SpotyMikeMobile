@@ -1,7 +1,7 @@
-import { IUser, IToken, IAccessToken } from './../interfaces/user';
-import { spotytestFirebase } from './spotyTestFirebase.service';
-import { getFirestore } from 'firebase/firestore';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { IToken  } from './../interfaces/user';
+import { Firebase } from './firebase.service';
+import { HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -11,20 +11,10 @@ import { LoginRequestError, LoginRequestSuccess } from '../interfaces/login';
   providedIn: 'root',
 })
 export class AuthentificationService {
-  private http = inject(HttpClient);
-  private route = environment.url_api;
-  private firestore = inject(spotytestFirebase);
+  private firestore = inject(Firebase);
+  private auth = inject(AuthService)
 
   constructor() {}
-
-  private user:IUser = {
-    role:'user' ,
-    isEmailVerified: true,
-    email: 'jane.doe@example.com',
-    name: 'Jane Doe',
-    id: '123456789'
-  };
-
   private token :
   IToken = {
     access:{token:'tokentest',expires:"expireTest"},
@@ -37,7 +27,12 @@ export class AuthentificationService {
       map(user => {
         if (user) {
           if (user.password === password) {
-            return { error:false,token:this.token,user: this.user } as LoginRequestSuccess;
+            this.auth.signIn(email,password).then((myToken) =>{ 
+              this.auth.verifyToken(myToken).then((myVerifyToken) =>{
+                if (myVerifyToken) this.token.access.token = myToken;
+              });
+            });
+            return { error:false,token:this.token,user: user } as LoginRequestSuccess;
           } else {
             return { message: 'Invalid credentials' } as LoginRequestError;
           }

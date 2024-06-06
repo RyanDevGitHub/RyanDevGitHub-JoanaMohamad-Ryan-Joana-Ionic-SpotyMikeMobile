@@ -1,5 +1,5 @@
 import { IUser } from './../../core/interfaces/user';
-import { spotytestFirebase } from './../../core/services/spotyTestFirebase.service';
+import { Firebase } from '../../core/services/firebase.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -26,6 +26,7 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
 import { LocalStorageService } from 'src/app/core/services/local-strorage.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-login',
@@ -56,7 +57,6 @@ export class LoginPage implements OnInit {
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   private serviceAuth = inject(AuthentificationService);
-  private spotytestFirebase = inject(spotytestFirebase);
 
   form: FormGroup = new FormGroup({
     email: new FormControl('', [
