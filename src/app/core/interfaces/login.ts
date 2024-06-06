@@ -4,9 +4,14 @@ export interface LoginRequestError {
   error: boolean;
   message: string;
 }
-export interface LoginRequestSucess{
+export interface LoginRequestSuccess{
   code?: number;
   error: boolean;
   user: IUser;
   token:IToken;
+}
+
+export interface LoginField{
+  email: string;
+  password:string;
 }

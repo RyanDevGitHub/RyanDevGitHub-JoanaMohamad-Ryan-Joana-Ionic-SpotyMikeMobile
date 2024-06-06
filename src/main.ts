@@ -1,3 +1,6 @@
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthentificationService } from 'src/app/core/services/authentification.service';
+import { AuthService } from './app/core/services/auth.service';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter } from '@angular/router';
@@ -13,6 +16,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { i18nProviders } from './app/core/providers/i18n.providers';
 import { IonicModule } from '@ionic/angular';
 import { LocalStorageService } from './app/core/services/local-strorage.service';
+import { Firebase } from './app/core/services/firebase.service';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 if (environment.production) {
   enableProdMode();
@@ -23,10 +28,15 @@ bootstrapApplication(AppComponent, {
     i18nProviders,
     provideHttpClient(),
     LocalStorageService,
+    Firebase,
+    AuthService,
+    AuthentificationService,
+    AngularFireAuth,
     provideIonicAngular(),
     importProvidersFrom(IonicModule.forRoot()),
     provideRouter(routes),
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig},
   ],
 });
 
