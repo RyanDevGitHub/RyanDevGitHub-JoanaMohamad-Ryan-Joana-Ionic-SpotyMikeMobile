@@ -215,3 +215,6 @@ hooks/
 .DS_Store
 Thumbs.db
 .angular/cache
+
+# ServerNode
+serviceAccountKey.json
