@@ -8,13 +8,6 @@ export interface IUser{
     name: string;
     id:string;
 }
-
-export interface IAccessToken{
-    token:string;
-    expires:string|Date;
-}
-
 export interface IToken{
-    access: IAccessToken;
-    refresh: IAccessToken;
+    token:string 
 }

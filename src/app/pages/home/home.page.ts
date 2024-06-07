@@ -12,6 +12,8 @@ import { addIcons } from "ionicons";
 import { book, home } from "ionicons/icons";
 import { TopSongComponent } from "src/app/shared/components/top-song/top-song.component";
 import { MusicGenresComponent } from "src/app/shared/components/music-genres/music-genres.component";
+import { TopSongsComponent } from "src/app/shared/components/top-songs/top-songs.component";
+import { LastPlayedComponent } from "src/app/shared/components/last-played/last-played.component";
 
 
 @Component({
@@ -28,13 +30,20 @@ import { MusicGenresComponent } from "src/app/shared/components/music-genres/mus
     CommonModule,
     FormsModule,
     TopSongComponent,
-    MusicGenresComponent
+    MusicGenresComponent,
+    TopSongsComponent,
+    LastPlayedComponent,
   ],
 })
 export class HomePage implements OnInit {
   constructor() {
     addIcons({ book, home });
   }
+  public listSongs :object[] = [{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'}] 
+  
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+
+  }
 }

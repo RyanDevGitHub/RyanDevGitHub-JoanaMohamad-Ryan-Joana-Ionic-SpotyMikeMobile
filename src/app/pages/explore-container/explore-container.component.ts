@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IonGrid, IonRow, IonCol, IonContent } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-explore-container',

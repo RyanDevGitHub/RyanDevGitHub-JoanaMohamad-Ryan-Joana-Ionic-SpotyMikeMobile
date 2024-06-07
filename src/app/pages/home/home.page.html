@@ -5,10 +5,10 @@
   <ion-row class="categories">
     <app-music-genres></app-music-genres>
   </ion-row>
-
-  <ion-header>
-    <ion-toolbar>
-      <ion-title></ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-row class="top-songs">
+    <app-top-songs [items]="listSongs"></app-top-songs>
+  </ion-row>
+  <ion-row class="top-songs">
+    <app-last-played></app-last-played>
+  </ion-row>
 </ion-grid>

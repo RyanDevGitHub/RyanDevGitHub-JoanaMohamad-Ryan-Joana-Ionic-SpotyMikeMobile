@@ -24,7 +24,9 @@ export const routes: Routes = [
     path: 'home',
     canActivate:[authGuard],
     loadComponent: () =>
-      import('./home/home.page').then((m) => m.HomePage),
+      import('./layouts/accueil/accueil.page').then(
+        (m) => m.AccueilPage
+      ),
     children:[
       {
         path: 'play-song',
@@ -33,12 +35,19 @@ export const routes: Routes = [
             (m) => m.PlaySongPage
           ),
       },
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./pages/home/home.page').then((m) => m.HomePage).then(
+            
+          ),
+      },
+      {
+        path: 'playlistes',
+        loadComponent: () =>
+          import('./pages/playlistes/playlistes.page').then((m) => m.PlaylistesPage).then(),
+      }
     ],
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'auth/login',
   },
   {
     path: '**',
