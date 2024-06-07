@@ -1,0 +1,52 @@
+ion-grid {
+    width: 100%;
+  }
+  .see-all-a{
+    margin-right: 20px;
+  }
+.top-songs {
+width: 100%;
+margin-bottom: 10%;
+display: flex;
+align-items: center;
+margin: 0;
+
+    ion-row {
+        width: 100%;
+        display: flex;
+        margin: 0;
+    }
+
+    .see-all {
+        text-align: right; 
+        a{
+        color: #15AB90 ;
+        text-decoration: none;
+        }
+
+    }
+    
+    ion-col {
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+    // justify-content: center;
+        //align-items: center; 
+    }
+}
+.song{
+    ion-row{
+        ion-col{
+            ion-img::part(image) {
+                border-radius: 10px;
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            p{
+                text-align: center;
+                margin: 0;
+            }
+        }
+    }
+}

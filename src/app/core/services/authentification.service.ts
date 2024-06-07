@@ -15,24 +15,19 @@ export class AuthentificationService {
   private auth = inject(AuthService)
 
   constructor() {}
-  private token :
-  IToken = {
-    access:{token:'tokentest',expires:"expireTest"},
-    refresh:{token:'tokentestrefresh',expires:"expireTestRefresh"}
-    
-  };
-
+  private token :IToken = {token: ''};
   login(email: string, password: string):Observable<LoginRequestSuccess|LoginRequestError |any> {
     return this.firestore.getDocumentByField('Users', 'email', email).pipe(
       map(user => {
         if (user) {
           if (user.password === password) {
             this.auth.signIn(email,password).then((myToken) =>{ 
-              this.auth.verifyToken(myToken).then((myVerifyToken) =>{
-                if (myVerifyToken) this.token.access.token = myToken;
+              this.auth.verifyToken(myToken).then((myVerifyToken :any) =>{
+                if (myVerifyToken) this.token.token =  myToken;
+                console.log(myToken);
               });
             });
-            return { error:false,token:this.token,user: user } as LoginRequestSuccess;
+            return { error:false,token:this.token ,user: user } as LoginRequestSuccess;
           } else {
             return { message: 'Invalid credentials' } as LoginRequestError;
           }

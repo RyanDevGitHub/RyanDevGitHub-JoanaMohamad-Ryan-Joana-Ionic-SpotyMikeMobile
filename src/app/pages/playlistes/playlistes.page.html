@@ -1,0 +1,30 @@
+<ion-content>
+  <ion-grid fixed>
+    <ion-row class="center-end-row">
+      <ion-col class="first-col" >Playliste Music</ion-col>
+      <ion-col class="last-col"><app-playlistes-option></app-playlistes-option></ion-col>
+    </ion-row>
+    @for(playliste of listPlaylistes; track playliste){
+      <ion-row class="playliste-container">
+        <ion-col (click)="openModal()"> 
+          <ion-img [src]="playliste.cover"></ion-img>
+        </ion-col>
+        <ion-col (click)="openModal()"> 
+          <p>{{playliste.title}}</p>
+          <p>{{playliste.artist}}</p>
+          <p>{{playliste.nbSong}}</p>
+        </ion-col>
+        <ion-col class="action-button ion-justify-content-between ion-align-items-end"> 
+          <ion-row>
+            <app-playlistes-option></app-playlistes-option>
+          </ion-row>
+          <ion-row>
+            <app-like-song></app-like-song>
+            <app-share-song></app-share-song>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    }
+
+  </ion-grid>
+</ion-content>
