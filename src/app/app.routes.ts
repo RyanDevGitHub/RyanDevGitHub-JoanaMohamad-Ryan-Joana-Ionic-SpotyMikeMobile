@@ -24,7 +24,7 @@ export const routes: Routes = [
     path: 'home',
     //canActivate:[authGuard],
     loadComponent: () =>
-      import('./shared/tabs/tabs.page').then((m) => m.TabsPage),
+      import('./home/home.page').then((m) => m.HomePage),
     children:[
       {
         path: 'play-song',
