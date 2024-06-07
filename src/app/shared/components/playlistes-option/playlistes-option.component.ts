@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { ellipsisHorizontalCircleOutline, ellipsisHorizontalOutline } from 'ionicons/icons';
+import { ellipsisVerticalOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-playlistes-option',
@@ -16,7 +16,7 @@ export class PlaylistesOptionComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    addIcons({ellipsisHorizontalOutline})
+    addIcons({ellipsisVerticalOutline})
   }
 
 }

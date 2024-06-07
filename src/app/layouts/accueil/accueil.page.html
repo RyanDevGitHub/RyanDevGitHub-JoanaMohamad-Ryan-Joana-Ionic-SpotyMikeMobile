@@ -1,19 +1,30 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon aria-hidden="true"  name="home"></ion-icon>
-    </ion-tab-button>
+<ion-grid fixed>
+  <ion-row>
+    <app-minimize-player-audio></app-minimize-player-audio>
+  </ion-row>
+  <ion-row>
+    <ion-tabs id="ion-tabs">
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="home">
+          <ion-icon aria-hidden="true" name="home"></ion-icon>
+        </ion-tab-button>
+    
+        <ion-tab-button tab="like" href="/home/like">
+          <ion-icon aria-hidden="true" name="heart"></ion-icon>
+        </ion-tab-button>
+    
+        <ion-tab-button tab="playlistes">
+          <ion-icon aria-hidden="true" name="play"></ion-icon>
+        </ion-tab-button>
+    
+        <ion-tab-button tab="profile" href="/home/play-song">
+          <ion-icon aria-hidden="true" name="person"></ion-icon>    
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-row>
+</ion-grid>
 
-    <ion-tab-button tab="like" href="/home/like">
-      <ion-icon aria-hidden="true" name="heart"></ion-icon>
-    </ion-tab-button>
 
-    <ion-tab-button tab="playlistes">
-      <ion-icon aria-hidden="true" name="play"></ion-icon>
-    </ion-tab-button>
 
-    <ion-tab-button tab="profile" href="/home/play-song">
-      <ion-icon aria-hidden="true" name="person"></ion-icon>    
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+

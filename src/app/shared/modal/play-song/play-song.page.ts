@@ -16,7 +16,7 @@ import {
   IonRow,
   IonCol,
   IonIcon,
-  IonButton, IonButtons, IonBackButton, IonImg } from '@ionic/angular/standalone';
+  IonButton, IonButtons, IonBackButton, IonImg, IonModal } from '@ionic/angular/standalone';
 import { personCircleOutline, searchOutline } from 'ionicons/icons';
 import { SearchButtonComponent } from 'src/app/shared/components/search-button/search-button.component';
 import { BackButtonComponent } from '../../components/back-button/back-button.component';
@@ -26,7 +26,7 @@ import { BackButtonComponent } from '../../components/back-button/back-button.co
   templateUrl: './play-song.page.html',
   styleUrls: ['./play-song.page.scss'],
   standalone: true,
-  imports: [IonImg, IonBackButton, IonButtons, 
+  imports: [IonModal, IonImg, IonBackButton, IonButtons, 
     IonButton,
     IonIcon,
     IonCol,
@@ -44,7 +44,7 @@ import { BackButtonComponent } from '../../components/back-button/back-button.co
     LikeSongComponent,
     ShareSongComponent,
     MusicNavBarComponent,
-    LyricsBoxComponent,
+    LyricsBoxComponent,IonModal
   ],
 })
 export class PlaySongPage implements OnInit {
