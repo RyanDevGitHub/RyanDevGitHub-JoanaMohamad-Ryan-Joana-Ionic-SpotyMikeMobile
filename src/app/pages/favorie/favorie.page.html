@@ -1,20 +1,20 @@
 <ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Favorite Music</ion-title>
+      <app-playlistes-option slot="end"></app-playlistes-option>
+    </ion-toolbar>
+  </ion-header>
   <ion-grid fixed>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Playliste Music</ion-title>
-        <app-playlistes-option slot="end"></app-playlistes-option>
-      </ion-toolbar>
-    </ion-header>
-    @for(playliste of listPlaylistes; track playliste){
-    <ion-row class="playliste-container">
+    @for(favorite of listFavorite; track favorite){
+    <ion-row class="favorite-container">
       <ion-col (click)="openModal()">
-        <ion-img [src]="playliste.cover"></ion-img>
+        <ion-img [src]="favorite.cover"></ion-img>
       </ion-col>
       <ion-col (click)="openModal()">
-        <p>{{playliste.title}}</p>
-        <p>{{playliste.artist}}</p>
-        <p>{{playliste.nbSong}}</p>
+        <p>{{favorite.title}}</p>
+        <p>{{favorite.artist}}</p>
+        <p>{{favorite.nbSong}}</p>
       </ion-col>
       <ion-col
         class="action-button ion-justify-content-between ion-align-items-end"

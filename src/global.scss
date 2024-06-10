@@ -41,6 +41,10 @@
  * Class Global
  * -----------------------------------------------------
  */
+
+:root {
+  --custom-success: #15AB90; /* Couleur personnalisée */
+}
 img{
   width: 100%;
 }
@@ -68,3 +72,4 @@ img{
 p,h1,h2,h3{
   margin: 0;
 }
+

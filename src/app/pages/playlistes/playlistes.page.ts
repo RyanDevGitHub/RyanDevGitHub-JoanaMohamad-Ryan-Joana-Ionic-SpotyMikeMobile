@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonRow, IonImg, ModalController } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonRow, IonImg, ModalController, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { PlaylistesOptionComponent } from 'src/app/shared/components/playlistes-option/playlistes-option.component';
 import { LikeSongComponent } from 'src/app/shared/components/like-song/like-song.component';
 import { ShareSongComponent } from 'src/app/shared/components/share-song/share-song.component';
@@ -13,7 +13,7 @@ import { PlaySongPage } from 'src/app/shared/modal/play-song/play-song.page';
   templateUrl: './playlistes.page.html',
   styleUrls: ['./playlistes.page.scss'],
   standalone: true,
-  imports: [IonImg, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonRow,PlaylistesOptionComponent,LikeSongComponent,ShareSongComponent]
+  imports: [IonIcon, IonButton, IonImg, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonRow,PlaylistesOptionComponent,LikeSongComponent,ShareSongComponent,IonTitle]
 })
 
 export class PlaylistesPage implements OnInit {
@@ -36,5 +36,7 @@ export class PlaylistesPage implements OnInit {
     });
     modal.present();
   }
-
+  onClick(){
+    
+  }
 }

@@ -46,7 +46,12 @@ export const routes: Routes = [
         path: 'playlistes',
         loadComponent: () =>
           import('./pages/playlistes/playlistes.page').then((m) => m.PlaylistesPage).then(),
-      }
+      },
+      {
+        path: 'favorite',
+        loadComponent: () => import('./pages/favorie/favorie.page').then( m => m.FavoriePage)
+      },
+    
     ],
   },
   {
@@ -54,4 +59,5 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/login',
   },
+ 
 ];
