@@ -48,11 +48,13 @@ import { BackButtonComponent } from '../../components/back-button/back-button.co
   ],
 })
 export class PlaySongPage implements OnInit {
+ 
+
   constructor() {
-    addIcons({ searchOutline, personCircleOutline });
   }
 
   ngOnInit() {
     addIcons({ searchOutline, personCircleOutline });
   }
+
 }
