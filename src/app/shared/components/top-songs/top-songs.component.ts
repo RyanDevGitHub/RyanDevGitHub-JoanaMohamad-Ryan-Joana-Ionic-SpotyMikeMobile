@@ -17,8 +17,6 @@ export class TopSongsComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
-    console.log(this.items);
   }
 
 }

@@ -24,7 +24,6 @@ export class AuthentificationService {
             this.auth.signIn(email,password).then((myToken) =>{ 
               this.auth.verifyToken(myToken).then((myVerifyToken :any) =>{
                 if (myVerifyToken) this.token.token =  myToken;
-                console.log(myToken);
               });
             });
             return { error:false,token:this.token ,user: user } as LoginRequestSuccess;

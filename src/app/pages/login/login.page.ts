@@ -87,15 +87,13 @@ export class LoginPage implements OnInit {
             // Add LocalStorage User
             this.localStore.setItem('user',data.user)
             this.localStore.setItem('token',data.token);
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/home/home');
           }
-          console.log(data);
         });
     }
   }
 
   async onPasswordLostModal() {
-    console.log('test');
     const modal = await this.modalCtl.create({
       component: PasswordLostComponent,
     });

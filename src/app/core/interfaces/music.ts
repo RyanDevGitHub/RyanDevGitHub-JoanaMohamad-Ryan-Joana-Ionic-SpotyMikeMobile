@@ -9,3 +9,9 @@ export interface IMusic {
    musics:IMusic[]
   }
 
+
+  export enum PlaybackMode {
+    Default = 'default',
+    Shuffle = 'shuffle',
+    Loop = 'loop'
+  }

@@ -1,3 +1,4 @@
+import { PlaybackMode } from './../../../core/interfaces/music';
 import { addIcons } from 'ionicons';
 import { IonButton, IonRange, IonIcon, IonGrid, IonCol, IonRow, IonLabel } from '@ionic/angular/standalone';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -45,11 +46,20 @@ export class MusicNavBarComponent  implements OnInit ,OnDestroy {
     isPlaying: boolean = true;
     currentTime: number = 0;
     duration: number = 0;
+    buttonFillShuffle: string = '';
+    buttonColorShuffle: string = ''
+    buttonFillLoop: string = '';
+    buttonColorLoop: string = ''
+    buttonColorAfter: string = ''
+    buttonColorPrev: string = ''
+    buttonFillAfter: string = ''
+    buttonFillPrev: string = ''
     private indexMusicList = 1;
     private isPlayingSubscription: Subscription ;
     private currentTimeSubscription: Subscription ;
     constructor(private audioService: MusicServiceService) { }
 
+    currentPlaybackMode: PlaybackMode = PlaybackMode.Default;
 
   async ngOnInit() {
     addIcons({playOutline,playSkipBackOutline,playSkipForwardOutline,repeatOutline,shuffleOutline,pauseOutline})
@@ -64,6 +74,7 @@ export class MusicNavBarComponent  implements OnInit ,OnDestroy {
     });
 
     this.duration = await this.audioService.getDuration();
+    console.log(this.indexMusicList);
   }
 
   playMusic() {
@@ -90,14 +101,43 @@ export class MusicNavBarComponent  implements OnInit ,OnDestroy {
     this.isPlaying = !this.isPlaying;
   }
 
-  playPrevMusic() {
-    this.indexMusicList --;
-    this.audioService.play(this.musicsList[0].musics[this.indexMusicList].url);
+  async playPrevMusic() {
+    console.log(this.indexMusicList);
+    if((this.indexMusicList - 1) >= 0){
+      this.buttonFillAfter = '';
+      this.buttonColorAfter = '';
+      this.indexMusicList -= 1;
+      this.audioService.play(this.musicsList[0].musics[this.indexMusicList].url);
+      this.duration = await this.audioService.getDuration();
+    }else{
+      this.buttonColorPrev = 'medium';
+      this.buttonFillPrev = 'solid'
+    }
   }
 
-  playAfterMusic() {
-    this.indexMusicList ++;
-    this.audioService.play(this.musicsList[0].musics[this.indexMusicList].url);
+  async playAfterMusic() {
+    console.log(this.indexMusicList);
+    console.log(this.currentPlaybackMode);
+
+    if(this.currentPlaybackMode == PlaybackMode.Default){
+      if(this.musicsList[0].musics.length > this.indexMusicList + 1){
+        this.buttonColorPrev = '';
+        this.buttonFillPrev = '';
+        this.indexMusicList ++;
+        this.audioService.play(this.musicsList[0].musics[this.indexMusicList].url);
+        this.duration = await this.audioService.getDuration();
+        }else{
+          this.buttonFillAfter = 'solid'
+          this.buttonColorAfter = 'medium';
+        }
+    }else if(this.currentPlaybackMode == PlaybackMode.Loop){
+      this.audioService.play(this.musicsList[0].musics[this.indexMusicList].url);
+    }else if(this.currentPlaybackMode == PlaybackMode.Shuffle){
+      this.audioService.play(this.musicsList[0].musics[Math.floor(Math.random() * 3) + 0].url);
+      this.duration = await this.audioService.getDuration();
+      
+    }
+   
   }
 
   formatTime(time: number): string {
@@ -117,6 +157,31 @@ export class MusicNavBarComponent  implements OnInit ,OnDestroy {
   seekMusic(event: any) {
     const newValue = event.detail.value;
     this.audioService.seek(newValue);
+  }
+
+  randomPlaylist() {
+    if(this.currentPlaybackMode != PlaybackMode.Shuffle){
+      this.currentPlaybackMode = PlaybackMode.Shuffle;
+      this.buttonColorShuffle = 'success';
+      this.buttonFillShuffle = 'solid'
+    }else{
+      this.currentPlaybackMode = PlaybackMode.Default;
+      this.buttonColorShuffle = '';
+      this.buttonFillShuffle = ''
+    }
+  }
+
+  loopPlaylist() {
+    if(this.currentPlaybackMode != PlaybackMode.Loop){
+      this.currentPlaybackMode = PlaybackMode.Loop;
+      this.buttonColorLoop = 'success';
+      this.buttonFillLoop = 'solid'
+    }else{
+      this.currentPlaybackMode = PlaybackMode.Default;
+      this.buttonColorLoop = '';
+      this.buttonFillLoop = ''
+    }
+  
   }
 
   ngOnDestroy(): void {

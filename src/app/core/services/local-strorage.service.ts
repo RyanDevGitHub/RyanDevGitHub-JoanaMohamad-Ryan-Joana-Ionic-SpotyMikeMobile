@@ -23,12 +23,16 @@ export class LocalStorageService {
     return this.cache[ key ] = new BehaviorSubject( value );
   }
 
-  getItem<T extends serializable>( key: string ): BehaviorSubject<T> {
+  getItem<T extends serializable>( key: string ): BehaviorSubject<T> | undefined {
     if ( this.cache[ key ] )
       return this.cache[ key ];
     else {
-      const data =  this.cache[ key ] = new BehaviorSubject( JSON.parse( localStorage.getItem( key ) ?? '{}' ));
-      return (this.cache[key] = data);
+      try {
+        const data =  this.cache[ key ] = new BehaviorSubject( JSON.parse( localStorage.getItem( key ) ?? '{}' ));
+        return (this.cache[key] = data);
+      } catch (error) {
+        return undefined;
+      }
     }
   } 
 
