@@ -4,3 +4,7 @@ export interface IPlaylist {
     artist: string;
     nbSong: string;
   }
+
+  export interface IPlaylists {
+    playlist: string[]
+  }

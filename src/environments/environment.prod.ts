@@ -18,4 +18,9 @@ export const environment = {
     appId: "1:823395277840:web:4988a37c1d18697de2fe95",
     measurementId: "G-47B0D4P2EH"
   },
+  collection :{
+    users:'Users',
+    albums:'Albums'
+  }
+  
 };
