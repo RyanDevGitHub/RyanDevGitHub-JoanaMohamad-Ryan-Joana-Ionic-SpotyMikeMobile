@@ -1,5 +1,16 @@
-<ion-grid fixed>
-  <ion-row class="profile-info"> </ion-row>
-  <ion-row class="profil-edit"> </ion-row>
-  <ion-row class="profil-playlist"> </ion-row>
+<ion-grid fixed class="account-container">
+  <ion-row class="profile-info"> component profil Info </ion-row>
+  <ion-row class="profil-edit">
+    <ion-col>
+      <ion-button
+        (click)="editProfile()"
+        fill="outline"
+        shape="round"
+        class="ion-text-start"
+      >
+        Edit
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row class="profil-playlist"> component SectionWithDropdown </ion-row>
 </ion-grid>
