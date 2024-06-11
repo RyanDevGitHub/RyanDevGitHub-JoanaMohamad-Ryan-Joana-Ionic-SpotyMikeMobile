@@ -1,14 +1,26 @@
 <ion-grid fixed>
   <ion-row class="top-songs">
-    <ion-col style="margin-left:20px">Top Songs</ion-col>
-    <ion-col class="see-all"><a class="see-all-a" href="">See all</a></ion-col>
+    <ion-col style="margin-left: 20px">Last Playeds</ion-col>
+    <ion-col class="see-all"
+      ><app-see-all redirectTo="/home/favorite"></app-see-all
+    ></ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-row style="display: flex; flex-direction: row; width: 100%;">
+      <ion-row style="display: flex; flex-direction: row; width: 100%">
         <ion-img src="assets/avatar/album-photo.jpg"></ion-img>
-        <div style="display: flex;  flex-direction:row;justify-content:space-between;width: 65%;">
-          <div>Dusty Played <br> Jacob presse</div>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 65%;
+          "
+        >
+          <div>
+            Dusty Played <br />
+            Jacob presse
+          </div>
           <div>5.33</div>
         </div>
         <app-song-option></app-song-option>
@@ -17,10 +29,20 @@
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-row style="display: flex; flex-direction: row; width: 100%;">
+      <ion-row style="display: flex; flex-direction: row; width: 100%">
         <ion-img src="assets/avatar/album-photo.jpg"></ion-img>
-        <div style="display: flex;  flex-direction:row;justify-content:space-between;width: 65%;">
-          <div>Dusty Played <br> Jacob presse</div>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 65%;
+          "
+        >
+          <div>
+            Dusty Played <br />
+            Jacob presse
+          </div>
           <div>5.33</div>
         </div>
         <app-song-option></app-song-option>
@@ -28,4 +50,3 @@
     </ion-col>
   </ion-row>
 </ion-grid>
-

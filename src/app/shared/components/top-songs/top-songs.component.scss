@@ -1,9 +1,6 @@
 ion-grid {
     width: 100%;
   }
-  .see-all-a{
-    margin-right: 20px;
-  }
 .top-songs {
 width: 100%;
 margin-bottom: 10%;
@@ -19,11 +16,7 @@ margin: 0;
 
     .see-all {
         text-align: right; 
-        a{
-        color: #15AB90 ;
-        text-decoration: none;
-        }
-
+        margin-right: 20px;
     }
     
     ion-col {
