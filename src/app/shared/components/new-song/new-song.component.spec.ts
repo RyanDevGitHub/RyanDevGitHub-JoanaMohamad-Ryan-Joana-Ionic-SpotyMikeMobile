@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TopSongComponent } from './top-song.component'; 
+import { TopSongComponent } from './new-song.component'; 
 
 describe('TopSongComponent', () => {
   let component: TopSongComponent;

@@ -12,5 +12,15 @@
       </ion-button>
     </ion-col>
   </ion-row>
-  <ion-row class="profil-playlist"> component SectionWithDropdown </ion-row>
+  <ion-row class="profil-playlist">
+    <ion-col size="12">
+      <app-section-with-dropdown
+        [items]="items"
+        redirectTo="/home/playlistes"
+        title="Playlist"
+        component="playlist-container"
+      >
+      </app-section-with-dropdown>
+    </ion-col>
+  </ion-row>
 </ion-grid>

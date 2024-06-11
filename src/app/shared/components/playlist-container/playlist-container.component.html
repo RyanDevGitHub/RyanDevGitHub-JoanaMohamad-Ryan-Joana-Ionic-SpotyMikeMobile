@@ -1,0 +1,17 @@
+<ion-row style="display: flex; flex-direction: row; width: 100%">
+  <ion-img [src]="cover"></ion-img>
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 65%;
+    "
+  >
+    <div class="playlist-name">
+      {{ playlistName }}
+    </div>
+    <div class="playlist-name">{{ nbSong }}</div>
+  </div>
+  <app-song-option class="playlist-name"></app-song-option>
+</ion-row>
