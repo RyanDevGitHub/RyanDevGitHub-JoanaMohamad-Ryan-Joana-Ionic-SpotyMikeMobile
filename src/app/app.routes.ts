@@ -51,6 +51,10 @@ export const routes: Routes = [
         path: 'favorite',
         loadComponent: () => import('./pages/favorie/favorie.page').then( m => m.FavoriePage)
       },
+      {
+        path: 'account',
+        loadComponent: () => import('./pages/account/account/account.page').then( m => m.AccountPage)
+      },
     
     ],
   },
@@ -59,5 +63,4 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/login',
   },
- 
 ];

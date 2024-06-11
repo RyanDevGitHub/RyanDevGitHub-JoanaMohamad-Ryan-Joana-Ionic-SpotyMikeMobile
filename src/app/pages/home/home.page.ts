@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import {
-  IonContent,
   IonHeader,
   IonTitle,
   IonToolbar,
@@ -23,7 +22,6 @@ import { LastPlayedComponent } from "src/app/shared/components/last-played/last-
   standalone: true,
   imports: [
     IonicModule,
-    IonContent,
     IonHeader,
     IonTitle,
     IonToolbar,
