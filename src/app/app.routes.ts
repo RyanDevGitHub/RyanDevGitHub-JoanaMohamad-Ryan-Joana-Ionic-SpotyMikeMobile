@@ -55,6 +55,20 @@ export const routes: Routes = [
         path: 'account',
         loadComponent: () => import('./pages/account/account/account.page').then( m => m.AccountPage)
       },
+      {
+        path:'playlist/:id',
+        loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage)
+      }
+    ],
+  },
+  {
+    path: 'account',
+    canActivate:[authGuard],
+    children:[
+      {
+        path: 'edit-profile',
+        loadComponent: () => import('./pages/edit-profile/edit-profile.page').then( m => m.EditProfilPage)
+      },
     
     ],
   },
@@ -63,4 +77,7 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/login',
   },
+
+  
+
 ];

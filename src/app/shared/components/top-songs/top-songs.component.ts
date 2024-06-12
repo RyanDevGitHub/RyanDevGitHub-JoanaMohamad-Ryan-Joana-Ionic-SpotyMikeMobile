@@ -22,7 +22,6 @@ export class TopSongsComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.generateItems();
   }
 
   private generateItems() {

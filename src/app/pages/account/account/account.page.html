@@ -1,6 +1,11 @@
 <ion-grid fixed class="account-container">
-  <ion-row class="profile-info"> component profil Info </ion-row>
-  <ion-row class="profil-edit">
+  <ion-row
+    class="profile-info ion-align-items-center ion-justify-content-center"
+    ><ion-col size="12">
+      <app-profil-info></app-profil-info>
+    </ion-col>
+  </ion-row>
+  <ion-row class="profile-edit">
     <ion-col>
       <ion-button
         (click)="editProfile()"
@@ -12,12 +17,12 @@
       </ion-button>
     </ion-col>
   </ion-row>
-  <ion-row class="profil-playlist">
+  <ion-row class="profile-playlist">
     <ion-col size="12">
       <app-section-with-dropdown
         [items]="items"
         redirectTo="/home/playlistes"
-        title="Playlist"
+        title="Playlists"
         component="playlist-container"
       >
       </app-section-with-dropdown>

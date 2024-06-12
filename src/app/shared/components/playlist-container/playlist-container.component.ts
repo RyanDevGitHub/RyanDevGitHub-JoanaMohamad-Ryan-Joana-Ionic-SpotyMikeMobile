@@ -1,5 +1,6 @@
 import { SongOptionComponent } from './../song-option/song-option.component';
 import { Component, OnInit, input, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonImg, IonRow } from '@ionic/angular/standalone';
 
 @Component({
@@ -16,9 +17,14 @@ export class PlaylistContainerComponent  implements OnInit {
   @Input() nbSong: string;
   @Input() playlistName: string;
   @Input() cover :string;
+  @Input() playlistId :string;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {}
 
+
+  redirectToPlaylist(){
+    this.router.navigate(['/home/playlist/' + this.playlistId]);
+  }
 }

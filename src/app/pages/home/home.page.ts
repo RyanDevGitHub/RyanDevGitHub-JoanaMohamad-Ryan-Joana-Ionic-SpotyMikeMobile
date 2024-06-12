@@ -37,7 +37,7 @@ export class HomePage implements OnInit {
   constructor() {
     addIcons({ book, home });
   }
-  public listSongs :object[] = [{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'}] 
+  public listSongs :object[] = [{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'}] 
   
 
   ngOnInit() {

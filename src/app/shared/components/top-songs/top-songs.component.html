@@ -5,30 +5,25 @@
       ><app-see-all redirectTo="home/topSongs"></app-see-all
     ></ion-col>
   </ion-row>
-  <ion-row class="top-songs">
-    <ion-content [scrollX] style="height: 500vh">
-      <ion-list>
-        @for (song of items ; track song) {
-        <ion-col class="song">
-          <ion-row>
-            <ion-col size="12"><ion-img [src]="song.cover"></ion-img></ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="12"
-              ><p>{{ song.title }}</p></ion-col
-            >
-          </ion-row>
-          <ion-row>
-            <ion-col size="12"
-              ><p>{{ song.artiste }}</p></ion-col
-            >
-          </ion-row>
-        </ion-col>
-        }
-      </ion-list>
-      <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-      </ion-infinite-scroll>
-    </ion-content>
+  <ion-row>
+    <div class="scroll-container">
+      @for (song of items ; track song) {
+      <ion-col class="song">
+        <ion-row>
+          <ion-col size="12"><ion-img [src]="song.cover"></ion-img></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12"
+            ><p>{{ song.title }}</p></ion-col
+          >
+        </ion-row>
+        <ion-row>
+          <ion-col size="12"
+            ><p>{{ song.artiste }}</p></ion-col
+          >
+        </ion-row>
+      </ion-col>
+      }
+    </div>
   </ion-row>
 </ion-grid>

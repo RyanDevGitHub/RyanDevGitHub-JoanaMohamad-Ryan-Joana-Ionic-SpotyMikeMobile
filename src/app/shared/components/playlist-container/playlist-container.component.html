@@ -1,6 +1,7 @@
 <ion-row style="display: flex; flex-direction: row; width: 100%">
-  <ion-img [src]="cover"></ion-img>
+  <ion-img [src]="cover" (click)="redirectToPlaylist()"></ion-img>
   <div
+    (click)="redirectToPlaylist()"
     style="
       display: flex;
       flex-direction: row;
@@ -13,5 +14,5 @@
     </div>
     <div class="playlist-name">{{ nbSong }}</div>
   </div>
-  <app-song-option class="playlist-name"></app-song-option>
+  <app-song-option class="playlist-settings"></app-song-option>
 </ion-row>
