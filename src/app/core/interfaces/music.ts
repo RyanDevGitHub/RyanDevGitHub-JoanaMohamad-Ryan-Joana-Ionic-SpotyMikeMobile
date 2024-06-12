@@ -2,6 +2,7 @@ export interface IMusic {
     cover: string;
     title: string;
     artist: string;
+    duration:string,
     url: string;
   }
 

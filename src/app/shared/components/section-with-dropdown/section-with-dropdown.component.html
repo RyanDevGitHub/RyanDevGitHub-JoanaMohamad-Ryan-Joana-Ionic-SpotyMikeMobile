@@ -18,11 +18,13 @@
             playlistId="{{ item.playlistId }}"
           ></app-playlist-container>
           }@else if(component === 'music-container'){
-          <app-playlist-container
-            nbSong="{{ item.nbSong }}"
-            playlistName="{{ item.playlistName }}"
+          <app-music-container
             cover="{{ item.cover }}"
-          ></app-playlist-container>
+            musicName="{{ item.musicName }}"
+            duration="{{ item.duration }}"
+            artistName="{{ item.artistName }}"
+          >
+          </app-music-container>
           }
         </ion-col>
       </ion-row>
