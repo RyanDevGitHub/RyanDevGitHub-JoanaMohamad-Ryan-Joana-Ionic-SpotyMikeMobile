@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import {
-  IonContent,
   IonHeader,
   IonTitle,
   IonToolbar,
@@ -10,7 +9,7 @@ import {
 import { IonicModule } from "@ionic/angular";
 import { addIcons } from "ionicons";
 import { book, home } from "ionicons/icons";
-import { TopSongComponent } from "src/app/shared/components/top-song/top-song.component";
+import { TopSongComponent } from "src/app/shared/components/new-song/new-song.component";
 import { MusicGenresComponent } from "src/app/shared/components/music-genres/music-genres.component";
 import { TopSongsComponent } from "src/app/shared/components/top-songs/top-songs.component";
 import { LastPlayedComponent } from "src/app/shared/components/last-played/last-played.component";
@@ -23,7 +22,6 @@ import { LastPlayedComponent } from "src/app/shared/components/last-played/last-
   standalone: true,
   imports: [
     IonicModule,
-    IonContent,
     IonHeader,
     IonTitle,
     IonToolbar,
@@ -39,11 +37,10 @@ export class HomePage implements OnInit {
   constructor() {
     addIcons({ book, home });
   }
-  public listSongs :object[] = [{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'}] 
+  public listSongs :object[] = [{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'}] 
   
 
   ngOnInit() {
-    
-
+    console.log('init home');
   }
 }

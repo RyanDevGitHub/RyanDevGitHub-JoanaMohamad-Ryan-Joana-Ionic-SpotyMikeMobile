@@ -1,10 +1,10 @@
 ion-grid {
     width: 100%;
   }
+
 .top-songs {
 width: 100%;
 margin-bottom: 10%;
-display: flex;
 align-items: center;
 margin: 0;
 
@@ -32,7 +32,7 @@ margin: 0;
         ion-col{
             ion-img::part(image) {
                 border-radius: 10px;
-                width: 50%;
+                width: 100%;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -43,3 +43,28 @@ margin: 0;
         }
     }
 }
+
+.scroll-content {
+    height: 50vh;
+  }
+  
+  .scroll-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+  }
+  
+  .song {
+    display: inline-block;
+    font-size: x-large;
+    margin-right: 10px; /* Espacement entre les éléments */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+    text-align: center; /* Centre le texte à l'intérieur de chaque élément */
+  }
+
+  .scroll-container::after {
+    content: '';
+    flex: 0 0 10px; /* Dernière marge droite de 10px pour la dernière colonne */
+  }
+  

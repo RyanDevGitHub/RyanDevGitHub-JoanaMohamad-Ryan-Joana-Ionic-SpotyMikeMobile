@@ -17,6 +17,7 @@ export class SeeAllComponent  implements OnInit {
   @Input() redirectTo: string;
 
   ngOnInit() {
+    console.log('init see-all');
   }
 
   redirectToPage() {
