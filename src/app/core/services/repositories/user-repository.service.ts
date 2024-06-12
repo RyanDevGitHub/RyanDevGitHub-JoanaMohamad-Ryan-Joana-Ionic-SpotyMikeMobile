@@ -2,11 +2,8 @@ import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, query, updateDoc, where } from 'firebase/firestore';
 import { environment } from 'src/environments/environment';
-import { IUser, IUserDataBase, IUserUpdateDataBase } from '../../interfaces/user';
+import { IUserDataBase, IUserUpdateDataBase } from '../../interfaces/user';
 import { Observable, from, map } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Firebase } from '../firebase.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
