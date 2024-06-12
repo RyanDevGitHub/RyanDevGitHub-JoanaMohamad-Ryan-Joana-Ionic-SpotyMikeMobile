@@ -16,7 +16,6 @@ export class MusicServiceService {
     this.audio.load();
     this.audio.play();
   }
-
   pause() {
     this.audio.pause();
   }

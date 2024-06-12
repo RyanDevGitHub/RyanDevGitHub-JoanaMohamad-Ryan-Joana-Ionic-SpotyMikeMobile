@@ -1,6 +1,10 @@
 <ion-grid fixed>
-  <ion-row>
-    <app-minimize-player-audio></app-minimize-player-audio>
+  <ion-row class="minimizePlayer">
+    @if(minimizePlayerAudioService.isMiniPlayerVisible()){
+    <app-minimize-player-audio
+      style="position: relative; z-index: 99"
+    ></app-minimize-player-audio>
+    }
   </ion-row>
   <ion-row>
     <ion-tabs id="ion-tabs">

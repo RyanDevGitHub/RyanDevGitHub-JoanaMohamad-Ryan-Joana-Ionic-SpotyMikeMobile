@@ -1,5 +1,6 @@
 <div class="player-container">
   <ion-grid>
+    @if (!this.isMini) {
     <ion-row>
       <ion-range
         aria-label="Volume"
@@ -17,7 +18,10 @@
         <div>{{ formatTime(duration) }}</div>
       </ion-col>
     </ion-row>
+    }
+
     <ion-row class="ion-justify-content-center">
+      @if (!this.isMini) {
       <ion-col size="auto">
         <ion-button
           [fill]="buttonFillLoop"
@@ -29,6 +33,7 @@
           <ion-icon slot="icon-only" name="repeat-outline"></ion-icon>
         </ion-button>
       </ion-col>
+      }
       <ion-col size="auto"
         ><ion-button
           size="large"
@@ -59,6 +64,7 @@
           ></ion-icon>
         </ion-button>
       </ion-col>
+      @if (!this.isMini) {
       <ion-col size="auto">
         <ion-button
           [fill]="buttonFillShuffle"
@@ -70,6 +76,7 @@
           <ion-icon slot="icon-only" name="shuffle-outline"></ion-icon>
         </ion-button>
       </ion-col>
+      }
     </ion-row>
   </ion-grid>
 </div>

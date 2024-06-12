@@ -1,7 +1,7 @@
 import { PlaybackMode } from './../../../core/interfaces/music';
 import { addIcons } from 'ionicons';
 import { IonButton, IonRange, IonIcon, IonGrid, IonCol, IonRow, IonLabel } from '@ionic/angular/standalone';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { pauseOutline, playOutline, playSkipBack, playSkipBackOutline, playSkipForwardOutline, repeatOutline, shuffleOutline } from 'ionicons/icons';
 import { IMusic, IMusicList } from 'src/app/core/interfaces/music';
 import { MusicServiceService } from 'src/app/core/services/music-service.service';
@@ -18,7 +18,7 @@ import { Subscription } from 'rxjs';
 export class MusicNavBarComponent  implements OnInit ,OnDestroy {
 
 
-
+  @Input() isMini:boolean 
   private musicPrev : IMusic = { 
     cover: 'cover',
     title: 'title',
@@ -67,8 +67,9 @@ export class MusicNavBarComponent  implements OnInit ,OnDestroy {
 
   async ngOnInit() {
     addIcons({playOutline,playSkipBackOutline,playSkipForwardOutline,repeatOutline,shuffleOutline,pauseOutline})
-    this.audioService.play(this.musicsList[0].musics[this.indexMusicList].url);
-
+    if(!this.audioService.isPlaying()){
+      this.audioService.play(this.musicsList[0].musics[this.indexMusicList].url);
+    }
     this.isPlayingSubscription = this.audioService.isPlaying$.subscribe(isPlaying => {
       this.isPlaying = isPlaying;
     });
