@@ -7,7 +7,7 @@ export class MinimizePlayerAudioService {
 
   constructor() { }
 
-  private miniPlayerVisible = true;
+  private miniPlayerVisible = false;
 
   showMiniPlayer() {
     this.miniPlayerVisible = true;

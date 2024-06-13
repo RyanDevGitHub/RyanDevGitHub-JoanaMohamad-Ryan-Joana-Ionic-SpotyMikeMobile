@@ -3,4 +3,5 @@ export interface IFavorite {
     title: string;
     artist: string;
     nbSong: string;
+    id:string;
   }

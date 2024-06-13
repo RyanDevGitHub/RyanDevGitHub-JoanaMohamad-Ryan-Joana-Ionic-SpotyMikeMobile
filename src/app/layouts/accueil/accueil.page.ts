@@ -6,6 +6,7 @@ import { IonTabBar, IonTabButton, IonTabs } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { heart, home, person, play } from 'ionicons/icons';
 import { MinimizePlayerAudioService } from 'src/app/core/services/minimize-player-audio.service';
+import { MusicServiceService } from 'src/app/core/services/music-service.service';
 
 @Component({
   selector: 'app-accueil',
@@ -16,7 +17,7 @@ import { MinimizePlayerAudioService } from 'src/app/core/services/minimize-playe
 })
 export class AccueilPage implements OnInit {
 
-  constructor(@Inject(MinimizePlayerAudioService) public minimizePlayerAudioService : MinimizePlayerAudioService) { }
+  constructor(@Inject(MusicServiceService) public audioService : MusicServiceService ,@Inject(MinimizePlayerAudioService) public minimizePlayerAudioService : MinimizePlayerAudioService ) { }
   ngOnInit(): void {
     addIcons({heart,home,play,person})
   }
