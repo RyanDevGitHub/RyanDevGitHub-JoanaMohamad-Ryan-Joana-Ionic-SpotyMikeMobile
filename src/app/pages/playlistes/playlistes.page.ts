@@ -1,5 +1,5 @@
 import { SongOptionComponent } from './../../shared/components/song-option/song-option.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonRow, IonImg, ModalController, IonButton, IonIcon } from '@ionic/angular/standalone';
@@ -8,6 +8,8 @@ import { LikeSongComponent } from 'src/app/shared/components/like-song/like-song
 import { ShareSongComponent } from 'src/app/shared/components/share-song/share-song.component';
 import { IPlaylist } from 'src/app/core/interfaces/playlistes';
 import { PlaySongPage } from 'src/app/shared/modal/play-song/play-song.page';
+import { ModalStateService } from 'src/app/core/services/modal-state.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-playlistes',
@@ -17,10 +19,16 @@ import { PlaySongPage } from 'src/app/shared/modal/play-song/play-song.page';
   imports: [IonIcon, IonButton, IonImg, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonRow,PlaylistesOptionComponent,LikeSongComponent,ShareSongComponent,IonTitle,SongOptionComponent]
 })
 
-export class PlaylistesPage implements OnInit {
 
-  
-  constructor(private modalCtrl: ModalController) { }
+export class PlaylistesPage implements OnInit,OnDestroy {
+
+  public isModalOpen = false;
+  private modalSubscription: Subscription;
+  constructor(private modalCtrl: ModalController ,private modalStateService: ModalStateService ) { 
+    this.modalSubscription = modalStateService.modalOpen$.subscribe(
+      value => this.isModalOpen = value
+    );
+  }
   public listPlaylistes :IPlaylist[] = [{cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'2'},
   {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'1'},
   {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'3'},{cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'4'},
@@ -29,7 +37,9 @@ export class PlaylistesPage implements OnInit {
   {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'8'}
   ]
   ngOnInit() {
+    console.log(this.isModalOpen);
   }
+
 
   async openModal() {
     const modal = await this.modalCtrl.create({
@@ -38,6 +48,12 @@ export class PlaylistesPage implements OnInit {
     modal.present();
   }
   onClick(){
-    
+     this.modalStateService.setModalOpen(true);
+  }
+
+  ngOnDestroy() {
+    if (this.modalSubscription) {
+      this.modalSubscription.unsubscribe();
+    }
   }
 }

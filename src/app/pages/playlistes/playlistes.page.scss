@@ -28,4 +28,8 @@ ion-img::part(image) {
     text-align: end; /* Align text to the end */
    
   }
+
+  .modal-open{
+    filter: blur(3px)!important;
+  }
   

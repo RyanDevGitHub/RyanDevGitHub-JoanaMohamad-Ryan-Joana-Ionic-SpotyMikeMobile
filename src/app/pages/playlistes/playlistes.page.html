@@ -1,6 +1,6 @@
-<ion-content>
+<ion-content [class.modal-open]="isModalOpen">
   <ion-grid fixed>
-    <ion-header>
+    <ion-header class="header">
       <ion-toolbar>
         <ion-title>Playliste Music</ion-title>
         <app-playlistes-option slot="end"></app-playlistes-option>
@@ -20,7 +20,10 @@
         class="action-button ion-justify-content-between ion-align-items-end"
       >
         <ion-row>
-          <app-song-option id="{{playliste.id}}"></app-song-option>
+          <app-song-option
+            id="{{playliste.id}}"
+            (click)="onClick()"
+          ></app-song-option>
         </ion-row>
         <ion-row>
           <app-like-song></app-like-song>
