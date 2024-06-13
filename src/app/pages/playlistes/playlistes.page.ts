@@ -1,3 +1,4 @@
+import { SongOptionComponent } from './../../shared/components/song-option/song-option.component';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,7 @@ import { PlaySongPage } from 'src/app/shared/modal/play-song/play-song.page';
   templateUrl: './playlistes.page.html',
   styleUrls: ['./playlistes.page.scss'],
   standalone: true,
-  imports: [IonIcon, IonButton, IonImg, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonRow,PlaylistesOptionComponent,LikeSongComponent,ShareSongComponent,IonTitle]
+  imports: [IonIcon, IonButton, IonImg, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonRow,PlaylistesOptionComponent,LikeSongComponent,ShareSongComponent,IonTitle,SongOptionComponent]
 })
 
 export class PlaylistesPage implements OnInit {
