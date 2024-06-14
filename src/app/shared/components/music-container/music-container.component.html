@@ -1,25 +1,23 @@
-<ion-row style="display: flex; flex-direction: row; width: 100%">
+<ion-row
+  style="display: flex; flex-direction: row; justify-content: space-between"
+>
   <ion-img [src]="cover" (click)="openPlayer()"></ion-img>
   <div
     (click)="openPlayer()"
-    style="
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 65%;
-    "
+    style="display: flex; flex-direction: row; justify-content: space-between"
   >
     <div class="music-name ion-text-center">
       <h6>{{ musicName }}</h6>
-      <br />
+
       <h6>{{ artistName }}</h6>
     </div>
-    <div class="music-name ion-text-center">
+    <div class="music-name ion-text-center ion-align-self-center">
       <h6>{{ duration }}</h6>
     </div>
   </div>
   <app-song-option
-    (click)="openSetting()"
+    (click)="openModal()"
+    id="{{ id }}"
     class="music-settings ion-align-self-center"
   ></app-song-option>
 </ion-row>

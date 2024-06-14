@@ -8,13 +8,14 @@ import { LikeSongComponent } from 'src/app/shared/components/like-song/like-song
 import { ShareSongComponent } from 'src/app/shared/components/share-song/share-song.component';
 import { ModalController } from '@ionic/angular';
 import { PlaySongPage } from 'src/app/shared/modal/play-song/play-song.page';
+import { SongOptionComponent } from 'src/app/shared/components/song-option/song-option.component';
 
 @Component({
   selector: 'app-favorie',
   templateUrl: './favorie.page.html',
   styleUrls: ['./favorie.page.scss'],
   standalone: true,
-  imports: [IonImg, IonRow, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,PlaylistesOptionComponent, LikeSongComponent,ShareSongComponent,PlaySongPage]
+  imports: [IonImg, IonRow, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,PlaylistesOptionComponent, LikeSongComponent,ShareSongComponent,PlaySongPage,SongOptionComponent]
 })
 export class FavoriePage implements OnInit {
 

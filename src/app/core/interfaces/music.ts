@@ -4,6 +4,7 @@ export interface IMusic {
     artist: string;
     duration:string,
     url: string;
+    id:string
   }
 
   export interface IMusicList {

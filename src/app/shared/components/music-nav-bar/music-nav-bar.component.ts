@@ -24,7 +24,7 @@ export class MusicNavBarComponent  implements OnInit ,OnDestroy {
     title: 'title',
     artist: 'artist',
     url: 'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/%F0%9F%98%ADMessi%20leaves%20Barcelona!%F0%9F%98%AD%20(Lionel%20Messi%20farewell%20song%20press%20conference).mp3?alt=media&token=022f74d2-671c-4ccd-8040-dada277e7fb4',
-    duration:'3.12'}
+    duration:'3.12',id:'12774'}
 
 
   private musicAfter : IMusic = { 
@@ -32,7 +32,7 @@ export class MusicNavBarComponent  implements OnInit ,OnDestroy {
     title: 'title',
     artist: 'artist',
     url: 'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/%F0%9F%8F%86MAN%20CITY%20CHAMPIONS!%F0%9F%8F%86%20Four%20in%20a%20row!%20Who%20Won%20the%20League%20City!%20City!%202023-2024.mp3?alt=media&token=e2d564f6-7095-4ee0-882c-135e23d6ea19',
-    duration:'3.12'
+    duration:'3.12',id:'1274'
   }
 
   private music : IMusic = { 
@@ -40,7 +40,7 @@ export class MusicNavBarComponent  implements OnInit ,OnDestroy {
     title: 'title',
     artist: 'artist',
     url: 'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/%F0%9F%8E%A4COUTINHO%20GETS%20SOLD!%F0%9F%8E%A4%20Messi%20%26%20Suarez%20sort%20a%20transfer!%20Man%20Utd%20Liverpool%20PSG.mp3?alt=media&token=87fdfd7b-ea78-4e73-a93d-49691e584a78',
-    duration:'3.12'}
+    duration:'3.12',id:'124'}
 
 
   private musicsList :IMusicList[] = [

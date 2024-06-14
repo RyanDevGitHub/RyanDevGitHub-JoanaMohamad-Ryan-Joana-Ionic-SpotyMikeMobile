@@ -1,13 +1,10 @@
-<ion-row style="display: flex; flex-direction: row; width: 100%">
+<ion-row
+  style="display: flex; flex-direction: row; justify-content: space-between"
+>
   <ion-img [src]="cover" (click)="redirectToPlaylist()"></ion-img>
   <div
     (click)="redirectToPlaylist()"
-    style="
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 65%;
-    "
+    style="display: flex; flex-direction: row; justify-content: space-between"
   >
     <div class="playlist-name">
       {{ playlistName }}

@@ -20,9 +20,10 @@
           }@else if(component === 'music-container'){
           <app-music-container
             cover="{{ item.cover }}"
-            musicName="{{ item.musicName }}"
+            musicName="{{ item.title }}"
             duration="{{ item.duration }}"
-            artistName="{{ item.artistName }}"
+            artistName="{{ item.artist }}"
+            id="{{ item.id }}"
           >
           </app-music-container>
           }
@@ -30,8 +31,5 @@
       </ion-row>
       }
     </ion-list>
-    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
-      <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
   </ion-content>
 </ion-grid>

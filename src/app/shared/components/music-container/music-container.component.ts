@@ -1,3 +1,4 @@
+import { ModalStateService } from './../../../core/services/modal-state.service';
 import { SongOptionComponent } from './../song-option/song-option.component';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
@@ -13,11 +14,15 @@ import { PlaySongPage } from '../../modal/play-song/play-song.page';
 })
 export class MusicContainerComponent  implements OnInit {
 
-  constructor(private modalCtrl: ModalController) { }
+  modalStateService :ModalStateService;
+  constructor(private modalCtrl: ModalController, modalStateService :ModalStateService) {
+
+   }
   @Input() cover :string;
   @Input() musicName :string;
   @Input() duration :string;
   @Input() artistName :string;
+  @Input() id:string;
 
   ngOnInit() {}
 
@@ -28,10 +33,8 @@ export class MusicContainerComponent  implements OnInit {
     modal.present();
   }
 
-  async openSetting(){
-    const modal = await this.modalCtrl.create({
-      component: PlaySongPage ,
-    });
-    modal.present();
-  }
+ openModal(){
+  this.modalStateService.setModalOpen(true);
+ }
+  
 }

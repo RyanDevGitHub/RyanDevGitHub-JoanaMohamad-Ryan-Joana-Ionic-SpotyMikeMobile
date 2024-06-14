@@ -13,6 +13,8 @@ import { TopSongComponent } from "src/app/shared/components/new-song/new-song.co
 import { MusicGenresComponent } from "src/app/shared/components/music-genres/music-genres.component";
 import { TopSongsComponent } from "src/app/shared/components/top-songs/top-songs.component";
 import { LastPlayedComponent } from "src/app/shared/components/last-played/last-played.component";
+import { ModalStateService } from "src/app/core/services/modal-state.service";
+import { Subscription } from "rxjs";
 
 
 @Component({
@@ -34,13 +36,26 @@ import { LastPlayedComponent } from "src/app/shared/components/last-played/last-
   ],
 })
 export class HomePage implements OnInit {
-  constructor() {
+  public isModalOpen = true;
+  private modalSubscription: Subscription;
+  constructor(private modalStateService: ModalStateService ) {
     addIcons({ book, home });
+    this.modalSubscription = modalStateService.modalOpen$.subscribe(
+      value => this.isModalOpen = value
+    );
   }
   public listSongs :object[] = [{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'}] 
   
 
   ngOnInit() {
     console.log('init home');
+  
+    console.log(this.isModalOpen);
+  }
+
+  ngOnDestroy() {
+    if (this.modalSubscription) {
+      this.modalSubscription.unsubscribe();
+    }
   }
 }

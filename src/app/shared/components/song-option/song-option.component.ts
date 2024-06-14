@@ -3,6 +3,7 @@ import { addIcons } from 'ionicons';
 import { addCircleOutline, albumsOutline, ellipsisHorizontalOutline, personAddOutline, shareOutline } from 'ionicons/icons';
 import { IonIcon, IonButton, IonContent, IonModal, IonHeader, IonToolbar, IonButtons, IonTitle, IonItem, IonInput, IonGrid, IonRow, IonCol, IonImg, IonText } from "@ionic/angular/standalone";
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-song-option',
@@ -16,7 +17,7 @@ import { ModalStateService } from 'src/app/core/services/modal-state.service';
 
 export class SongOptionComponent  implements OnInit {
 
-  constructor(private modalStateService: ModalStateService) { }
+  constructor(private modalStateService: ModalStateService,private router: Router) { }
   @ViewChild(IonModal) modal: IonModal;
   @Input()id:string;
 
@@ -24,12 +25,17 @@ export class SongOptionComponent  implements OnInit {
   ngOnInit() {
     addIcons({ ellipsisHorizontalOutline,addCircleOutline ,albumsOutline,shareOutline,personAddOutline});
   }
-  
-  ngAfterViewInit(){
-    // this.modalStateService.setModalOpen(true);
-  }
-  onClick(){
 
+  onClickAddPlaylist(){
+  }
+
+  onClickRedirectToAlbum(){
+  }
+
+  onClickShare(){
+  }
+
+  onClickRedirectToArtist(){
   }
   
   cancel() {

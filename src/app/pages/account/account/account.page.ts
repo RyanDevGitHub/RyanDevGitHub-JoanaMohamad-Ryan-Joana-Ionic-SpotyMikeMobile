@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonRow, IonAvatar, IonText, IonButton } from '@ionic/angular/standalone';
 import { SectionWithDropdownComponent } from 'src/app/shared/components/section-with-dropdown/section-with-dropdown.component';
 import { Router } from '@angular/router';
+import { IPlaylists } from 'src/app/core/interfaces/playlistes';
 
 @Component({
   selector: 'app-account',
@@ -16,8 +17,10 @@ import { Router } from '@angular/router';
 export class AccountPage implements OnInit {
 
   constructor(private router:Router) { }
-  cover:string = 'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/cover%2Fzelda-breath-of-the-wild-1655249167687.jpg?alt=media&token=5411b64e-3d8f-40b7-a6e8-4a16b10ba3f9'
-  items  = [{title:'test1',nbSong:'12',playlistName:'SunDark',cover:this.cover,playlistId:'12'},{title:'test2',nbSong:'6',playlistName:'MoonLight',cover:this.cover,playlistId:'6'}];
+  items :IPlaylists  = [{cover:'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/cover%2Fzelda-breath-of-the-wild-1655249167687.jpg?alt=media&token=5411b64e-3d8f-40b7-a6e8-4a16b10ba3f9',title:'test1',artist:'SunDark',nbSong:'12',id:'99'}];
+
+
+
   ngOnInit() {
   }
 
