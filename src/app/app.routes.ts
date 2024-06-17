@@ -58,7 +58,11 @@ export const routes: Routes = [
       {
         path:'playlist/:id',
         loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage)
-      }
+      },
+      {
+        path: 'search',
+        loadComponent: () => import('./pages/search/search.page').then( m => m.SearchPage)
+      },
     ],
   },
   {
@@ -76,6 +80,7 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/login',
   },
+
 
   
 

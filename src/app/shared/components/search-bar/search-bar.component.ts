@@ -3,6 +3,7 @@ import { AnimationController, IonButton, IonCol, IonGrid, IonIcon, IonRow, Modal
 import { addIcons } from 'ionicons';
 import { flashOutline, searchOutline } from 'ionicons/icons';
 import { QuickMenuComponent } from '../../modal/quick-menu/quick-menu.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -17,6 +18,7 @@ export class SearchBarComponent  implements OnInit {
   constructor(private animationCtrl: AnimationController) { }
 
   private modalCtl = inject(ModalController);
+  private router = inject(Router);
   ngOnInit() {
     addIcons({flashOutline,searchOutline});
   }
@@ -56,4 +58,8 @@ export class SearchBarComponent  implements OnInit {
   MyLeaveAnimation = (baseEl: HTMLElement) => {
     return this.MyEnterAnimation(baseEl).direction('reverse');
   };
+
+  redirectToSearchPage(){
+    this.router.navigate(['/home/search']);
+  }
 }
