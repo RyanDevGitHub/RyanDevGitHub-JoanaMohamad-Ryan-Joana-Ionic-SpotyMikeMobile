@@ -15,6 +15,7 @@ import { TopSongsComponent } from "src/app/shared/components/top-songs/top-songs
 import { LastPlayedComponent } from "src/app/shared/components/last-played/last-played.component";
 import { ModalStateService } from "src/app/core/services/modal-state.service";
 import { Subscription } from "rxjs";
+import { SearchBarComponent } from "src/app/shared/components/search-bar/search-bar.component";
 
 
 @Component({
@@ -33,6 +34,7 @@ import { Subscription } from "rxjs";
     MusicGenresComponent,
     TopSongsComponent,
     LastPlayedComponent,
+    SearchBarComponent,
   ],
 })
 export class HomePage implements OnInit {
