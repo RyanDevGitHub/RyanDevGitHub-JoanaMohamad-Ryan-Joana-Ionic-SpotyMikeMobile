@@ -1,59 +1,129 @@
-<ion-grid fixed>
-  <ion-row>
-    <ion-col size="12"
-      ><app-back-button class="{{input[step].btnBack}}"></app-back-button
-    ></ion-col>
-  </ion-row>
-  <ion-row class="ion-justify-content-center ion-padding">
-    <ion-col size="12"
-      ><ion-list>
-        <form [formGroup]="form">
-          <ion-item>
-            <ion-toggle class="{{input[step].toggle}}" [checked]="false"
-              >{{input[step].labelToggle}}</ion-toggle
-            ><br /><br />
-            <ion-input
-              class="{{input[step].hideInput}}"
-              labelPlacement="floating"
-              type="{{input[step].type}}"
-              name="{{input[step].type}}"
-              value="{{input[step].value}}"
-              formControlName="{{input[step].formeControlName}}"
-            >
-              <div slot="label">
-                {{input[step].label}}
-                <ion-text color="danger">(Obligatoire)</ion-text>
-              </div>
-            </ion-input>
-            <ion-select
-              placeholder="Homme"
-              class="{{input[step].selectSexe}}"
-              interface="action-sheet"
-              (ionChange)="handleChange($event)"
-            >
-              <div slot="label">Indiquer votre sexe</div>
-              <ion-select-option value="1">Homme</ion-select-option>
-              <ion-select-option value="0">Femme</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </form>
-      </ion-list>
-    </ion-col>
-  </ion-row>
-  <ion-row class="ion-justify-content-center ion-padding">
-    <ion-col size="auto">
-      <ion-button
-        (click)="nextStep()"
-        [disabled]="isBtnDisabled(input[step].formControl)"
-        >{{input[step].btnName}}
-      </ion-button></ion-col
-    >
-  </ion-row>
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="auto"
-      ><ion-text (click)="returnToLoginPage()">
-        <sub>Vous possédez deja un compte</sub>
-      </ion-text></ion-col
-    >
-  </ion-row>
-</ion-grid>
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12"
+        ><app-back-button
+          class="{{input[step].btnBack}}"
+          (click)="back()"
+        ></app-back-button
+      ></ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-padding">
+      <ion-col size="12"
+        ><ion-list>
+          <form [formGroup]="form">
+            <ion-item>
+              <ion-toggle
+                class="{{input[step].toggle}}"
+                [checked]="false"
+                (ionChange)="onChangeToggle()"
+                >êtes vous un artist</ion-toggle
+              ><br /><br />
+
+              <ion-img
+                src="{{avatar.src}}"
+                class="{{input[step].avatar}}"
+                (click)="takePicture()"
+              ></ion-img>
+
+              <ion-input
+                class="{{input[step].hideInput}}"
+                labelPlacement="floating"
+                type="{{input[step].type}}"
+                name="{{input[step].type}}"
+                value=""
+                formControlName="{{input[step].formeControlName}}"
+              >
+                <div slot="label">
+                  {{input[step].label}}
+                  <ion-text color="danger">(Obligatoire)</ion-text>
+                </div>
+              </ion-input>
+              <ion-select
+                placeholder="Homme"
+                class="{{input[step].selectSexe}}"
+                interface="action-sheet"
+                (ionChange)="handleChange($event)"
+              >
+                <div slot="label">Indiquer votre sexe</div>
+                <ion-select-option value="1">Homme</ion-select-option>
+                <ion-select-option value="0">Femme</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </form>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    @if (this.checkedToggle === true && input[step].formeControlName ===
+    "artist") {
+    <form [formGroup]="form">
+      <ion-row class="ion-justify-content-center ion-padding">
+        <ion-col size="11"
+          ><ion-input
+            labelPlacement="floating"
+            type="text"
+            name="artistName"
+            value=""
+            formControlName="artistName"
+          >
+            <div slot="label">
+              Quel est votre nom d'artist ?
+              <ion-text color="danger">(Obligatoire)</ion-text>
+            </div>
+          </ion-input></ion-col
+        >
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center ion-padding">
+        <ion-col size="11"
+          ><ion-input
+            labelPlacement="floating"
+            type="text"
+            name="label"
+            value=""
+            formControlName="label"
+          >
+            <div slot="label">
+              Quel est votre label ?
+              <ion-text color="danger">(Obligatoire)</ion-text>
+            </div>
+          </ion-input></ion-col
+        >
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center ion-padding">
+        <ion-col size="11"
+          ><ion-input
+            labelPlacement="floating"
+            type="text"
+            name="description"
+            value=""
+            formControlName="description"
+          >
+            <div slot="label">
+              Quel est votre description ?
+              <ion-text color="danger">(Obligatoire)</ion-text>
+            </div>
+          </ion-input></ion-col
+        >
+      </ion-row>
+    </form>
+    }
+    <ion-row class="ion-justify-content-center ion-padding">
+      <ion-col size="auto">
+        <ion-button
+          (click)="nextStep()"
+          [disabled]="isBtnDisabled(input[step].formControl)"
+          >{{input[step].btnName}}
+        </ion-button></ion-col
+      >
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="auto"
+        ><ion-text (click)="returnToLoginPage()">
+          <sub>Vous possédez deja un compte</sub>
+        </ion-text></ion-col
+      >
+    </ion-row>
+  </ion-grid>
+</ion-content>
