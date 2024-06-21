@@ -43,33 +43,50 @@
  */
 
 :root {
-  --custom-success: #15AB90; /* Couleur personnalisée */
+  --custom-success: #15AB90;
+  /* Couleur personnalisée */
 }
-img{
+
+img {
   width: 100%;
 }
-.center{
+
+.center {
   text-align: center;
 }
-.pad-25{
+
+.pad-25 {
   padding-top: 25%;
   padding-bottom: 25%;
 }
-.pad-35{
+
+.pad-35 {
   padding-top: 35%;
   padding-bottom: 35%;
 }
-.pad-50{
+
+.pad-50 {
   padding-top: 50%;
   padding-bottom: 50%;
 }
-.error{
+
+.error {
   color: red;
+
   ion-icon {
     color: red;
   }
 }
-p,h1,h2,h3{
+
+p,
+h1,
+h2,
+h3 {
   margin: 0;
 }
 
+.ColorGreenBtn {
+  --background: var(--custom-success);
+  --background-activated: var(--custom-success) --background-focused: var(--custom-success);
+  --background-hover: var(--custom-success);
+}

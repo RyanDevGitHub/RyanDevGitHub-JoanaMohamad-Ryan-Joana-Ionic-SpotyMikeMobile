@@ -22,12 +22,12 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    canActivate:[authGuard],
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./layouts/accueil/accueil.page').then(
         (m) => m.AccueilPage
       ),
-    children:[
+    children: [
       {
         path: 'play-song',
         loadComponent: () =>
@@ -39,7 +39,7 @@ export const routes: Routes = [
         path: 'home',
         loadComponent: () =>
           import('./pages/home/home.page').then((m) => m.HomePage).then(
-            
+
           ),
       },
       {
@@ -49,30 +49,52 @@ export const routes: Routes = [
       },
       {
         path: 'favorite',
-        loadComponent: () => import('./pages/favorie/favorie.page').then( m => m.FavoriePage)
+        loadComponent: () => import('./pages/favorie/favorie.page').then(m => m.FavoriePage)
       },
       {
         path: 'account',
-        loadComponent: () => import('./pages/account/account/account.page').then( m => m.AccountPage)
+        loadComponent: () => import('./pages/account/account/account.page').then(m => m.AccountPage)
       },
       {
-        path:'playlist/:id',
-        loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage)
+        path: 'playlist/:id',
+        loadComponent: () => import('./pages/playlist/playlist.page').then(m => m.PlaylistPage)
       },
       {
         path: 'search',
-        loadComponent: () => import('./pages/search/search.page').then( m => m.SearchPage)
+        loadComponent: () => import('./pages/search/search.page').then(m => m.SearchPage)
       },
     ],
   },
   {
     path: 'account',
-    canActivate:[authGuard],
-    children:[
+    canActivate: [authGuard],
+    children: [
       {
         path: 'edit-profile',
-        loadComponent: () => import('./pages/edit-profile/edit-profile.page').then( m => m.EditProfilPage)
+        loadComponent: () => import('./pages/edit-profile/edit-profile.page').then(m => m.EditProfilPage)
       },
+      {
+        path: 'settings-menu',
+        loadComponent: () => import('./pages/settings-menu/settings-menu.page').then(m => m.SettingsMenuPage)
+      },
+      {
+        path: 'account',
+        loadComponent: () => import('./pages/settings/account/account.page').then(m => m.AccountPage)
+      },
+      {
+        path: 'languages',
+        loadComponent: () => import('./pages/settings/languages/languages.page').then(m => m.LanguagesPage)
+      },
+      {
+        path: 'notification',
+        loadComponent: () => import('./pages/settings/notification/notification.page').then(m => m.NotificationPage)
+      },
+      {
+        path: 'about',
+        loadComponent: () => import('./pages/settings/about/about.page').then(m => m.AboutPage)
+      },
+
+
     ],
   },
   {
@@ -80,8 +102,21 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/login',
   },
-
-
-  
+  {
+    path: 'account',
+    loadComponent: () => import('./pages/settings/account/account.page').then(m => m.AccountPage)
+  },
+  {
+    path: 'languages',
+    loadComponent: () => import('./pages/settings/languages/languages.page').then(m => m.LanguagesPage)
+  },
+  {
+    path: 'notification',
+    loadComponent: () => import('./pages/settings/notification/notification.page').then(m => m.NotificationPage)
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./pages/settings/about/about.page').then(m => m.AboutPage)
+  },
 
 ];
