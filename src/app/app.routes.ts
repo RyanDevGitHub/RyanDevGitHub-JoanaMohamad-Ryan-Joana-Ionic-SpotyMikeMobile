@@ -46,7 +46,33 @@ export const routes: Routes = [
         path: 'playlistes',
         loadComponent: () =>
           import('./pages/playlistes/playlistes.page').then((m) => m.PlaylistesPage).then(),
-      }
+      },
+      {
+        path: 'favorite',
+        loadComponent: () => import('./pages/favorie/favorie.page').then( m => m.FavoriePage)
+      },
+      {
+        path: 'account',
+        loadComponent: () => import('./pages/account/account/account.page').then( m => m.AccountPage)
+      },
+      {
+        path:'playlist/:id',
+        loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage)
+      },
+      {
+        path: 'search',
+        loadComponent: () => import('./pages/search/search.page').then( m => m.SearchPage)
+      },
+    ],
+  },
+  {
+    path: 'account',
+    canActivate:[authGuard],
+    children:[
+      {
+        path: 'edit-profile',
+        loadComponent: () => import('./pages/edit-profile/edit-profile.page').then( m => m.EditProfilPage)
+      },
     ],
   },
   {
@@ -54,4 +80,8 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/login',
   },
+
+
+  
+
 ];

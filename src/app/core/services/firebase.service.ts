@@ -5,6 +5,7 @@ import { addDoc, deleteDoc, getDoc, getDocs, getFirestore, query, updateDoc, whe
 import { doc ,collection } from "firebase/firestore"; 
 import { Query ,DocumentData } from 'firebase/firestore';
 import { Observable, from, map } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592

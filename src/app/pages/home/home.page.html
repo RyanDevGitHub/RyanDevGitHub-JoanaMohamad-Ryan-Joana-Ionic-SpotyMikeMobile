@@ -1,6 +1,10 @@
+<ion-content [class.modal-open]="isModalOpen">
   <ion-grid class="home-page">
+    <ion-row>
+      <ion-col><app-search-bar></app-search-bar></ion-col>
+    </ion-row>
     <ion-row class="">
-      <app-top-song></app-top-song>
+      <app-new-song></app-new-song>
     </ion-row>
     <ion-row class="categories">
       <app-music-genres></app-music-genres>
@@ -12,3 +16,4 @@
       <app-last-played></app-last-played>
     </ion-row>
   </ion-grid>
+</ion-content>

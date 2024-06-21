@@ -1,3 +1,4 @@
+import { MinimizePlayerAudioService } from './app/core/services/minimize-player-audio.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthentificationService } from 'src/app/core/services/authentification.service';
 import { AuthService } from './app/core/services/auth.service';
@@ -31,6 +32,7 @@ bootstrapApplication(AppComponent, {
     Firebase,
     AuthService,
     AuthentificationService,
+    MinimizePlayerAudioService,
     AngularFireAuth,
     provideIonicAngular(),
     importProvidersFrom(IonicModule.forRoot()),

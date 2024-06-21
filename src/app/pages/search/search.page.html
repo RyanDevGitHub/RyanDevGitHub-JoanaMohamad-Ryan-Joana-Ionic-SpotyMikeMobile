@@ -1,0 +1,38 @@
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12">
+      <app-research></app-research>
+    </ion-col>
+  </ion-row>
+  <ion-content>
+    <ion-row>
+      <ion-col size="12">
+        <ion-grid fixed>
+          @if (listPlaylistes.length > 0) { @for (playlist of listPlaylistes;
+          track playlist) {
+          <ion-row>
+            <ion-col size="12"
+              ><app-playlist-container
+                nbSong="{{playlist.nbSong}}"
+                playlistName="{{playlist.title}}"
+                cover="{{playlist.cover}}"
+                playlistId="{{playlist.id}}"
+              ></app-playlist-container
+            ></ion-col>
+          </ion-row>
+          } }@else{
+          <ion-row style="margin: 50% auto">
+            <ion-col size="12">
+              <ion-text class="ion-text-center">
+                <h1>Ecoutez la musique que vous aimez</h1>
+                <h4>Artistes,titres,playlist et bien plus encore</h4>
+              </ion-text></ion-col
+            >
+          </ion-row>
+
+          }
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+</ion-grid>

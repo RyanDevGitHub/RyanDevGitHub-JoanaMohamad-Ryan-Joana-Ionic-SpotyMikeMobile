@@ -1,3 +1,4 @@
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
@@ -14,7 +15,14 @@ export const environment = {
     appId: "1:823395277840:web:4988a37c1d18697de2fe95",
     measurementId: "G-47B0D4P2EH"
   },
+
+  collection:{
+    users:'Users',
+    albums:'Albums'
+  }
+  
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

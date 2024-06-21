@@ -1,5 +1,5 @@
 import { addIcons } from 'ionicons';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { IonButton, IonIcon } from "@ionic/angular/standalone";
 import { heart, heartOutline } from 'ionicons/icons';
 
@@ -12,10 +12,21 @@ import { heart, heartOutline } from 'ionicons/icons';
 })
 export class LikeSongComponent  implements OnInit {
 
-  constructor() { }
-
+  constructor(private renderer: Renderer2, private el: ElementRef) { }
+  isLiked: boolean = false;
   ngOnInit() {
     addIcons({heartOutline});
   }
+  toggleLike(){
+    console.log('test');
+    this.isLiked = !this.isLiked;
 
+    const iconElement = this.el.nativeElement.querySelector('.like-icon');
+    
+    if (this.isLiked) {
+      this.renderer.addClass(iconElement, 'isLiked');
+    } else {
+      this.renderer.removeClass(iconElement, 'isLiked');
+    }
+  }
 }

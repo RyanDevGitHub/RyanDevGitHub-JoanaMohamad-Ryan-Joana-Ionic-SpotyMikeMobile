@@ -23,6 +23,7 @@ import { LoginRequestError } from 'src/app/core/interfaces/login';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
+import { BackButtonComponent } from 'src/app/shared/components/back-button/back-button.component';
 
 @Component({
   selector: 'app-login',
@@ -43,6 +44,7 @@ import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/passwo
     CommonModule,
     TranslateModule,
     ReactiveFormsModule,
+    BackButtonComponent,
   ],
 })
 export class AuthPage implements OnInit {
