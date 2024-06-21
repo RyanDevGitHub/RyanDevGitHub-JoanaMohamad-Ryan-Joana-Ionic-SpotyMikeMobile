@@ -19,6 +19,7 @@ import { IonicModule } from '@ionic/angular';
 import { LocalStorageService } from './app/core/services/local-strorage.service';
 import { Firebase } from './app/core/services/firebase.service';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { provideStore } from '@ngrx/store';
 
 if (environment.production) {
   enableProdMode();
@@ -34,6 +35,7 @@ bootstrapApplication(AppComponent, {
     AuthentificationService,
     MinimizePlayerAudioService,
     AngularFireAuth,
+    provideStore(),
     provideIonicAngular(),
     importProvidersFrom(IonicModule.forRoot()),
     provideRouter(routes),

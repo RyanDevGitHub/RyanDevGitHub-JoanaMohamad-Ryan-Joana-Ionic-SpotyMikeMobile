@@ -33,6 +33,7 @@ export class RegisterPage implements OnInit {
     email:'',
     sexe:'',
     favorites:[],
+    artiste:{id:'',label:'',firstName:'',avatar:'',description:'',subscribers:['']},
     playlists: [],
     lastsplayeds: [],
     created_at:'',};
@@ -112,7 +113,7 @@ getFormControl(input:string){
     return this.form.get(input);
 }
 isBtnDisabled(input:string): boolean{
-  console.log(this.input[this.step].formeControlName);
+  
   if(this.input[this.step].formeControlName === 'artist' && !this.checkedToggle ){
     return false;
   } 
@@ -138,21 +139,32 @@ handleChange(e:any) {
 
   }
   nextStep(){
+    //verifier si l'étape est celle de l'artist ou de l'avatar
+    console.log(this.input[this.step].formeControlName === 'artist' && !this.checkedToggle);
+    if(this.input[this.step].formeControlName === 'artist' || this.input[this.step].formeControlName === 'avatar' && this.checkedToggle === true){
+      if(this.input[this.step].formeControlName === 'artist'){
+        this.user.artiste!.description   =  this.form.get('artistname')?.value;
+      }
+    }else{
     //ajouter les info dans le user
-    
-    console.log(this.input[this.step].formeControlName);
+    const userProperty = this.input[this.step].formeControlName as keyof IUserDataBase;
+    const value :string = this.form.get(this.input[this.step].formeControlName)?.value;
+    this.user[userProperty] = value as any;
+    console.log(this.user[userProperty]);
+    console.log(this.user);
+    }
     //afficher le nouvelle input et bouton 
     if(this.step < this.input.length -1  && this.input[this.step].formeControlName != 'artist'){
       this.form.get('email')?.reset();
       this.step++ ;
     }else if(this.input[this.step].formeControlName === 'artist' && !this.checkedToggle){
-      console.log('test');
       this.step = this.step + 2 ;
     }else if(this.input[this.step].formeControlName === 'artist' && this.checkedToggle){
+      console.log('test');
       this.form.get('email')?.reset();
       this.step = this.step + 1 ;
     }else if(this.step === this.input.length -1){
-      
+      this.registerUser(this.user);
     }
     
     //verifier si c'est dernier input pour ajouter un bouton avec la method OnSubmit() et avec comme valeur Crée un compte
@@ -201,5 +213,17 @@ handleChange(e:any) {
     this.avatar.src = imageUrl;
   };
 
-  registerUser(data : IUserDataBase)
+  registerUser(data : IUserDataBase){
+    //ajouter la date de creation du user
+    const dateNow = new Date();
+    this.user.created_at = dateNow.toDateString();
+
+    //ajouter l'id du user
+
+
+    //return home
+    this.router.navigate(['/home/home']);
+
+
+  }
 }

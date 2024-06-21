@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import {
@@ -16,6 +16,9 @@ import { LastPlayedComponent } from "src/app/shared/components/last-played/last-
 import { ModalStateService } from "src/app/core/services/modal-state.service";
 import { Subscription } from "rxjs";
 import { SearchBarComponent } from "src/app/shared/components/search-bar/search-bar.component";
+import { AppState } from "src/app/core/store/app.state";
+import { loadSong } from "src/app/core/store/action/song.action";
+import { Store } from "@ngrx/store";
 
 
 @Component({
@@ -40,11 +43,14 @@ import { SearchBarComponent } from "src/app/shared/components/search-bar/search-
 export class HomePage implements OnInit {
   public isModalOpen = true;
   private modalSubscription: Subscription;
+  store = inject(Store<AppState>);
   constructor(private modalStateService: ModalStateService ) {
+    this.store.dispatch(loadSong());
     addIcons({ book, home });
     this.modalSubscription = modalStateService.modalOpen$.subscribe(
       value => this.isModalOpen = value
     );
+
   }
   public listSongs :object[] = [{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'},{cover:'assets/avatar/album-photo.jpg' , artistName: 'Artiste' ,title:'Titre'}] 
   
