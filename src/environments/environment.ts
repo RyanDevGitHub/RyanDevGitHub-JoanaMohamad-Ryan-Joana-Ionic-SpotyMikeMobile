@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   url_api: 'http://esiea-spotymike.eu-4.evennode.com/v1',
-  firebaseConfig:{
+  firebaseConfig: {
     apiKey: "AIzaSyD2wmPaAlLVy7iGY6L0gZt_i3MlC2vXb_A",
     authDomain: "spotytest-e89c6.firebaseapp.com",
     projectId: "spotytest-e89c6",
@@ -16,11 +16,12 @@ export const environment = {
     measurementId: "G-47B0D4P2EH"
   },
 
-  collection:{
-    users:'Users',
-    albums:'Albums'
-  }
-  
+  collection: {
+    users: 'Users',
+    albums: 'Albums'
+  },
+  version: '0.0.1'
+
 };
 
 

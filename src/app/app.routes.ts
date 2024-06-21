@@ -63,12 +63,6 @@ export const routes: Routes = [
         path: 'search',
         loadComponent: () => import('./pages/search/search.page').then(m => m.SearchPage)
       },
-    ],
-  },
-  {
-    path: 'account',
-    canActivate: [authGuard],
-    children: [
       {
         path: 'edit-profile',
         loadComponent: () => import('./pages/edit-profile/edit-profile.page').then(m => m.EditProfilPage)
@@ -100,23 +94,7 @@ export const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: 'auth/login',
-  },
-  {
-    path: 'account',
-    loadComponent: () => import('./pages/settings/account/account.page').then(m => m.AccountPage)
-  },
-  {
-    path: 'languages',
-    loadComponent: () => import('./pages/settings/languages/languages.page').then(m => m.LanguagesPage)
-  },
-  {
-    path: 'notification',
-    loadComponent: () => import('./pages/settings/notification/notification.page').then(m => m.NotificationPage)
-  },
-  {
-    path: 'about',
-    loadComponent: () => import('./pages/settings/about/about.page').then(m => m.AboutPage)
+    redirectTo: 'auth/register',
   },
 
 ];

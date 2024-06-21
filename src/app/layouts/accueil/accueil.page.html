@@ -1,9 +1,7 @@
 <ion-grid fixed>
   <ion-row class="minimizePlayer">
     @if(minimizePlayerAudioService.isMiniPlayerVisible()){
-    <app-minimize-player-audio
-      style="position: relative; z-index: 99"
-    ></app-minimize-player-audio>
+    <app-minimize-player-audio style="position: relative; z-index: 99"></app-minimize-player-audio>
     }
   </ion-row>
   <ion-row>
@@ -21,7 +19,7 @@
           <ion-icon aria-hidden="true" name="play"></ion-icon>
         </ion-tab-button>
 
-        <ion-tab-button tab="account" href="">
+        <ion-tab-button tab="account">
           <ion-icon aria-hidden="true" name="person"></ion-icon>
         </ion-tab-button>
       </ion-tab-bar>

@@ -1,13 +1,38 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>about</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header-setting title="About"></app-header-setting>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">about</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<ion-grid fixed>
+  <ion-row class="ion-justify-content-between">
+    <ion-col size="6"><ion-text>
+        <h6>Version</h6>
+      </ion-text></ion-col>
+    <ion-col size="6"><ion-text>
+        <h6 class="ion-text-end">{{version}}</h6>
+      </ion-text></ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid fixed>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6">
+      <ion-text>
+        <h6 class="ion-text-center">Version</h6>
+      </ion-text>
+    </ion-col>
+
+  </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6">
+      <ion-text>
+        <h6 class="ion-text-center">Version</h6>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6">
+      <ion-text>
+        <h6 class="ion-text-center">Version</h6>
+      </ion-text>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>

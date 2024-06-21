@@ -22,10 +22,10 @@ export class SettingsMenuPage implements OnInit {
 
   private router = inject(Router);
   settings: Isetting[] = [
-    { name: 'Account', redirect: '/account/account' },
-    { name: 'Languages', redirect: '/account/languages' },
-    { name: 'Notification', redirect: '/account/notification' },
-    { name: 'About', redirect: '/account/about' },
+    { name: 'Account', redirect: '/home/account' },
+    { name: 'Languages', redirect: '/home/languages' },
+    { name: 'Notification', redirect: '/home/notification' },
+    { name: 'About', redirect: '/home/about' },
 
   ]
   constructor() { }
