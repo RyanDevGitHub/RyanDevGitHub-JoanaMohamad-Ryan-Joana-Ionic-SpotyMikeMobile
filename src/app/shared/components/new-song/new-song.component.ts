@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular'; 
 
 @Component({
@@ -11,9 +12,13 @@ import { IonicModule } from '@ionic/angular';
 export class TopSongComponent implements OnInit { 
 
   constructor() { }
-
+  router = inject(Router);
   ngOnInit() {
     console.log('init new-song');
+  }
+
+  redirectToNewPage(){
+    this.router.navigate(['/home/new-song'])
   }
 
 }
