@@ -15,7 +15,7 @@ import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 import { provideHttpClient } from '@angular/common/http';
 import { i18nProviders } from './app/core/providers/i18n.providers';
-import { IonicModule } from '@ionic/angular';
+// import { IonicModule } from '@ionic/angular';
 import { LocalStorageService } from './app/core/services/local-strorage.service';
 import { Firebase } from './app/core/services/firebase.service';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
@@ -37,7 +37,7 @@ bootstrapApplication(AppComponent, {
     AngularFireAuth,
     provideStore(),
     provideIonicAngular(),
-    importProvidersFrom(IonicModule.forRoot()),
+    // importProvidersFrom(IonicModule.forRoot()),
     provideRouter(routes),
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig},

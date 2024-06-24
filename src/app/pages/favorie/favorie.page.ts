@@ -6,16 +6,17 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonRow, I
 import { PlaylistesOptionComponent } from 'src/app/shared/components/playlistes-option/playlistes-option.component';
 import { LikeSongComponent } from 'src/app/shared/components/like-song/like-song.component';
 import { ShareSongComponent } from 'src/app/shared/components/share-song/share-song.component';
-import { ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular/standalone';
 import { PlaySongPage } from 'src/app/shared/modal/play-song/play-song.page';
 import { SongOptionComponent } from 'src/app/shared/components/song-option/song-option.component';
+import { HeaderCategoryComponent } from 'src/app/shared/components/header-category/header-category.component';
 
 @Component({
   selector: 'app-favorie',
   templateUrl: './favorie.page.html',
   styleUrls: ['./favorie.page.scss'],
   standalone: true,
-  imports: [IonImg, IonRow, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,PlaylistesOptionComponent, LikeSongComponent,ShareSongComponent,PlaySongPage,SongOptionComponent]
+  imports: [IonImg, IonRow, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,PlaylistesOptionComponent, LikeSongComponent,ShareSongComponent,PlaySongPage,SongOptionComponent,HeaderCategoryComponent]
 })
 export class FavoriePage implements OnInit {
 

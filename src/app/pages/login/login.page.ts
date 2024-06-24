@@ -23,7 +23,7 @@ import { AuthentificationService } from 'src/app/core/services/authentification.
 import { TranslateModule } from '@ngx-translate/core';
 import { LoginRequestError } from 'src/app/core/interfaces/login';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular/standalone';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
 import { LocalStorageService } from 'src/app/core/services/local-strorage.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';

@@ -1,3 +1,4 @@
+import { IPlaylist } from 'src/app/core/interfaces/playlistes';
 import { IonImg } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { Component, OnInit, inject } from '@angular/core';
@@ -34,7 +35,7 @@ export class RegisterPage implements OnInit {
     sexe:'',
     favorites:[],
     artiste:{id:'',label:'',firstName:'',avatar:'',description:'',subscribers:['']},
-    playlists: [],
+    playlists: [[]],
     lastsplayeds: [],
     created_at:'',};
   input = [

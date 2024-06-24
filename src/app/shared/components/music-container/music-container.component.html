@@ -1,23 +1,32 @@
 <ion-row
   style="display: flex; flex-direction: row; justify-content: space-between"
 >
-  <ion-img [src]="cover" (click)="openPlayer()"></ion-img>
-  <div
-    (click)="openPlayer()"
-    style="display: flex; flex-direction: row; justify-content: space-between"
-  >
+  <ion-col size="3" (click)="openPlayer()">
+    <ion-img [src]="cover"></ion-img>
+  </ion-col>
+
+  <ion-col size="3" (click)="openPlayer()">
     <div class="music-name ion-text-center">
       <h6>{{ musicName }}</h6>
 
       <h6>{{ artistName }}</h6>
     </div>
+  </ion-col>
+
+  <ion-col size="3" (click)="openPlayer()">
     <div class="music-name ion-text-center ion-align-self-center">
       <h6>{{ duration }}</h6>
-    </div>
-  </div>
-  <app-song-option
-    (click)="openModal()"
-    id="{{ id }}"
-    class="music-settings ion-align-self-center"
-  ></app-song-option>
+    </div></ion-col
+  >
+
+  <ion-col size="3">
+    <app-song-option
+      (click)="openModal()"
+      id="{{ id }}"
+      class="music-settings ion-align-self-center"
+    ></app-song-option>
+
+    <app-like-song></app-like-song>
+    <app-share-song id="{{ id }}"></app-share-song
+  ></ion-col>
 </ion-row>

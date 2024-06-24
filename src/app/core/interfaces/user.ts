@@ -1,4 +1,4 @@
-import {IPlaylists } from "./playlistes";
+import { IPlaylist } from 'src/app/core/interfaces/playlistes';
 
 type ERoleUser =
 'user'|'artist';
@@ -32,7 +32,7 @@ export interface IUserDataBase{
     sexe:string,
     favorites:string[],
     artiste?: IArtist,
-    playlists: IPlaylists[],
+    playlists: [IPlaylist[]],
     lastsplayeds: string[],
     created_at:string,
 }
@@ -46,7 +46,7 @@ export interface IUserUpdateDataBase{
     sexe?:string,
     favorites?:string[],
     artiste?: IArtist,
-    playlists?: IPlaylists[],
+    playlists?: [IPlaylist[]],
     lastsplayeds?: string[],
     created_at?:string,
 }

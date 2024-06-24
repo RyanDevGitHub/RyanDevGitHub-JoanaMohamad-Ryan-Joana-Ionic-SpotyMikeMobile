@@ -6,4 +6,4 @@ export interface IPlaylist {
     id:string
   }
 
-  export type IPlaylists = IPlaylist[];
+  
