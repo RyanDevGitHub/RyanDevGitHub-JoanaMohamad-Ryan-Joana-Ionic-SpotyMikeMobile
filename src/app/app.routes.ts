@@ -91,6 +91,10 @@ export const routes: Routes = [
         path: 'new-song',
         loadComponent: () => import('./pages/new-song/new-song.page').then( m => m.NewSongPage)
       },
+      {
+        path: 'last-played',
+        loadComponent: () => import('./pages/last-played/last-played.page').then( m => m.LastPlayedPage)
+      },
     ],
   },
   {
@@ -98,4 +102,6 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/register',
   },
+  
+
 ];
