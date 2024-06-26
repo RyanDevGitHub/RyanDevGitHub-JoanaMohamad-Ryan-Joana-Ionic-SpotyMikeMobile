@@ -15,13 +15,14 @@ export class SeeAllComponent  implements OnInit {
 
   constructor(private router:Router) { }
   @Input() redirectTo: string;
+  @Input() param :string;
 
   ngOnInit() {
     console.log('init see-all');
   }
 
   redirectToPage() {
-    this.router.navigate([this.redirectTo]);
+    this.router.navigate([this.redirectTo],{queryParams:{genre:this.param}});
   }
 
 }

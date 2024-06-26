@@ -99,6 +99,10 @@ export const routes: Routes = [
         path: 'top-songs',
         loadComponent: () => import('./pages/top-songs/top-songs.page').then( m => m.TopSongsPage)
       },
+      {
+        path: 'music-genre',
+        loadComponent: () => import('./pages/music-genre/music-genre.page').then( m => m.MusicGenrePage)
+      },
     ],
   },
   {
