@@ -7,24 +7,20 @@ import { IonImg, IonRow } from '@ionic/angular/standalone';
   selector: 'app-playlist-container',
   templateUrl: './playlist-container.component.html',
   styleUrls: ['./playlist-container.component.scss'],
-  standalone:true,
-  imports:[
-    IonRow,IonImg,SongOptionComponent
-  ]
+  standalone: true,
+  imports: [IonRow, IonImg, SongOptionComponent],
 })
-export class PlaylistContainerComponent  implements OnInit {
-
+export class PlaylistContainerComponent implements OnInit {
   @Input() nbSong: string;
   @Input() playlistName: string;
-  @Input() cover :string;
-  @Input() playlistId :string;
+  @Input() cover: string;
+  @Input() playlistId: string;
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
-
-  redirectToPlaylist(){
+  redirectToPlaylist() {
     this.router.navigate(['/home/playlist/' + this.playlistId]);
   }
 }

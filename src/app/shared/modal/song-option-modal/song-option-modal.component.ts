@@ -6,31 +6,31 @@ import { ModalStateService } from 'src/app/core/services/modal-state.service';
   selector: 'app-song-option',
   templateUrl: './song-option-modal.component.html',
   styleUrls: ['./song-option-modal.component.scss'],
-  standalone:true,
-  imports:[IonRow,IonCol,IonText,IonIcon,IonImg,IonGrid
+  standalone: true,
+  imports: [IonRow, IonCol, IonText, IonIcon, IonImg, IonGrid
   ]
 })
-export class SongOptionModalComponent  implements OnInit {
+export class SongOptionModalComponent implements OnInit {
 
   private modal = inject(ModalController);
   private modalStateService = inject(ModalStateService);
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  onClickAddPlaylist(){
+  onClickAddPlaylist() {
   }
 
-  onClickRedirectToAlbum(){
+  onClickRedirectToAlbum() {
   }
 
-  onClickShare(){
+  onClickShare() {
   }
 
-  onClickRedirectToArtist(){
+  onClickRedirectToArtist() {
   }
-  
+
   cancel() {
     this.modal.dismiss();
     this.modalStateService.setModalOpen(false);

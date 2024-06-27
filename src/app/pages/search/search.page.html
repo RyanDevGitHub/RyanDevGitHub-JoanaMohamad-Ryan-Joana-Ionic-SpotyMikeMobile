@@ -8,8 +8,34 @@
     <ion-row>
       <ion-col size="12">
         <ion-grid fixed>
-          @if (listPlaylistes.length > 0) { @for (playlist of listPlaylistes;
-          track playlist) {
+          @if (artistLists.length > 0) { @for (artist of artistLists; track
+          $index) {
+          <ion-row>
+            <ion-col size="12"
+              ><app-artist-container
+                [cover]="artist.cover"
+                [artistName]="artist.name"
+                [artistId]="artist.id"
+              ></app-artist-container>
+            </ion-col>
+          </ion-row>
+
+          } } @if (musicPlaylist.length > 0) { @for (music of musicPlaylist;
+          track $index) {
+          <ion-row>
+            <ion-col size="12"
+              ><app-music-container
+                [title]="music.title"
+                [duration]="music.duration"
+                [cover]="music.cover"
+                [artistName]="music.artist"
+                [id]="music.id"
+              ></app-music-container>
+            </ion-col>
+          </ion-row>
+
+          } } @if (listPlaylistes.length > 0) { @for (playlist of
+          listPlaylistes; track playlist) {
           <ion-row>
             <ion-col size="12"
               ><app-playlist-container
@@ -29,7 +55,6 @@
               </ion-text></ion-col
             >
           </ion-row>
-
           }
         </ion-grid>
       </ion-col>
