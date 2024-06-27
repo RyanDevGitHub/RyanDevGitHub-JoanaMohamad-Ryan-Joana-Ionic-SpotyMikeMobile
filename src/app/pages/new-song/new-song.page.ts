@@ -6,6 +6,8 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol } 
 import { HeaderCategoryComponent } from 'src/app/shared/components/header-category/header-category.component';
 import { DisplayItemComponent } from 'src/app/shared/components/display-item/display-item.component';
 import { IPlaylist } from 'src/app/core/interfaces/playlistes';
+import { Subscription } from 'rxjs';
+import { ModalStateService } from 'src/app/core/services/modal-state.service';
 
 @Component({
   selector: 'app-new-song',
@@ -32,8 +34,14 @@ export class NewSongPage implements OnInit {
     }
       ]
     
-  
-  constructor() { }
+    public isModalOpen :boolean;
+    private modalSubscription: Subscription;
+  constructor(private modalStateService: ModalStateService) { 
+
+    this.modalSubscription = modalStateService.modalOpen$.subscribe(
+      value => this.isModalOpen = value
+    );
+  }
 
   ngOnInit() {
   }

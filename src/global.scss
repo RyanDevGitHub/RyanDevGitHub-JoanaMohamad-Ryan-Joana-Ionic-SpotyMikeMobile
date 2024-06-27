@@ -92,5 +92,13 @@ h3 {
 }
 
 .custom-modal-class{
+  --height:100%;
+  --background: transparent !important;
+}
+
+.custom-modal-filter{
   --height:auto;
+}
+.modal-open{
+  filter: blur(20px)!important;
 }

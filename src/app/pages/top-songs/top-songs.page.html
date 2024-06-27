@@ -1,9 +1,10 @@
 <app-header-category
   [backButton]="true"
   title="Top Songs"
+  [class.modal-open]="isModalOpen"
 ></app-header-category>
 
-<ion-content>
+<ion-content [class.modal-open]="isModalOpen">
   <app-display-item
     [playlists]="listPlaylistes"
     [musicList]="listMusics"

@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content [class.modal-open]="isModalOpen">
   <app-header-category title="Favoris"></app-header-category>
   <ion-grid fixed>
     @for(favorite of listFavorite; track favorite){

@@ -1,6 +1,11 @@
-<app-header-category title="New" [backButton]="true"></app-header-category>
+<app-header-category
+  title="New"
+  [backButton]="true"
+  [class.modal-open]="isModalOpen"
+></app-header-category>
 <ion-content>
   <app-display-item
+    [class.modal-open]="isModalOpen"
     [playlists]="listPlaylistes"
     [musicList]="listMusics"
   ></app-display-item>

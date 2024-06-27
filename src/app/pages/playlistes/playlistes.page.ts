@@ -1,3 +1,4 @@
+import { HeaderCategoryComponent } from 'src/app/shared/components/header-category/header-category.component';
 import { SongOptionComponent } from './../../shared/components/song-option/song-option.component';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,7 +17,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './playlistes.page.html',
   styleUrls: ['./playlistes.page.scss'],
   standalone: true,
-  imports: [IonIcon, IonButton, IonImg, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonRow,PlaylistesOptionComponent,LikeSongComponent,ShareSongComponent,IonTitle,SongOptionComponent]
+  imports: [IonIcon, IonButton, IonImg, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonRow,PlaylistesOptionComponent,LikeSongComponent,ShareSongComponent,IonTitle,SongOptionComponent,HeaderCategoryComponent]
 })
 
 
@@ -29,13 +30,13 @@ export class PlaylistesPage implements OnInit,OnDestroy {
       value => this.isModalOpen = value
     );
   }
-  public listPlaylistes :IPlaylist[] = [{cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'2'},
-  {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'1'},
-  {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'3'},{cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'4'},
-  {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'5'},
-  {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'7'},{cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'6'},
-  {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:'8'}
-  ]
+  public listPlaylistes :IPlaylist[] = [{cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:"56"},
+    {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:"54"},
+    {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:"53"},{cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:"444"},
+    {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:"24"},
+    {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:"645"},{cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:"744"},
+    {cover:"assets/avatar/album-photo.jpg",title:"Work Instrument",artist:"NamaUser",nbSong:"20",id:"8488"}
+    ]
   ngOnInit() {
     console.log(this.isModalOpen);
   }
@@ -47,10 +48,6 @@ export class PlaylistesPage implements OnInit,OnDestroy {
     });
     modal.present();
   }
-  onClick(){
-     this.modalStateService.setModalOpen(true);
-  }
-
   ngOnDestroy() {
     if (this.modalSubscription) {
       this.modalSubscription.unsubscribe();
