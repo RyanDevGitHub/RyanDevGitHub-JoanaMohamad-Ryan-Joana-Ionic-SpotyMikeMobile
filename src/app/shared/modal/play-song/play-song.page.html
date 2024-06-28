@@ -5,7 +5,10 @@
         <ion-header>
           <ion-toolbar>
             <ion-buttons slot="start">
-              <app-back-button (click)="toggleSize()"></app-back-button>
+              <app-back-button
+                (click)="toggleSize()"
+                [closeModal]="true"
+              ></app-back-button>
             </ion-buttons>
             <ion-title>Olivia Lyric</ion-title>
             <ion-buttons slot="end">

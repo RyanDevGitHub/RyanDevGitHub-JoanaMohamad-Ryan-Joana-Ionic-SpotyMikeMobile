@@ -1,9 +1,9 @@
 <ion-content [class.modal-open]="isModalOpen">
+  <app-header-category
+    title="Playlists"
+    [backButton]="false"
+  ></app-header-category>
   <ion-grid fixed>
-    <app-header-category
-      title="Playlists"
-      [backButton]="false"
-    ></app-header-category>
     @for(playliste of listPlaylistes; track playliste){
     <ion-row class="playliste-container">
       <ion-col (click)="openModal()">

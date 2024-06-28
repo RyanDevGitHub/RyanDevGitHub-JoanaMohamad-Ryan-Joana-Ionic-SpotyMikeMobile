@@ -1,5 +1,65 @@
 <app-header-setting title="Languages"></app-header-setting>
+<ion-content class="languageSettingContent">
+  <ion-grid fixed class="ion-justify-content-evenly">
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="10" id="open-modal-language" expand="block">
+        <ion-text>
+          <h6>App Language</h6>
+        </ion-text>
+      </ion-col>
+      <ion-col size="auto" class="ion-align-self-center">
+        <ion-icon name="chevron-forward-outline"></ion-icon
+      ></ion-col>
+    </ion-row>
+  </ion-grid>
 
-<ion-buttons>
-  <ion-back-button></ion-back-button>
-</ion-buttons>
+  <ion-modal
+    #modal
+    trigger="open-modal-language"
+    class="modal-language-settings"
+  >
+    <ng-template>
+      <ion-content>
+        <ion-grid fixed>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="auto"
+              ><ion-text class="ion-text-center">
+                <h3>Change your language settings</h3>
+              </ion-text></ion-col
+            >
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="auto"
+              ><ion-text class="ion-text-center">
+                <h6>
+                  Want the Spotify app to be in a different language? Continue
+                  to the next screen and tap Language . Then select the language
+                  you want
+                </h6>
+              </ion-text></ion-col
+            >
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="auto" class="ion-text-center"
+              ><ion-button
+                expand="block"
+                fill="clear"
+                shape="round"
+                class="ColorGreenBtn"
+              >
+                Continue
+              </ion-button></ion-col
+            >
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="auto" class="ion-text-center"
+              ><ion-button fill="clear" shape="round" (click)="closeModal()">
+                Dismiss
+              </ion-button></ion-col
+            >
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

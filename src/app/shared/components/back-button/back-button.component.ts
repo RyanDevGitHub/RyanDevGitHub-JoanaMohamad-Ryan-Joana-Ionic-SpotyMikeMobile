@@ -14,6 +14,7 @@ import {
 import { chevronBackOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { Platform } from '@ionic/angular/standalone';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-back-button',
@@ -34,7 +35,12 @@ import { Platform } from '@ionic/angular/standalone';
 })
 export class BackButtonComponent implements OnInit {
   @Input() color: string;
-  constructor(private modalCtrl: ModalController, private platform: Platform) {
+  @Input() closeModal: boolean = false;
+  constructor(
+    private modalCtrl: ModalController,
+    private platform: Platform,
+    private _location: Location
+  ) {
     this.platform.backButton.subscribeWithPriority(10, () => {
       console.log('Handler was called!');
     });
@@ -44,5 +50,9 @@ export class BackButtonComponent implements OnInit {
   }
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
+  }
+
+  backClicked() {
+    this._location.back();
   }
 }
