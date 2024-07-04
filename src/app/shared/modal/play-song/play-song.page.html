@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content [class.modal-open]="isModalOpen">
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12">
@@ -19,7 +19,9 @@
       <ion-col></ion-col>
     </ion-row>
     <ion-row id="cover">
-      <ion-col><ion-img src="/assets/icon/coverTest.jpg"></ion-img></ion-col>
+      <ion-col size="auto"
+        ><ion-img src="/assets/icon/coverTest.jpg"></ion-img
+      ></ion-col>
     </ion-row>
     <ion-row>
       <ion-col>Island Getaway<br />Olivia Lyric</ion-col>
