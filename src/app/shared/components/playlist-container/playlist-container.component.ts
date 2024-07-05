@@ -1,14 +1,23 @@
+import { LikeSongComponent } from './../like-song/like-song.component';
 import { SongOptionComponent } from './../song-option/song-option.component';
 import { Component, OnInit, input, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonImg, IonRow } from '@ionic/angular/standalone';
+import { IonImg, IonRow, IonCol } from '@ionic/angular/standalone';
+import { ShareSongComponent } from '../share-song/share-song.component';
 
 @Component({
   selector: 'app-playlist-container',
   templateUrl: './playlist-container.component.html',
   styleUrls: ['./playlist-container.component.scss'],
   standalone: true,
-  imports: [IonRow, IonImg, SongOptionComponent],
+  imports: [
+    IonCol,
+    IonRow,
+    IonImg,
+    SongOptionComponent,
+    ShareSongComponent,
+    LikeSongComponent,
+  ],
 })
 export class PlaylistContainerComponent implements OnInit {
   @Input() nbSong: string;
