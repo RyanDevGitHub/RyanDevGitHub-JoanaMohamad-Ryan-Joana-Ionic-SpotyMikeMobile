@@ -18,7 +18,9 @@ import {
   IonItem,
   IonInput,
   IonButton,
-  IonIcon, IonAvatar } from '@ionic/angular/standalone';
+  IonIcon, 
+  IonAvatar 
+} from '@ionic/angular/standalone';
 import { AuthentificationService } from 'src/app/core/services/authentification.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoginRequestError } from 'src/app/core/interfaces/login';
@@ -68,6 +70,7 @@ export class LoginPage implements OnInit {
       Validators.minLength(8),
     ]),
   });
+
   constructor() {}
 
   ngOnInit() {
@@ -82,11 +85,11 @@ export class LoginPage implements OnInit {
         .login(this.form.value.email, this.form.value.password)
         .subscribe((data: any | LoginRequestError) => {
           if (data.error) {
-            this.error = data.message;
+            this.error = 'Identifiants incorrects';
           } else {
             // Add LocalStorage User
-            this.localStore.setItem('user',data.user)
-            this.localStore.setItem('token',data.token);
+            this.localStore.setItem('user', data.user);
+            this.localStore.setItem('token', data.token);
             this.router.navigateByUrl('/home/home');
           }
         });
