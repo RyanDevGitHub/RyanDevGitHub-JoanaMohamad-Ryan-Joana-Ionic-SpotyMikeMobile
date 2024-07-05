@@ -1,30 +1,36 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { AnimationController, IonButton, IonCol, IonGrid, IonIcon, IonRow, ModalController, createAnimation } from '@ionic/angular/standalone';
+import {
+  AnimationController,
+  IonButton,
+  IonCol,
+  IonGrid,
+  IonIcon,
+  IonRow,
+  ModalController,
+  createAnimation,
+} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { flashOutline, searchOutline } from 'ionicons/icons';
-import { QuickMenuComponent } from '../../modal/quick-menu/quick-menu.component';
+import { QuickMenuComponent } from '../../../modal/quick-menu/quick-menu.component';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  standalone:true,
+  standalone: true,
   styleUrls: ['./search-bar.component.scss'],
-  imports:[IonGrid,IonRow,IonCol,IonButton,IonIcon]
-  
+  imports: [IonGrid, IonRow, IonCol, IonButton, IonIcon],
 })
-export class SearchBarComponent  implements OnInit {
-
-  constructor(private animationCtrl: AnimationController) { }
+export class SearchBarComponent implements OnInit {
+  constructor(private animationCtrl: AnimationController) {}
 
   private modalCtl = inject(ModalController);
   private router = inject(Router);
   ngOnInit() {
-    addIcons({flashOutline,searchOutline});
+    addIcons({ flashOutline, searchOutline });
   }
 
-  async openQuickMenu(){
-  
+  async openQuickMenu() {
     const modal = await this.modalCtl.create({
       component: QuickMenuComponent,
       enterAnimation: this.MyEnterAnimation,
@@ -34,7 +40,7 @@ export class SearchBarComponent  implements OnInit {
   }
 
   MyEnterAnimation = (baseEl: HTMLElement) => {
-    const root : any = baseEl.shadowRoot;
+    const root: any = baseEl.shadowRoot;
 
     const backdropAnimation = this.animationCtrl
       .create()
@@ -59,7 +65,7 @@ export class SearchBarComponent  implements OnInit {
     return this.MyEnterAnimation(baseEl).direction('reverse');
   };
 
-  redirectToSearchPage(){
+  redirectToSearchPage() {
     this.router.navigate(['/home/search']);
   }
 }

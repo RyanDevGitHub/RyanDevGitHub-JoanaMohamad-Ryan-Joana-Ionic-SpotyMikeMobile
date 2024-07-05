@@ -1,8 +1,8 @@
-import { LyricsBoxComponent } from './../../components/lyrics-box/lyrics-box.component';
-import { MusicNavBarComponent } from './../../components/music-nav-bar/music-nav-bar.component';
-import { ShareSongComponent } from './../../components/share-song/share-song.component';
-import { LikeSongComponent } from './../../components/like-song/like-song.component';
-import { SongOptionComponent } from './../../components/song-option/song-option.component';
+import { LyricsBoxComponent } from '../../components/playerComponents/lyrics-box/lyrics-box.component';
+import { MusicNavBarComponent } from '../../components/playerComponents/music-nav-bar/music-nav-bar.component';
+import { ShareSongComponent } from '../../components/button/share-song/share-song.component';
+import { LikeSongComponent } from '../../components/button/like-song/like-song.component';
+import { SongOptionComponent } from '../../components/button/song-option/song-option.component';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -24,9 +24,9 @@ import {
   ModalController,
 } from '@ionic/angular/standalone';
 import { personCircleOutline, searchOutline } from 'ionicons/icons';
-import { SearchButtonComponent } from 'src/app/shared/components/search-button/search-button.component';
-import { BackButtonComponent } from '../../components/back-button/back-button.component';
-import { MinimizePlayerAudioComponent } from '../../components/minimize-player-audio/minimize-player-audio.component';
+import { SearchButtonComponent } from 'src/app/shared/components/button/search-button/search-button.component';
+import { BackButtonComponent } from '../../components/button/back-button/back-button.component';
+import { MinimizePlayerAudioComponent } from '../../components/playerComponents/minimize-player-audio/minimize-player-audio.component';
 import { MinimizePlayerAudioService } from 'src/app/core/services/minimize-player-audio.service';
 import { Subscription } from 'rxjs';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { IonImg, IonRow, IonCol, IonText } from '@ionic/angular/standalone';
-import { SongOptionComponent } from '../song-option/song-option.component';
+import { SongOptionComponent } from '../../button/song-option/song-option.component';
 import { Router } from '@angular/router';
 
 @Component({

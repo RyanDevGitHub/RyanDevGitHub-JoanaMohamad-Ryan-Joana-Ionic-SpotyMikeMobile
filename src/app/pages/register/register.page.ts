@@ -30,7 +30,7 @@ import {
 } from '@ionic/angular/standalone';
 import { LocalStorageService } from 'src/app/core/services/local-strorage.service';
 import { IUserDataBase } from 'src/app/core/interfaces/user';
-import { BackButtonComponent } from 'src/app/shared/components/back-button/back-button.component';
+import { BackButtonComponent } from 'src/app/shared/components/button/back-button/back-button.component';
 import { Camera, CameraResultType } from '@capacitor/camera';
 
 @Component({

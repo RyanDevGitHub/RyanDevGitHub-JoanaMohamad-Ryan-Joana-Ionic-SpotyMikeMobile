@@ -13,14 +13,14 @@ import {
 } from '@ionic/angular/standalone';
 import { ResearchComponent } from 'src/app/shared/components/research/research.component';
 import { IPlaylist } from 'src/app/core/interfaces/playlistes';
-import { PlaylistContainerComponent } from 'src/app/shared/components/playlist-container/playlist-container.component';
+import { PlaylistContainerComponent } from 'src/app/shared/components/containers/playlist-container/playlist-container.component';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
 import { Subscription } from 'rxjs';
 import { IMusic } from 'src/app/core/interfaces/music';
-import { MusicContainerComponent } from 'src/app/shared/components/music-container/music-container.component';
+import { MusicContainerComponent } from 'src/app/shared/components/containers/music-container/music-container.component';
 import { IArtist } from 'src/app/core/interfaces/user';
 import { IArtistContainer } from 'src/app/core/interfaces/artist';
-import { ArtistContainerComponent } from 'src/app/shared/components/artist-container/artist-container.component';
+import { ArtistContainerComponent } from 'src/app/shared/components/containers/artist-container/artist-container.component';
 
 @Component({
   selector: 'app-search',

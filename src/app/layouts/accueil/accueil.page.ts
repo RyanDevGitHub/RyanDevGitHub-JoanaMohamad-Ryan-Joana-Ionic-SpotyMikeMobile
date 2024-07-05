@@ -1,4 +1,4 @@
-import { MinimizePlayerAudioComponent } from './../../shared/components/minimize-player-audio/minimize-player-audio.component';
+import { MinimizePlayerAudioComponent } from '../../shared/components/playerComponents/minimize-player-audio/minimize-player-audio.component';
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { IonToast } from '@ionic/angular/standalone';
 import { IonButton, IonGrid, IonIcon, IonRow } from '@ionic/angular/standalone';
@@ -11,14 +11,28 @@ import { MusicServiceService } from 'src/app/core/services/music-service.service
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.page.html',
-  standalone:true,
+  standalone: true,
   styleUrls: ['./accueil.page.scss'],
-  imports:[IonTabs,IonTabBar,IonTabButton,IonIcon,IonGrid,IonRow,MinimizePlayerAudioComponent,IonButton,IonToast,MinimizePlayerAudioComponent]
+  imports: [
+    IonTabs,
+    IonTabBar,
+    IonTabButton,
+    IonIcon,
+    IonGrid,
+    IonRow,
+    MinimizePlayerAudioComponent,
+    IonButton,
+    IonToast,
+    MinimizePlayerAudioComponent,
+  ],
 })
 export class AccueilPage implements OnInit {
-
-  constructor(@Inject(MusicServiceService) public audioService : MusicServiceService ,@Inject(MinimizePlayerAudioService) public minimizePlayerAudioService : MinimizePlayerAudioService ) { }
+  constructor(
+    @Inject(MusicServiceService) public audioService: MusicServiceService,
+    @Inject(MinimizePlayerAudioService)
+    public minimizePlayerAudioService: MinimizePlayerAudioService
+  ) {}
   ngOnInit(): void {
-    addIcons({heart,home,play,person})
+    addIcons({ heart, home, play, person });
   }
 }

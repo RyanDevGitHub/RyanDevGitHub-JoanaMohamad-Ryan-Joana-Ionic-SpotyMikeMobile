@@ -6,8 +6,8 @@ import {
   IonRow,
   IonText,
 } from '@ionic/angular/standalone';
-import { BackButtonComponent } from '../back-button/back-button.component';
-import { FilterOptionComponent } from '../filter-option/filter-option.component';
+import { BackButtonComponent } from '../../button/back-button/back-button.component';
+import { FilterOptionComponent } from '../../filter-option/filter-option.component';
 
 @Component({
   selector: 'app-header-category',

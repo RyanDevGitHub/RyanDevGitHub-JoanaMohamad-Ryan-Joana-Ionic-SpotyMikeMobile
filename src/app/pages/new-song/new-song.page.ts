@@ -11,7 +11,7 @@ import {
   IonRow,
   IonCol,
 } from '@ionic/angular/standalone';
-import { HeaderCategoryComponent } from 'src/app/shared/components/header-category/header-category.component';
+import { HeaderCategoryComponent } from 'src/app/shared/components/headers/header-category/header-category.component';
 import { DisplayItemComponent } from 'src/app/shared/components/display-item/display-item.component';
 import { IPlaylist } from 'src/app/core/interfaces/playlistes';
 import { Subscription } from 'rxjs';

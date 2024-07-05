@@ -1,4 +1,4 @@
-import { ProfilInfoComponent } from './../../../shared/components/profil-info/profil-info.component';
+import { ProfilInfoComponent } from '../../../shared/components/profilComponent/profil-info/profil-info.component';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

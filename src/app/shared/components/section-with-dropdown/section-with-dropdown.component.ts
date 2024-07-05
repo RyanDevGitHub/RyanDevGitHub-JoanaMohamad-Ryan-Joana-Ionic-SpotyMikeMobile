@@ -1,21 +1,40 @@
 import { Component, Input, OnInit, Type } from '@angular/core';
-import { IonCol, IonGrid, IonRow, IonContent, IonList, IonImg, IonInfiniteScroll, IonInfiniteScrollContent, InfiniteScrollCustomEvent } from '@ionic/angular/standalone';
-import { SeeAllComponent } from '../see-all/see-all.component';
-import { PlaylistContainerComponent } from '../playlist-container/playlist-container.component';
-import { MusicContainerComponent } from '../music-container/music-container.component';
+import {
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonContent,
+  IonList,
+  IonImg,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+  InfiniteScrollCustomEvent,
+} from '@ionic/angular/standalone';
+import { SeeAllComponent } from '../button/see-all/see-all.component';
+import { PlaylistContainerComponent } from '../containers/playlist-container/playlist-container.component';
+import { MusicContainerComponent } from '../containers/music-container/music-container.component';
 
 @Component({
   selector: 'app-section-with-dropdown',
-  standalone:true,
+  standalone: true,
   templateUrl: './section-with-dropdown.component.html',
   styleUrls: ['./section-with-dropdown.component.scss'],
-  imports:[
-    IonGrid,IonRow,IonCol,SeeAllComponent,IonContent,IonList,IonImg,IonInfiniteScroll,IonInfiniteScrollContent,PlaylistContainerComponent,MusicContainerComponent
-  ]
+  imports: [
+    IonGrid,
+    IonRow,
+    IonCol,
+    SeeAllComponent,
+    IonContent,
+    IonList,
+    IonImg,
+    IonInfiniteScroll,
+    IonInfiniteScrollContent,
+    PlaylistContainerComponent,
+    MusicContainerComponent,
+  ],
 })
-export class SectionWithDropdownComponent  implements OnInit {
-
-  constructor() { }
+export class SectionWithDropdownComponent implements OnInit {
+  constructor() {}
   @Input() type: any;
   @Input() items: any;
   @Input() title: string;
@@ -32,11 +51,10 @@ export class SectionWithDropdownComponent  implements OnInit {
     }
   }
 
-  onIonInfinite(ev:any) {
+  onIonInfinite(ev: any) {
     this.generateItems();
     setTimeout(() => {
       (ev as InfiniteScrollCustomEvent).target.complete();
     }, 500);
   }
-
 }

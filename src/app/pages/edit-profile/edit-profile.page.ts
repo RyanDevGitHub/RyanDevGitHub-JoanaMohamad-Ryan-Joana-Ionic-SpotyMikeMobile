@@ -1,4 +1,4 @@
-import { MusicContainerComponent } from './../../shared/components/music-container/music-container.component';
+import { MusicContainerComponent } from '../../shared/components/containers/music-container/music-container.component';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,8 +8,8 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
-import { PlaylistContainerComponent } from 'src/app/shared/components/playlist-container/playlist-container.component';
-import { HeaderCategoryComponent } from 'src/app/shared/components/header-category/header-category.component';
+import { PlaylistContainerComponent } from 'src/app/shared/components/containers/playlist-container/playlist-container.component';
+import { HeaderCategoryComponent } from 'src/app/shared/components/headers/header-category/header-category.component';
 
 @Component({
   selector: 'app-edit-profile',

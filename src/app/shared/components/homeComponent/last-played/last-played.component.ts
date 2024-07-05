@@ -13,10 +13,10 @@ import {
   IonLabel,
   IonAvatar,
 } from '@ionic/angular/standalone';
-import { SongOptionComponent } from '../song-option/song-option.component';
-import { SeeAllComponent } from '../see-all/see-all.component';
+import { SongOptionComponent } from '../../button/song-option/song-option.component';
+import { SeeAllComponent } from '../../button/see-all/see-all.component';
 import { IPlaylist } from 'src/app/core/interfaces/playlistes';
-import { SectionWithDropdownComponent } from '../section-with-dropdown/section-with-dropdown.component';
+import { SectionWithDropdownComponent } from '../../section-with-dropdown/section-with-dropdown.component';
 import { IMusic } from 'src/app/core/interfaces/music';
 
 @Component({

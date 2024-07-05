@@ -1,4 +1,4 @@
-import { LoginPage } from './../../../pages/login/login.page';
+import { LoginPage } from '../../../../pages/login/login.page';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import {
   IonNav,
