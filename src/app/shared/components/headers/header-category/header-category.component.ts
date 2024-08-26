@@ -5,6 +5,8 @@ import {
   IonHeader,
   IonRow,
   IonText,
+  IonTitle,
+  IonToolbar,
 } from '@ionic/angular/standalone';
 import { BackButtonComponent } from '../../button/back-button/back-button.component';
 import { FilterOptionComponent } from '../../filter-option/filter-option.component';
@@ -15,6 +17,7 @@ import { FilterOptionComponent } from '../../filter-option/filter-option.compone
   styleUrls: ['./header-category.component.scss'],
   standalone: true,
   imports: [
+    IonTitle,
     IonHeader,
     IonGrid,
     IonCol,
@@ -22,6 +25,7 @@ import { FilterOptionComponent } from '../../filter-option/filter-option.compone
     BackButtonComponent,
     IonText,
     FilterOptionComponent,
+    IonToolbar,
   ],
 })
 export class HeaderCategoryComponent implements OnInit {

@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 import { IPlaylist } from 'src/app/core/interfaces/playlistes';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
 import { Subscription } from 'rxjs';
+import { HeaderCategoryComponent } from 'src/app/shared/components/headers/header-category/header-category.component';
 
 @Component({
   selector: 'app-account',
@@ -40,6 +41,7 @@ import { Subscription } from 'rxjs';
     IonRow,
     SectionWithDropdownComponent,
     ProfilInfoComponent,
+    HeaderCategoryComponent,
   ],
 })
 export class AccountPage implements OnInit {

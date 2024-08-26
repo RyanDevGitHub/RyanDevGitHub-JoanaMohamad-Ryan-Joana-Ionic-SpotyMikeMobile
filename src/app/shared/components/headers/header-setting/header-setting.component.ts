@@ -5,6 +5,8 @@ import {
   IonHeader,
   IonRow,
   IonText,
+  IonToolbar,
+  IonTitle,
 } from '@ionic/angular/standalone';
 import { BackButtonComponent } from '../../button/back-button/back-button.component';
 
@@ -13,7 +15,16 @@ import { BackButtonComponent } from '../../button/back-button/back-button.compon
   templateUrl: './header-setting.component.html',
   styleUrls: ['./header-setting.component.scss'],
   standalone: true,
-  imports: [IonHeader, IonGrid, IonRow, IonCol, BackButtonComponent, IonText],
+  imports: [
+    IonTitle,
+    IonToolbar,
+    IonHeader,
+    IonGrid,
+    IonRow,
+    IonCol,
+    BackButtonComponent,
+    IonText,
+  ],
 })
 export class HeaderSettingComponent implements OnInit {
   @Input() title: string;

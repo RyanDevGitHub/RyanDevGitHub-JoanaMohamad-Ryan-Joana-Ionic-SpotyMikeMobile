@@ -3,13 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
+  IonAvatar,
   IonContent,
   IonHeader,
   IonTitle,
   IonToolbar,
+  IonCol,
+  IonRow,
+  IonItem,
+  IonInput,
 } from '@ionic/angular/standalone';
 import { PlaylistContainerComponent } from 'src/app/shared/components/containers/playlist-container/playlist-container.component';
-import { HeaderCategoryComponent } from 'src/app/shared/components/headers/header-category/header-category.component';
+import { HeaderSettingComponent } from 'src/app/shared/components/headers/header-setting/header-setting.component';
 
 @Component({
   selector: 'app-edit-profile',
@@ -17,6 +22,7 @@ import { HeaderCategoryComponent } from 'src/app/shared/components/headers/heade
   styleUrls: ['./edit-profile.page.scss'],
   standalone: true,
   imports: [
+    IonCol,
     IonContent,
     IonHeader,
     IonTitle,
@@ -25,7 +31,11 @@ import { HeaderCategoryComponent } from 'src/app/shared/components/headers/heade
     FormsModule,
     MusicContainerComponent,
     PlaylistContainerComponent,
-    HeaderCategoryComponent,
+    HeaderSettingComponent,
+    IonAvatar,
+    IonRow,
+    IonItem,
+    IonInput,
   ],
 })
 export class EditProfilPage implements OnInit {

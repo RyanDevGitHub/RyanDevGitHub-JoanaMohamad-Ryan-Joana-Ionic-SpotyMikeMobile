@@ -1,17 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { IonButton, IonContent, IonHeader, IonModal, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  IonAvatar,
+  IonButton,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonHeader,
+  IonModal,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-share-modal',
   templateUrl: './share-modal.component.html',
-  standalone:true,
+  standalone: true,
   styleUrls: ['./share-modal.component.scss'],
-  imports:[IonHeader,IonToolbar,IonContent,IonTitle,IonModal,IonButton]
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonContent,
+    IonTitle,
+    IonModal,
+    IonButton,
+    IonCol,
+    IonAvatar,
+    IonRow,
+    IonGrid,
+  ],
 })
-export class ShareModalComponent  implements OnInit {
-
-  constructor() { }
+export class ShareModalComponent implements OnInit {
+  constructor() {}
+  @Input() id: string;
 
   ngOnInit() {}
-
 }

@@ -18,12 +18,15 @@ import {
   IonItem,
   IonInput,
   IonButton,
-  IonIcon, 
-  IonAvatar 
+  IonIcon,
+  IonAvatar,
 } from '@ionic/angular/standalone';
 import { AuthentificationService } from 'src/app/core/services/authentification.service';
 import { TranslateModule } from '@ngx-translate/core';
-import { LoginRequestError } from 'src/app/core/interfaces/login';
+import {
+  LoginRequestError,
+  LoginRequestSuccess,
+} from 'src/app/core/interfaces/login';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular/standalone';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
@@ -35,7 +38,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonAvatar, 
+  imports: [
+    IonAvatar,
     IonIcon,
     IonItem,
     IonList,
@@ -83,14 +87,21 @@ export class LoginPage implements OnInit {
       this.submitForm = true;
       this.serviceAuth
         .login(this.form.value.email, this.form.value.password)
-        .subscribe((data: any | LoginRequestError) => {
+        .subscribe((data: any | LoginRequestError | LoginRequestSuccess) => {
           if (data.error) {
             this.error = 'Identifiants incorrects';
           } else {
             // Add LocalStorage User
             this.localStore.setItem('user', data.user);
-            this.localStore.setItem('token', data.token);
-            this.router.navigateByUrl('/home/home');
+            setTimeout(() => {
+              console.log(data.token);
+
+              // Add LocalStorage Token
+              this.localStore.setItem('token', data.token);
+
+              // Navigate to home/home
+              this.router.navigate(['home/home']);
+            }, 3000);
           }
         });
     }

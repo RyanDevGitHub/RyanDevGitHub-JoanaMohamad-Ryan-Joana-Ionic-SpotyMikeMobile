@@ -1,22 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Account
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <app-header-category
+    title="Account"
+    [backButton]="false"
+    [filter]="false"
+  ></app-header-category>
   <ion-grid fixed class="account-container" [class.modal-open]="isModalOpen">
-    <ion-row class="profile-info ion-align-items-center ion-justify-content-center">
-      <ion-col size="12"> 
+    <ion-row
+      class="profile-info ion-align-items-center ion-justify-content-center"
+    >
+      <ion-col size="12">
         <app-profil-info></app-profil-info>
       </ion-col>
     </ion-row>
 
     <ion-row class="profile-edit">
       <ion-col>
-        <ion-button (click)="editProfile()" fill="outline" shape="round" class="edit-button">
+        <ion-button
+          (click)="editProfile()"
+          fill="outline"
+          shape="round"
+          class="edit-button"
+        >
           Edit
         </ion-button>
       </ion-col>

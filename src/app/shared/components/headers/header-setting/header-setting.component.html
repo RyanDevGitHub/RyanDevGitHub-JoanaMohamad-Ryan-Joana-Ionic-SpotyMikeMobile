@@ -1,21 +1,19 @@
 <ion-header>
   <ion-grid fixed>
-    <ion-row class="center-row">
-      <ion-col size="auto" class="ion-align-self-center"
-        ><app-back-button class="ion-padding-vertical"></app-back-button
-      ></ion-col>
-      <ion-col size="auto" class="ion-align-self-center centered-col"
-        ><ion-text>
-          <h1 class="ion-text-center">{{ title }}</h1>
-        </ion-text></ion-col
-      >
-      @if (this.saveData) {
-      <ion-col size="auto" class="ion-align-self-center" (click)="save()"
-        ><ion-text>
-          <h4 class="ion-text-end">Save</h4>
-        </ion-text></ion-col
-      >
-      }
-    </ion-row>
+    <ion-toolbar class="custom-header">
+      <ion-row class="center-row">
+        <ion-col size="auto" class="ion-align-self-center"
+          ><app-back-button class="ion-padding-vertical"></app-back-button
+        ></ion-col>
+        <ion-title>{{ this.title }} </ion-title>
+        @if (this.saveData) {
+        <ion-col class="ion-align-self-center" (click)="save()"
+          ><ion-text>
+            <p class="ion-text-end">Save</p>
+          </ion-text></ion-col
+        >
+        }
+      </ion-row>
+    </ion-toolbar>
   </ion-grid>
 </ion-header>

@@ -1,25 +1,50 @@
-import { IonAvatar, IonButton, IonCol, IonGrid, IonIcon, IonModal, IonRow } from '@ionic/angular/standalone';
+import {
+  IonAvatar,
+  IonButton,
+  IonCol,
+  IonGrid,
+  IonIcon,
+  IonModal,
+  IonRow,
+  ModalController,
+} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { heartOutline, shareSocialOutline } from 'ionicons/icons';
+import { ShareModalComponent } from 'src/app/shared/modal/share-modal/share-modal.component';
 
 @Component({
   selector: 'app-share-song',
   templateUrl: './share-song.component.html',
-  standalone:true,
+  standalone: true,
   styleUrls: ['./share-song.component.scss'],
-  imports:[IonButton,IonIcon,IonModal,IonGrid,IonCol,IonRow,IonAvatar],
+  imports: [
+    IonButton,
+    IonIcon,
+    IonModal,
+    IonGrid,
+    IonCol,
+    IonRow,
+    IonAvatar,
+    ShareModalComponent,
+  ],
 })
-export class ShareSongComponent  implements OnInit {
-
-  constructor() { }
-  @Input()id:string
+export class ShareSongComponent implements OnInit {
+  constructor() {}
+  @Input() id: string;
+  modalCtl = inject(ModalController);
   ngOnInit() {
-    addIcons({shareSocialOutline})
+    addIcons({ shareSocialOutline });
   }
 
-  onClick(){
-  console.log('click!');
- }
-
+  async onClick() {
+    console.log('click!');
+    const modal = await this.modalCtl.create({
+      component: ShareModalComponent,
+      initialBreakpoint: 1, // Set the initial breakpoint to 30%
+      breakpoints: [0, 1], // Allow dragging to full height or lower
+      cssClass: 'custom-modal-filter',
+    });
+    modal.present();
+  }
 }

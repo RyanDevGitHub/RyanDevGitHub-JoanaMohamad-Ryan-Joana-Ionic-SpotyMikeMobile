@@ -1,3 +1,5 @@
+import { IUserDataBase } from './../../core/interfaces/user';
+import { AuthentificationService } from './../../core/services/authentification.service';
 import { IPlaylist } from 'src/app/core/interfaces/playlistes';
 import { IonImg } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
@@ -29,7 +31,6 @@ import {
   IonAvatar,
 } from '@ionic/angular/standalone';
 import { LocalStorageService } from 'src/app/core/services/local-strorage.service';
-import { IUserDataBase } from 'src/app/core/interfaces/user';
 import { BackButtonComponent } from 'src/app/shared/components/button/back-button/back-button.component';
 import { Camera, CameraResultType } from '@capacitor/camera';
 
@@ -67,6 +68,7 @@ export class RegisterPage implements OnInit {
   constructor() {}
   router = inject(Router);
   localStore = inject(LocalStorageService);
+  authentificationService = inject(AuthentificationService);
   step: number;
   form: FormGroup;
   public checkedToggle: boolean = false;
@@ -77,6 +79,7 @@ export class RegisterPage implements OnInit {
     id: '',
     firstName: '',
     lastName: '',
+    password: '',
     email: '',
     sexe: '',
     favorites: [],
@@ -88,7 +91,7 @@ export class RegisterPage implements OnInit {
       description: '',
       subscribers: [''],
     },
-    playlists: [[]],
+    playlists: [],
     lastsplayeds: [],
     created_at: '',
   };
@@ -212,7 +215,7 @@ export class RegisterPage implements OnInit {
       ]),
       description: new FormControl('', [
         Validators.required,
-        Validators.pattern("^[a-zA-Z0-9s.,'!&()-]{10,1000}$"),
+        Validators.pattern("^[a-zA-Z0-9\\s.,'!&()-]{10,1000}$"),
       ]),
       avatar: new FormControl('', []),
       name: new FormControl('', [
@@ -290,7 +293,14 @@ export class RegisterPage implements OnInit {
         this.checkedToggle === true)
     ) {
       if (this.input[this.step].formeControlName === 'artist') {
-        this.user.artiste!.description = this.form.get('artistname')?.value;
+        this.user.artiste!.description =
+          this.form.get('description')?.value || 'Description non fournie';
+        this.user.artiste!.firstName =
+          this.form.get('artistName')?.value || 'artistName non fournie';
+        this.user.artiste!.label =
+          this.form.get('label')?.value || 'label non fournie';
+        console.log('test!!!!!!!!!!!');
+        console.log(this.user.artiste);
       }
     } else {
       //ajouter les info dans le user
@@ -384,9 +394,16 @@ export class RegisterPage implements OnInit {
     const dateNow = new Date();
     this.user.created_at = dateNow.toDateString();
 
-    //ajouter l'id du user
-
+    //create user
+    this.authentificationService.register(
+      this.user.email,
+      this.user.password,
+      this.user
+    );
     //return home
+
+    this.authentificationService.login(this.user.email, this.user.password);
+
     this.router.navigate(['/home/home']);
   }
 }
