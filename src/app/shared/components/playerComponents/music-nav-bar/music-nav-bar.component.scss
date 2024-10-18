@@ -1,11 +1,16 @@
-
-ion-icon{
+ion-icon {
     color: rgb(0, 0, 0);
 }
-ion-button{
+
+ion-button {
     --border-style: none;
 
 }
-ion-col{
+
+ion-col {
     align-self: center;
+}
+
+ion-grid {
+    padding: 0;
 }

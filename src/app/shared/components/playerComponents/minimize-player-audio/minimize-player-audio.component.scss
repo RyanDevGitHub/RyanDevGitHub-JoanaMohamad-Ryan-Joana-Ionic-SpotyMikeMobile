@@ -9,3 +9,20 @@
 ion-icon {
   color: aliceblue;
 }
+
+ion-img {
+  width: 50%;
+}
+
+ion-row,
+ion-col {
+  height: 7vh;
+}
+
+p {
+  color: black;
+}
+
+app-music-nav-bar .player-container ion-grid {
+  padding: 0;
+}

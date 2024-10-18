@@ -1,14 +1,13 @@
 <div class="mini-player">
   <ion-grid fixed>
     <ion-row class="ion-justify-content-end">
-      <ion-col size="3"> <ion-img [src]="image"></ion-img></ion-col>
-      <ion-col size="7"
-        ><app-music-nav-bar [isMini]="true"></app-music-nav-bar>
+      <ion-col size="3" (click)="deleteComponent()"> <ion-img [src]="image"></ion-img></ion-col>
+      <ion-col size="7" (click)="deleteComponent()">
+        <p class=" ion-text-left">Titre</p>
+        <p class="ion-text-left">autheur</p>
       </ion-col>
       <ion-col size="2">
-        <ion-button size="small" (click)="deleteComponent()">
-          <ion-icon size="medium" name="close-outline"></ion-icon>
-        </ion-button>
+        <app-music-nav-bar [isMini]="true" style="padding: 0;"></app-music-nav-bar>
       </ion-col>
     </ion-row>
   </ion-grid>

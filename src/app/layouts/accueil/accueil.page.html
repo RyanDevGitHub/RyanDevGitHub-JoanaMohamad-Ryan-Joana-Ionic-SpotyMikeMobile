@@ -1,11 +1,11 @@
-<ion-grid fixed>
-  <ion-row class="minimizePlayer">
-    @if(minimizePlayerAudioService.isMiniPlayerVisible()){
-    <app-minimize-player-audio></app-minimize-player-audio>
-    }
-  </ion-row>
-  <ion-row>
+<ion-grid fixed class="main-grid">
+  <ion-row class="tabs-row">
     <ion-tabs id="ion-tabs">
+      @if(minimizePlayerAudioService.isMiniPlayerVisible()){
+      <ion-tab-bar slot="bottom" class="mini-player">
+        <app-minimize-player-audio></app-minimize-player-audio>
+      </ion-tab-bar>
+      }
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="home">
           <ion-icon name="home-outline"></ion-icon>
