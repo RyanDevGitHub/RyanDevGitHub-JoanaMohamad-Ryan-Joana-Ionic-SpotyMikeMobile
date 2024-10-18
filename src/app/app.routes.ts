@@ -145,6 +145,6 @@ export const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: 'auth/register',
+    redirectTo: 'auth/login',
   },
 ];

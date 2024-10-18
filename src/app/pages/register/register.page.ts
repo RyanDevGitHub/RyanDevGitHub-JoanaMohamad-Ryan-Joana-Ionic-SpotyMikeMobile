@@ -15,45 +15,47 @@ import { Camera, CameraResultType } from '@capacitor/camera';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonButton, IonCol, IonRow, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonList,IonInput,IonItem,IonText,IonButton,ReactiveFormsModule,BackButtonComponent,IonToggle,IonSelect,IonSelectOption,IonAvatar,IonImg]
+  imports: [IonButton, IonCol, IonRow, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonInput, IonItem, IonText, IonButton, ReactiveFormsModule, BackButtonComponent, IonToggle, IonSelect, IonSelectOption, IonAvatar, IonImg]
 })
 export class RegisterPage implements OnInit {
 
   constructor() { }
-  router  = inject(Router);
+  router = inject(Router);
   localStore = inject(LocalStorageService);
-  step:number;
+  step: number;
   form: FormGroup;
-  public checkedToggle : boolean = false;
+  public checkedToggle: boolean = false;
   avatar: any = {
     src: 'https://ionicframework.com/docs/img/demos/avatar.svg'
   };
-  user : IUserDataBase = {id:'',
-    firstName:'',
-    lastName:'',
-    email:'',
-    sexe:'',
-    favorites:[],
-    artiste:{id:'',label:'',firstName:'',avatar:'',description:'',subscribers:['']},
+  user: IUserDataBase = {
+    id: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    sexe: '',
+    favorites: [],
+    artiste: { id: '', label: '', firstName: '', avatar: '', description: '', subscribers: [''] },
     playlists: [[]],
     lastsplayeds: [],
-    created_at:'',};
+    created_at: '',
+  };
   input = [
-    {type:'email',formeControlName:'email',label:'Email',formControl:'email',btnName:'Suivant' ,btnBack:'ion-hide',toggle:'ion-hide',selectSexe:'ion-hide',avatar:'ion-hide'},
-  
-    {type:'password',formeControlName:'password',label:'Mot de passe',formControl:'password',btnName:'Suivant',btnBack:'',toggle:'ion-hide',selectSexe:'ion-hide',avatar:'ion-hide'},
-  
-    {type:'date',formeControlName:'dateOfBirth',label:'Date de naissance',formControl:'dateOfBirth',btnName:'Suivant',btnBack:'',toggle:'ion-hide',selectSexe:'ion-hide',avatar:'ion-hide'},
+    { type: 'email', formeControlName: 'email', label: 'Email', formControl: 'email', btnName: 'Suivant', btnBack: 'ion-hide', toggle: 'ion-hide', selectSexe: 'ion-hide', avatar: 'ion-hide' },
 
-    {type:'sexe',formeControlName:'sexe',label:'Indiquer votre sexe',formControl:'sexe',btnName:'Suivant',btnBack:'',toggle:'ion-hide',selectSexe:'',hideInput:'ion-hide',avatar:'ion-hide'},
+    { type: 'password', formeControlName: 'password', label: 'Mot de passe', formControl: 'password', btnName: 'Suivant', btnBack: '', toggle: 'ion-hide', selectSexe: 'ion-hide', avatar: 'ion-hide' },
 
-    {type:'artist',formeControlName:'artist',label:'',formControl:'',btnName:'Suivant',btnBack:'',toggle:'',selectSexe:'ion-hide',hideInput:'ion-hide',avatar:'ion-hide'},
+    { type: 'date', formeControlName: 'dateOfBirth', label: 'Date de naissance', formControl: 'dateOfBirth', btnName: 'Suivant', btnBack: '', toggle: 'ion-hide', selectSexe: 'ion-hide', avatar: 'ion-hide' },
 
-    {type:'avatar',formeControlName:'avatar',label:'Importer votre avatar',formControl:'avatar',btnName:'Suivant',btnBack:'',toggle:'ion-hide' ,selectSexe:'ion-hide',hideInput:'ion-hide',avatar:''},
+    { type: 'sexe', formeControlName: 'sexe', label: 'Indiquer votre sexe', formControl: 'sexe', btnName: 'Suivant', btnBack: '', toggle: 'ion-hide', selectSexe: '', hideInput: 'ion-hide', avatar: 'ion-hide' },
 
-    {type:'name',formeControlName:'name',label:'Quel est votre nom',formControl:'name',btnName:'Crée un compte',btnBack:'',toggle:'ion-hide',selectSexe:'ion-hide',hideInput:'',avatar:'ion-hide'},   
+    { type: 'artist', formeControlName: 'artist', label: '', formControl: '', btnName: 'Suivant', btnBack: '', toggle: '', selectSexe: 'ion-hide', hideInput: 'ion-hide', avatar: 'ion-hide' },
+
+    { type: 'avatar', formeControlName: 'avatar', label: 'Importer votre avatar', formControl: 'avatar', btnName: 'Suivant', btnBack: '', toggle: 'ion-hide', selectSexe: 'ion-hide', hideInput: 'ion-hide', avatar: '' },
+
+    { type: 'name', formeControlName: 'name', label: 'Quel est votre nom', formControl: 'name', btnName: 'Crée un compte', btnBack: '', toggle: 'ion-hide', selectSexe: 'ion-hide', hideInput: '', avatar: 'ion-hide' },
   ]
-  ngOnInit() {    
+  ngOnInit() {
     this.step = 0;
     this.form = new FormGroup({
       email: new FormControl('', [
@@ -74,17 +76,19 @@ export class RegisterPage implements OnInit {
       ]),
       artistName: new FormControl('', [
         Validators.required,
+        Validators.pattern('^[a-zA-ZÀ-ÿ\'\\s]{1,40}$')
       ]),
       label: new FormControl('', [
         Validators.required,
-       
+        Validators.pattern('^[a-zA-ZÀ-ÿ\'\\s]{1,40}$')
+
       ]),
       description: new FormControl('', [
         Validators.required,
-     
+
       ]),
       avatar: new FormControl('', [
-       
+
       ]),
       name: new FormControl('', [
         Validators.required,
@@ -92,82 +96,82 @@ export class RegisterPage implements OnInit {
       ]),
     });
   }
-  onChangeToggle(){
-    if(this.checkedToggle === true){
+  onChangeToggle() {
+    if (this.checkedToggle === true) {
       this.checkedToggle = false;
-    }else{
+    } else {
       this.checkedToggle = true;
     }
   }
-  back(){
-    if(this.step === this.input.length -1 && !this.checkedToggle ) {
-      this.step -= 2 ; 
+  back() {
+    if (this.step === this.input.length - 1 && !this.checkedToggle) {
+      this.step -= 2;
       return;
-    } 
-    this.step --;
+    }
+    this.step--;
     this.form.get('email')?.reset();
     this.form.get(this.input[this.step].formeControlName)?.reset();
   }
 
-getFormControl(input:string){
- 
+  getFormControl(input: string) {
+
     return this.form.get(input);
-}
-isBtnDisabled(input:string): boolean{
-  
-  if(this.input[this.step].formeControlName === 'artist' && !this.checkedToggle ){
-    return false;
-  } 
-  if(this.input[this.step].formeControlName === 'artist' && this.checkedToggle){
-    if(this.getFormControl('artistName')?.valid && this.getFormControl('label')?.valid && this.getFormControl('description')?.valid)
-    return false;
   }
-  if(this.getFormControl('email')?.value)this.getFormControl(input)?.setValue(this.getFormControl('email')?.value);
-  if(this.getFormControl(input)?.valid && this.getFormControl(input)?.value) return false;
-  if(input === 'avatar') return false;
+  isBtnDisabled(input: string): boolean {
 
-  return true;
-}
+    if (this.input[this.step].formeControlName === 'artist' && !this.checkedToggle) {
+      return false;
+    }
+    if (this.input[this.step].formeControlName === 'artist' && this.checkedToggle) {
+      if (this.getFormControl('artistName')?.valid && this.getFormControl('label')?.valid && this.getFormControl('description')?.valid)
+        return false;
+    }
+    if (this.getFormControl('email')?.value) this.getFormControl(input)?.setValue(this.getFormControl('email')?.value);
+    if (this.getFormControl(input)?.valid && this.getFormControl(input)?.value) return false;
+    if (input === 'avatar') return false;
 
-handleChange(e:any) {
-  
-  this.getFormControl(this.input[this.step].formeControlName)?.setValue(e.detail.value);
- 
-}
+    return true;
+  }
 
-  returnToLoginPage(){
+  handleChange(e: any) {
+
+    this.getFormControl(this.input[this.step].formeControlName)?.setValue(e.detail.value);
+
+  }
+
+  returnToLoginPage() {
     this.router.navigate(['/auth/login']);
 
   }
-  nextStep(){
+  nextStep() {
     //verifier si l'étape est celle de l'artist ou de l'avatar
     console.log(this.input[this.step].formeControlName === 'artist' && !this.checkedToggle);
-    if(this.input[this.step].formeControlName === 'artist' || this.input[this.step].formeControlName === 'avatar' && this.checkedToggle === true){
-      if(this.input[this.step].formeControlName === 'artist'){
-        this.user.artiste!.description   =  this.form.get('artistname')?.value;
+    if (this.input[this.step].formeControlName === 'artist' || this.input[this.step].formeControlName === 'avatar' && this.checkedToggle === true) {
+      if (this.input[this.step].formeControlName === 'artist') {
+        this.user.artiste!.description = this.form.get('artistname')?.value;
       }
-    }else{
-    //ajouter les info dans le user
-    const userProperty = this.input[this.step].formeControlName as keyof IUserDataBase;
-    const value :string = this.form.get(this.input[this.step].formeControlName)?.value;
-    this.user[userProperty] = value as any;
-    console.log(this.user[userProperty]);
-    console.log(this.user);
+    } else {
+      //ajouter les info dans le user
+      const userProperty = this.input[this.step].formeControlName as keyof IUserDataBase;
+      const value: string = this.form.get(this.input[this.step].formeControlName)?.value;
+      this.user[userProperty] = value as any;
+      console.log(this.user[userProperty]);
+      console.log(this.user);
     }
     //afficher le nouvelle input et bouton 
-    if(this.step < this.input.length -1  && this.input[this.step].formeControlName != 'artist'){
+    if (this.step < this.input.length - 1 && this.input[this.step].formeControlName != 'artist') {
       this.form.get('email')?.reset();
-      this.step++ ;
-    }else if(this.input[this.step].formeControlName === 'artist' && !this.checkedToggle){
-      this.step = this.step + 2 ;
-    }else if(this.input[this.step].formeControlName === 'artist' && this.checkedToggle){
+      this.step++;
+    } else if (this.input[this.step].formeControlName === 'artist' && !this.checkedToggle) {
+      this.step = this.step + 2;
+    } else if (this.input[this.step].formeControlName === 'artist' && this.checkedToggle) {
       console.log('test');
       this.form.get('email')?.reset();
-      this.step = this.step + 1 ;
-    }else if(this.step === this.input.length -1){
+      this.step = this.step + 1;
+    } else if (this.step === this.input.length - 1) {
       this.registerUser(this.user);
     }
-    
+
     //verifier si c'est dernier input pour ajouter un bouton avec la method OnSubmit() et avec comme valeur Crée un compte
 
     //verifier si ce n'ets pas le premier input pour afficher la fleche de retour 
@@ -183,7 +187,7 @@ handleChange(e:any) {
         const birthDate = new Date(control.value);
         let age = today.getFullYear() - birthDate.getFullYear();
         const monthDiff = today.getMonth() - birthDate.getMonth();
-        
+
         // Si le mois de naissance est plus tard dans l'année que le mois actuel, nous devons diminuer l'âge de 1.
         if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
           age--;
@@ -197,24 +201,24 @@ handleChange(e:any) {
     };
   }
 
- async takePicture (){
+  async takePicture() {
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: true,
       resultType: CameraResultType.Uri
     });
-  
+
     // image.webPath will contain a path that can be set as an image src.
     // You can access the original file using image.path, which can be
     // passed to the Filesystem API to read the raw data of the image,
     // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
     var imageUrl = image.webPath;
-  
+
     // Can be set to the src of an image now
     this.avatar.src = imageUrl;
   };
 
-  registerUser(data : IUserDataBase){
+  registerUser(data: IUserDataBase) {
     //ajouter la date de creation du user
     const dateNow = new Date();
     this.user.created_at = dateNow.toDateString();
