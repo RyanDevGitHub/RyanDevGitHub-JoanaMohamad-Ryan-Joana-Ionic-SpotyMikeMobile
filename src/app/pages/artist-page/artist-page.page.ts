@@ -15,14 +15,14 @@ import {
   IonButtons,
   IonIcon,
 } from '@ionic/angular/standalone';
-import { MusicContainerComponent } from 'src/app/shared/components/music-container/music-container.component';
+import { MusicContainerComponent } from 'src/app/shared/components/containers/music-container/music-container.component';
 import { IMusic } from 'src/app/core/interfaces/music';
 import { SectionWithDropdownComponent } from 'src/app/shared/components/section-with-dropdown/section-with-dropdown.component';
 import { addIcons } from 'ionicons';
 import { playOutline } from 'ionicons/icons';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
 import { Subscription } from 'rxjs';
-import { BackButtonComponent } from 'src/app/shared/components/back-button/back-button.component';
+import { BackButtonComponent } from 'src/app/shared/components/button/back-button/back-button.component';
 
 @Component({
   selector: 'app-artist-page',

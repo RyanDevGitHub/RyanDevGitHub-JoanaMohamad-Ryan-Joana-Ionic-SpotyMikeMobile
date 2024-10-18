@@ -1,0 +1,63 @@
+.see-all {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.top-songs {
+  width: 100%;
+  margin-bottom: 10%;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+i-row {
+  width: 100%;
+}
+
+ion-img {
+  width: 20%;
+}
+ion-img::part(image) {
+  width: 100%;
+  height: 100%;
+}
+app-song-option {
+}
+
+ion-col {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.playlist-name {
+  align-self: center;
+}
+
+.playlist-settings {
+}
+
+.row-music-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.div-playlist-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: "space-between";
+}
+
+.container-img-row-playlist-container ion-img {
+  width: 110%;
+}
+
+row {
+  align-self: center;
+}
+
+.col-settings {
+  padding: 0;
+}

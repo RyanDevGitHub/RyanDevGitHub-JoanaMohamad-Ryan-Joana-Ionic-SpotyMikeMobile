@@ -1,0 +1,29 @@
+<ion-grid>
+  <ion-row class="top-songs">
+    <ion-col class="title-top-song">Top Songs</ion-col>
+    <ion-col class="see-all"
+      ><app-see-all redirectTo="home/top-songs"></app-see-all
+    ></ion-col>
+  </ion-row>
+  <ion-row>
+    <div class="scroll-container">
+      @for (song of items ; track song) {
+      <ion-col class="song" size="4">
+        <ion-row>
+          <ion-col size="auto"><ion-img [src]="song.cover"></ion-img></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="auto"
+            ><p>{{ song.title }}</p></ion-col
+          >
+        </ion-row>
+        <ion-row>
+          <ion-col size="auto"
+            ><p>{{ song.artiste }}</p></ion-col
+          >
+        </ion-row>
+      </ion-col>
+      }
+    </div>
+  </ion-row>
+</ion-grid>

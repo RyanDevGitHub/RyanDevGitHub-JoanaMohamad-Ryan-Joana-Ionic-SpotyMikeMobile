@@ -1,0 +1,14 @@
+ion-icon {
+  color: red;
+}
+ion-button {
+  --border-color: black;
+}
+.isLiked {
+  color: var(--custom-success);
+}
+ion-button {
+  --border-color: red;
+  --background: transparent;
+  --color: red;
+}

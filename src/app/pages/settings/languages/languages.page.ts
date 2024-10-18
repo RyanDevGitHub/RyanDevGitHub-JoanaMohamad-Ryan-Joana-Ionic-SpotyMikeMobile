@@ -21,7 +21,7 @@ import {
   IonImg,
   IonLabel,
 } from '@ionic/angular/standalone';
-import { HeaderSettingComponent } from 'src/app/shared/components/header-setting/header-setting.component';
+import { HeaderSettingComponent } from 'src/app/shared/components/headers/header-setting/header-setting.component';
 import { addIcons } from 'ionicons';
 import { chevronForwardOutline } from 'ionicons/icons';
 

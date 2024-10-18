@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-between center-row">
+      <ion-toolbar class="custom-header">
+        @if (this.backButton) {
+        <ion-col size="auto" class="ion-align-self-center">
+          <app-back-button class="ion-padding-vertical"></app-back-button>
+        </ion-col>
+        }
+        <ion-title>{{ title }} </ion-title>
+        @if (filter) {
+        <ion-col
+          size="auto"
+          class="ion-align-self-center ion-justify-content-end"
+          (click)="openOption()"
+        >
+          <app-filter-option></app-filter-option>
+        </ion-col>
+        }
+      </ion-toolbar>
+    </ion-row>
+  </ion-grid>
+</ion-header>

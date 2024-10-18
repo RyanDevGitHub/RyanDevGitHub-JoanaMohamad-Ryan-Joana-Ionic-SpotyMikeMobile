@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -16,17 +16,28 @@ import {
   IonItem,
   IonInput,
   IonButton,
-  IonIcon, IonAvatar, IonRouterOutlet, IonImg, IonGrid, IonRow } from '@ionic/angular/standalone';
+  IonIcon,
+  IonAvatar,
+  IonRouterOutlet,
+  IonImg,
+  IonGrid,
+  IonRow,
+} from '@ionic/angular/standalone';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { BackButtonComponent } from 'src/app/shared/components/back-button/back-button.component';
+import { BackButtonComponent } from 'src/app/shared/components/button/back-button/back-button.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './auth.page.html',
   styleUrls: ['./auth.page.scss'],
   standalone: true,
-  imports: [IonRow, IonGrid, IonImg, IonRouterOutlet, IonAvatar,  
+  imports: [
+    IonRow,
+    IonGrid,
+    IonImg,
+    IonRouterOutlet,
+    IonAvatar,
     IonIcon,
     IonItem,
     IonList,

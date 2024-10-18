@@ -1,9 +1,8 @@
 .minimizePlayer {
-    position: fixed;
-    bottom:5%; /* Ajustez la valeur selon votre besoin pour placer le mini lecteur juste au-dessus des onglets */
-    left: 0;
-    right: 0;
-    background: white;
-    z-index: 100; /* Assurez-vous que le z-index soit plus élevé que celui des onglets pour être au-dessus */
-  }
-  
+  position: fixed;
+  bottom: 7.5%; /* Ajustez la valeur selon votre besoin pour placer le mini lecteur juste au-dessus des onglets */
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 100; /* Assurez-vous que le z-index soit plus élevé que celui des onglets pour être au-dessus */
+}

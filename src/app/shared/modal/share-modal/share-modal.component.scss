@@ -1,11 +1,36 @@
 .block {
-    width: 100%;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  ion-modal {
-    --height: auto;
-  }
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-modal {
+  --height: auto;
+}
+
+ion-icon {
+  color: black;
+}
+ion-button {
+  --border-color: black;
+}
+.block {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-modal {
+  --height: auto;
+}
+
+ion-avatar {
+  margin: auto;
+}
+ion-col {
+  margin: 1rem 0;
+}

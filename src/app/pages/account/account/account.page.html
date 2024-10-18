@@ -1,31 +1,41 @@
-<ion-grid fixed class="account-container" [class.modal-open]="isModalOpen">
-  <ion-row
-    class="profile-info ion-align-items-center ion-justify-content-center"
-    ><ion-col size="12">
-      <app-profil-info></app-profil-info>
-    </ion-col>
-  </ion-row>
-  <ion-row class="profile-edit">
-    <ion-col>
-      <ion-button
-        (click)="editProfile()"
-        fill="outline"
-        shape="round"
-        class="ion-text-start"
-      >
-        Edit
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row class="profile-playlist">
-    <ion-col size="12">
-      <app-section-with-dropdown
-        [items]="items"
-        redirectTo="/home/playlistes"
-        title="Playlists"
-        component="playlist-container"
-      >
-      </app-section-with-dropdown>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<ion-content>
+  <app-header-category
+    title="Account"
+    [backButton]="false"
+    [filter]="false"
+  ></app-header-category>
+  <ion-grid fixed class="account-container" [class.modal-open]="isModalOpen">
+    <ion-row
+      class="profile-info ion-align-items-center ion-justify-content-center"
+    >
+      <ion-col size="12">
+        <app-profil-info></app-profil-info>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="profile-edit">
+      <ion-col>
+        <ion-button
+          (click)="editProfile()"
+          fill="outline"
+          shape="round"
+          class="edit-button"
+        >
+          Edit
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="profile-playlist">
+      <ion-col size="12">
+        <app-section-with-dropdown
+          [items]="items"
+          redirectTo="/home/playlistes"
+          title="Playlists"
+          component="playlist-container"
+        >
+        </app-section-with-dropdown>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

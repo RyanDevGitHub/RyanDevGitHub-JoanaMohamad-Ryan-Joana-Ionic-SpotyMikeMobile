@@ -1,4 +1,4 @@
-import { MinimizePlayerAudioComponent } from './../../shared/components/minimize-player-audio/minimize-player-audio.component';
+import { MinimizePlayerAudioComponent } from '../../shared/components/playerComponents/minimize-player-audio/minimize-player-audio.component';
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { IonToast } from '@ionic/angular/standalone';
 import { IonButton, IonGrid, IonIcon, IonRow } from '@ionic/angular/standalone';

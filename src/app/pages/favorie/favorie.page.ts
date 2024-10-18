@@ -12,13 +12,13 @@ import {
   IonRow,
   IonImg,
 } from '@ionic/angular/standalone';
-import { PlaylistesOptionComponent } from 'src/app/shared/components/playlistes-option/playlistes-option.component';
-import { LikeSongComponent } from 'src/app/shared/components/like-song/like-song.component';
-import { ShareSongComponent } from 'src/app/shared/components/share-song/share-song.component';
+import { PlaylistesOptionComponent } from 'src/app/shared/components/button/playlistes-option/playlistes-option.component';
+import { LikeSongComponent } from 'src/app/shared/components/button/like-song/like-song.component';
+import { ShareSongComponent } from 'src/app/shared/components/button/share-song/share-song.component';
 import { ModalController } from '@ionic/angular/standalone';
 import { PlaySongPage } from 'src/app/shared/modal/play-song/play-song.page';
-import { SongOptionComponent } from 'src/app/shared/components/song-option/song-option.component';
-import { HeaderCategoryComponent } from 'src/app/shared/components/header-category/header-category.component';
+import { SongOptionComponent } from 'src/app/shared/components/button/song-option/song-option.component';
+import { HeaderCategoryComponent } from 'src/app/shared/components/headers/header-category/header-category.component';
 import { Subscription } from 'rxjs';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
 
@@ -117,7 +117,7 @@ export class FavoriePage implements OnInit, OnDestroy {
     },
   ];
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   async openModal() {
     const modal = await this.modalCtrl.create({

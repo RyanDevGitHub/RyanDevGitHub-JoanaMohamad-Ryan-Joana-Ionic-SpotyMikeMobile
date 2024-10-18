@@ -1,0 +1,8 @@
+ion-col.ion-justify-content-end {
+  display: flex;
+  justify-content: flex-end;
+}
+.custom-header {
+  height: 60px; /* Définis la hauteur que tu souhaites */
+  --min-height: 60px; /* Pour les appareils avec barre d'état */
+}

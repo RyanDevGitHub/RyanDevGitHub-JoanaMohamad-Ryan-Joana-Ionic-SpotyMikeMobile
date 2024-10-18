@@ -1,0 +1,24 @@
+compte sans artist
+
+email : admin@gmail.com
+mdp : Adminpassword1!
+name: AdminAccount
+
+compte artist 
+
+email : artist@gmail.com
+mdp : Artistpassword1!
+name: ArtistAccount
+
+artistName: ArtistName
+label: Universal
+description : description de test
+
+
+compte user
+
+email : user@gmail.com
+mdp : Userpassword1!
+name: UserAccount
+
+
