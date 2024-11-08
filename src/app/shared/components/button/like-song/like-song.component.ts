@@ -11,10 +11,10 @@ import { heart, heartOutline } from 'ionicons/icons';
   imports: [IonButton, IonIcon],
 })
 export class LikeSongComponent implements OnInit {
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private renderer: Renderer2, private el: ElementRef) { }
   isLiked: boolean = false;
   ngOnInit() {
-    addIcons({ heartOutline });
+    addIcons({ heartOutline, heart });
   }
   toggleLike() {
     console.log('test');
