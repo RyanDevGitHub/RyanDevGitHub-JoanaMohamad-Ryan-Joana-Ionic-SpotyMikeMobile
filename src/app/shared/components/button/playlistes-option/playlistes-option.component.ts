@@ -6,17 +6,16 @@ import { ellipsisVerticalOutline } from 'ionicons/icons';
 @Component({
   selector: 'app-playlistes-option',
   templateUrl: './playlistes-option.component.html',
-  standalone:true,
+  standalone: true,
   styleUrls: ['./playlistes-option.component.scss'],
-  imports:[IonIcon
-  ]
+  imports: [IonIcon],
 })
-export class PlaylistesOptionComponent  implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-    addIcons({ellipsisVerticalOutline})
+export class PlaylistesOptionComponent implements OnInit {
+  constructor() {
+    addIcons({ ellipsisVerticalOutline });
   }
 
+  ngOnInit() {
+    console.log('init playlistes-option');
+  }
 }

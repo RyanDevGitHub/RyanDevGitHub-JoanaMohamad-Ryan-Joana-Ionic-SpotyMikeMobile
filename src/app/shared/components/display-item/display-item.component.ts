@@ -40,7 +40,9 @@ export class DisplayItemComponent implements OnInit {
   modalCtrl = inject(ModalController);
   @Input() playlists: IPlaylist[];
   @Input() musicList: IMusic[];
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('init display init component');
+  }
 
   async openSong() {
     const modal = await this.modalCtrl.create({

@@ -1,9 +1,5 @@
 <ion-grid fixed [class.modal-open]="isModalOpen">
-  <ion-row>
-    <ion-col size="12">
-      <app-research></app-research>
-    </ion-col>
-  </ion-row>
+  <app-research></app-research>
   <ion-content>
     <ion-row>
       <ion-col size="12">
@@ -28,7 +24,7 @@
                 [title]="music.title"
                 [duration]="music.duration"
                 [cover]="music.cover"
-                [artistName]="music.artist"
+                [artistName]="music.artistId"
                 [id]="music.id"
               ></app-music-container>
             </ion-col>

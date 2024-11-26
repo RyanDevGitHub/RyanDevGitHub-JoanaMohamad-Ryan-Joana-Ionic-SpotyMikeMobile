@@ -1,26 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-grid fixed>
-      <ion-row class="ion-align-items-center ion-justify-content-between">
-        <!-- Bouton de retour -->
-        <ion-col size="auto">
-          @if (this.backButton) {
-          <app-back-button class="ion-padding-vertical"></app-back-button>
-          }
-        </ion-col>
+    <!-- Bouton de retour (aligné à gauche) -->
+    @if (this.backButton) {
+    <app-back-button
+      slot="start"
+      class="ion-padding-vertical"
+    ></app-back-button>
+    }
 
-        <!-- Titre centré -->
-        <ion-col class="ion-text-center">
-          <ion-title>{{ title }}</ion-title>
-        </ion-col>
+    <!-- Titre centré -->
+    <ion-title class="title-centered">{{ title }}</ion-title>
 
-        <!-- Filtre aligné à droite -->
-        <ion-col size="auto">
-          @if (filter) {
-          <app-filter-option></app-filter-option>
-          }
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <!-- Filtre (aligné à droite) -->
+    @if (filter) {
+    <app-filter-option slot="end"></app-filter-option>
+    }
   </ion-toolbar>
 </ion-header>

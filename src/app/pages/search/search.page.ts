@@ -45,83 +45,89 @@ import { ArtistContainerComponent } from 'src/app/shared/components/containers/a
   ],
 })
 export class SearchPage implements OnInit {
-  public artistLists: IArtistContainer[] = [
-    {
-      cover:
-        'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/cover%2Fzelda-breath-of-the-wild-1655249167687.jpg?alt=media&token=5411b64e-3d8f-40b7-a6e8-4a16b10ba3f9',
-      id: 'hkjbdnf',
-      name: 'The Week-end',
-    },
-  ];
-  public musicPlaylist: IMusic[] = [
-    {
-      cover:
-        'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/cover%2Fzelda-breath-of-the-wild-1655249167687.jpg?alt=media&token=5411b64e-3d8f-40b7-a6e8-4a16b10ba3f9',
-      title: 'MusicTitle',
-      artist: 'Ryan',
-      duration: '3.12',
-      url: 'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/%F0%9F%8E%A4COUTINHO%20GETS%20SOLD!%F0%9F%8E%A4%20Messi%20%26%20Suarez%20sort%20a%20transfer!%20Man%20Utd%20Liverpool%20PSG.mp3?alt=media&token=87fdfd7b-ea78-4e73-a93d-49691e584a78',
-      id: '41sdsds2',
-    },
-  ];
-  public listPlaylistes: IPlaylist[] = [
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '78982',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '451',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '4553',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '4ggdfg',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '5495',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '7242',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: 'lkj6',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '154158',
-    },
-  ];
+  public artistLists: IArtistContainer[] = [];
+  // = [
+  //   {
+  //     cover:
+  //       'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/cover%2Fzelda-breath-of-the-wild-1655249167687.jpg?alt=media&token=5411b64e-3d8f-40b7-a6e8-4a16b10ba3f9',
+  //     id: 'hkjbdnf',
+  //     name: 'The Week-end',
+  //   },
+  // ];
+  public musicPlaylist: IMusic[] = [];
+  //  = [
+  //   {
+  //     cover:
+  //       'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/cover%2Fzelda-breath-of-the-wild-1655249167687.jpg?alt=media&token=5411b64e-3d8f-40b7-a6e8-4a16b10ba3f9',
+  //     title: 'MusicTitle',
+  //     artistId: 'Ryan',
+  //     duration: '3.12',
+  //     url: 'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/%F0%9F%8E%A4COUTINHO%20GETS%20SOLD!%F0%9F%8E%A4%20Messi%20%26%20Suarez%20sort%20a%20transfer!%20Man%20Utd%20Liverpool%20PSG.mp3?alt=media&token=87fdfd7b-ea78-4e73-a93d-49691e584a78',
+  //     id: '41sdsds2',
+  //     featuring: [],
+  //     listeningCount: '0',
+  //     lyrics: 'lyrics',
+  //   },
+  // ];
+  public listPlaylistes: IPlaylist[] = [];
+  // = [
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '78982',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '451',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '4553',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '4ggdfg',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '5495',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '7242',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: 'lkj6',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '154158',
+  //   },
+  // ];
   public isModalOpen: boolean;
   private modalSubscription: Subscription;
   constructor(private modalStateService: ModalStateService) {
@@ -130,5 +136,7 @@ export class SearchPage implements OnInit {
     );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('init last played component');
+  }
 }

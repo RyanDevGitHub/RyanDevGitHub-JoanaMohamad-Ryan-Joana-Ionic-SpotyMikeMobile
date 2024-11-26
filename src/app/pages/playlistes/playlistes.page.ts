@@ -61,64 +61,65 @@ export class PlaylistesPage implements OnInit, OnDestroy {
       (value) => (this.isModalOpen = value)
     );
   }
-  public listPlaylistes: IPlaylist[] = [
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '56',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '54',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '53',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '444',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '24',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '645',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '744',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '8488',
-    },
-  ];
+  public listPlaylistes: IPlaylist[];
+  // = [
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '56',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '54',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '53',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '444',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '24',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '645',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '744',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '8488',
+  //   },
+  // ];
   ngOnInit() {
     console.log(this.isModalOpen);
   }

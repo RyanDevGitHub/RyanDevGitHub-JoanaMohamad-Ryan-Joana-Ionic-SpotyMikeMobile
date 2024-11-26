@@ -1,37 +1,49 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import {
+  EntityState,
+  EntityAdapter,
+  createEntityAdapter,
+  Dictionary,
+} from '@ngrx/entity';
 import { IMusic } from '../../interfaces/music';
 import { createReducer, on } from '@ngrx/store';
 import * as ActionSOngs from '../action/song.action';
 
 export interface SongState extends EntityState<IMusic> {
-  load: boolean;
+  loading: boolean;
+  error: string | null;
 }
 
-// START - Sort
-export function selectMusicId(music: IMusic): string {
-  return music.id;
-}
+export const adapter: EntityAdapter<IMusic> = createEntityAdapter<IMusic>();
 
-export function sortByTitle(a: IMusic, b: IMusic): number {
-  return a.title.localeCompare(b.title);
-}
-
-export const adaptater: EntityAdapter<IMusic> = createEntityAdapter<IMusic>({
-  selectId: selectMusicId,
-  sortComparer: sortByTitle,
+// Initialisation de l'état avec les valeurs par défaut fournies par l'adapter
+export const initialState: SongState = adapter.getInitialState({
+  loading: false,
+  error: null,
 });
 
-// END - Sort
-
-export const initialState: SongState = adaptater.getInitialState({
-  load: false,
-});
-
-export const songReducer = createReducer(
+export const musicReducer = createReducer(
   initialState,
-  on(ActionSOngs.loadSong, (state) => state),
-  on(ActionSOngs.addSong, (state, musics:any ) => ({ ...state, musics: musics }))
+  on(ActionSOngs.loadSong, (state) => ({
+    ...state,
+    loading: true,
+    error: null,
+  })),
+  on(ActionSOngs.loadSongSuccess, (state, { songs }) => {
+    console.log('[Reducer] Updating state with songs:', songs);
+    return adapter.setAll(songs, state);
+  }),
+  on(ActionSOngs.loadSongFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  }))
 );
 
-//recpêration
-export const { selectAll }  = adaptater.getSelectors();
+// Générer les sélecteurs
+const { selectAll, selectEntities, selectIds, selectTotal } =
+  adapter.getSelectors();
+
+export const selectAllSongs = selectAll;
+export const selectSongEntities = selectEntities;
+export const selectSongIds = selectIds;
+export const selectTotalSongs = selectTotal;

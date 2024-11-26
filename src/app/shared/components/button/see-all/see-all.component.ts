@@ -5,24 +5,20 @@ import { IonText } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-see-all',
   templateUrl: './see-all.component.html',
-  standalone:true,
+  standalone: true,
   styleUrls: ['./see-all.component.scss'],
-  imports:[
-    IonText
-  ]
+  imports: [IonText],
 })
-export class SeeAllComponent  implements OnInit {
-
-  constructor(private router:Router) { }
+export class SeeAllComponent implements OnInit {
+  constructor(private router: Router) {}
   @Input() redirectTo: string;
-  @Input() param :string;
+  @Input() param: string;
 
-  ngOnInit() {
-    console.log('init see-all');
-  }
+  ngOnInit() {}
 
   redirectToPage() {
-    this.router.navigate([this.redirectTo],{queryParams:{genre:this.param}});
+    this.router.navigate([this.redirectTo], {
+      queryParams: { genre: this.param },
+    });
   }
-
 }

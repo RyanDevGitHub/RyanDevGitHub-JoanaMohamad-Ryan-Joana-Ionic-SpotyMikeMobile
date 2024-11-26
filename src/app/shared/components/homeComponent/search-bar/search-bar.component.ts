@@ -22,13 +22,13 @@ import { Router } from '@angular/router';
   imports: [IonGrid, IonRow, IonCol, IonButton, IonIcon],
 })
 export class SearchBarComponent implements OnInit {
-  constructor(private animationCtrl: AnimationController) {}
+  constructor(private animationCtrl: AnimationController) {
+    addIcons({ flashOutline, searchOutline });
+  }
 
   private modalCtl = inject(ModalController);
   private router = inject(Router);
-  ngOnInit() {
-    addIcons({ flashOutline, searchOutline });
-  }
+  ngOnInit() {}
 
   async openQuickMenu() {
     const modal = await this.modalCtl.create({

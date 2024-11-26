@@ -30,12 +30,12 @@ import { ShareModalComponent } from 'src/app/shared/modal/share-modal/share-moda
   ],
 })
 export class ShareSongComponent implements OnInit {
-  constructor() {}
-  @Input() id: string;
-  modalCtl = inject(ModalController);
-  ngOnInit() {
+  constructor() {
     addIcons({ shareSocialOutline });
   }
+  @Input() id: string;
+  modalCtl = inject(ModalController);
+  ngOnInit() {}
 
   async onClick() {
     console.log('click!');

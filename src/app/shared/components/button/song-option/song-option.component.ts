@@ -56,12 +56,7 @@ export class SongOptionComponent implements OnInit {
   constructor(
     private modalStateService: ModalStateService,
     private router: Router
-  ) {}
-  @ViewChild(IonModal) modal: IonModal;
-  @Input() id: string;
-  private ctrlModal = inject(ModalController);
-
-  ngOnInit() {
+  ) {
     addIcons({
       ellipsisHorizontalOutline,
       addCircleOutline,
@@ -70,6 +65,11 @@ export class SongOptionComponent implements OnInit {
       personAddOutline,
     });
   }
+  @ViewChild(IonModal) modal: IonModal;
+  @Input() id: string;
+  private ctrlModal = inject(ModalController);
+
+  ngOnInit() {}
 
   async openModal() {
     const modal = await this.ctrlModal.create({

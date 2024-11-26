@@ -55,16 +55,18 @@ export class AccountPage implements OnInit {
       (value) => (this.isModalOpen = value)
     );
   }
-  items: IPlaylist[] = [
-    {
-      cover:
-        'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/cover%2Fzelda-breath-of-the-wild-1655249167687.jpg?alt=media&token=5411b64e-3d8f-40b7-a6e8-4a16b10ba3f9',
-      title: 'test1',
-      artist: 'SunDark',
-      nbSong: '12',
-      id: '99',
-    },
-  ];
+  items: IPlaylist[];
+
+  // = [
+  //   {
+  //     cover:
+  //       'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/cover%2Fzelda-breath-of-the-wild-1655249167687.jpg?alt=media&token=5411b64e-3d8f-40b7-a6e8-4a16b10ba3f9',
+  //     title: 'test1',
+  //     artist: 'SunDark',
+  //     nbSong: '12',
+  //     id: '99',
+  //   },
+  // ];
 
   ngOnInit() {}
 

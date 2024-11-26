@@ -1,8 +1,20 @@
-ion-col.ion-justify-content-end {
-  display: flex;
-  justify-content: flex-end;
+.title-centered {
+  position: absolute; /* Permet de centrer le titre par rapport au toolbar */
+  left: 50%;
+  transform: translateX(
+    -50%
+  ); /* Corrige le décalage pour un centrage parfait */
+  text-align: center;
 }
-.custom-header {
-  height: 60px; /* Définis la hauteur que tu souhaites */
-  --min-height: 60px; /* Pour les appareils avec barre d'état */
+
+ion-toolbar {
+  position: relative; /* Nécessaire pour que le positionnement absolu fonctionne */
+  height: 8.5vh;
+  display: flex;
+}
+
+app-back-button,
+app-filter-option {
+  display: flex;
+  align-items: center; /* Centre verticalement les boutons */
 }

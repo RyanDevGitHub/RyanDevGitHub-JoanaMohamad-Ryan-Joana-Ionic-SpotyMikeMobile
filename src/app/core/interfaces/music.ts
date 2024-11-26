@@ -1,19 +1,17 @@
 export interface IMusic {
-    cover: string;
-    title: string;
-    artist: string;
-    duration:string,
-    url: string;
-    id:string
-  }
+  cover: string;
+  title: string;
+  artistId: string;
+  duration: string;
+  url: string;
+  id: string;
+  featuring: string[];
+  listeningCount: string;
+  lyrics: string;
+}
 
-  export interface IMusicList {
-   musics:IMusic[]
-  }
-
-
-  export enum PlaybackMode {
-    Default = 'default',
-    Shuffle = 'shuffle',
-    Loop = 'loop'
-  }
+export enum PlaybackMode {
+  Default = 'default',
+  Shuffle = 'shuffle',
+  Loop = 'loop',
+}

@@ -19,7 +19,11 @@ import { i18nProviders } from './app/core/providers/i18n.providers';
 import { LocalStorageService } from './app/core/services/local-strorage.service';
 import { Firebase } from './app/core/services/firebase.service';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-import { provideStore } from '@ngrx/store';
+import { provideStore, StoreModule } from '@ngrx/store';
+import { musicReducer } from './app/core/store/reducer/song.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { MusicEffects } from './app/core/store/effect/song.effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 if (environment.production) {
   enableProdMode();
@@ -35,12 +39,18 @@ bootstrapApplication(AppComponent, {
     AuthentificationService,
     MinimizePlayerAudioService,
     AngularFireAuth,
-    provideStore(),
+    provideStore({
+      music: musicReducer, // Enregistrez votre reducer ici
+    }),
+    provideEffects([MusicEffects]),
+    provideStoreDevtools(),
     provideIonicAngular(),
+    provideStoreDevtools({
+      connectInZone: false,
+    }),
     // importProvidersFrom(IonicModule.forRoot()),
     provideRouter(routes),
-    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig},
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
   ],
 });
-

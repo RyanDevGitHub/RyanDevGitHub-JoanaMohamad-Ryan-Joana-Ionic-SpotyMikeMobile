@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { catchError, from, map, Observable, Subject } from 'rxjs';
+import { SongRepositoryService } from './repositories/song-repository.service';
+import { IMusic } from '../interfaces/music';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MusicServiceService {
-
-  constructor() { }
+  constructor(private songRepository: SongRepositoryService) {}
   private audio = new Audio();
   private isPlayingSubject = new Subject<boolean>();
   isPlaying$ = this.isPlayingSubject.asObservable();
@@ -34,7 +35,7 @@ export class MusicServiceService {
   }
 
   getCurrentTime(): Observable<number> {
-    return new Observable<number>(observer => {
+    return new Observable<number>((observer) => {
       this.audio.addEventListener('timeupdate', () => {
         observer.next(this.audio.currentTime);
       });
@@ -55,5 +56,29 @@ export class MusicServiceService {
   seek(time: number) {
     this.audio.currentTime = time;
   }
+
+  // Récupérer toutes les musiques
+  getSongs(): Observable<IMusic[]> {
+    return from(this.songRepository.getAllSongs()).pipe(
+      map((songs) => {
+        // Assurez-vous que les chansons sont un tableau et qu'il n'y a pas de mutation accidentelle des objets
+        console.log('Songs fetched:', songs);
+        return songs;
+      }),
+      catchError((error) => {
+        console.error('Error in getSongs:', error);
+        throw error;
+      })
+    );
+  }
+
+  // Récupérer une musique par ID
+  getSongById(songId: string): Observable<IMusic | null> {
+    return from(this.songRepository.getSongById(songId));
+  }
+
+  // Ajouter une musique
+  addSong(song: IMusic): Observable<void> {
+    return from(this.songRepository.addSong(song));
+  }
 }
- 

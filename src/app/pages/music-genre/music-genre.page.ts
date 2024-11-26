@@ -22,7 +22,7 @@ import { IFavorite } from 'src/app/core/interfaces/favorites';
 import { PlaySongPage } from 'src/app/shared/modal/play-song/play-song.page';
 import { Subscription } from 'rxjs';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
-import { ModalController } from '@ionic/angular/standalone';      
+import { ModalController } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-music-genre',
@@ -44,7 +44,7 @@ import { ModalController } from '@ionic/angular/standalone';
     LikeSongComponent,
     ShareSongComponent,
     IonGrid,
-    SongOptionComponent
+    SongOptionComponent,
   ],
 })
 export class MusicGenrePage implements OnInit {
@@ -52,71 +52,75 @@ export class MusicGenrePage implements OnInit {
   // route = inject(ActivatedRoute)
   public isModalOpen: boolean;
   private modalSubscription: Subscription;
-  constructor(private route: ActivatedRoute, private modalCtrl: ModalController,
-    private modalStateService: ModalStateService) {
+  constructor(
+    private route: ActivatedRoute,
+    private modalCtrl: ModalController,
+    private modalStateService: ModalStateService
+  ) {
     this.modalSubscription = modalStateService.modalOpen$.subscribe(
       (value) => (this.isModalOpen = value)
     );
   }
 
-  public listFavorite: IFavorite[] = [
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '56',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '54',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '53',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '444',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '24',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '645',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '744',
-    },
-    {
-      cover: 'assets/avatar/album-photo.jpg',
-      title: 'Work Instrument',
-      artist: 'NamaUser',
-      nbSong: '20',
-      id: '8488',
-    },
-  ];
+  public listFavorite: IFavorite[] = [];
+  //  = [
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '56',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '54',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '53',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '444',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '24',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '645',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '744',
+  //   },
+  //   {
+  //     cover: 'assets/avatar/album-photo.jpg',
+  //     title: 'Work Instrument',
+  //     artist: 'NamaUser',
+  //     nbSong: '20',
+  //     id: '8488',
+  //   },
+  // ];
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
