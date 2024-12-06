@@ -1,5 +1,6 @@
+import { LocalStorageService } from 'src/app/core/services/local-strorage.service';
 import { ProfilInfoComponent } from '../../../shared/components/profilComponent/profil-info/profil-info.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -20,6 +21,11 @@ import { IPlaylist } from 'src/app/core/interfaces/playlistes';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
 import { Subscription } from 'rxjs';
 import { HeaderCategoryComponent } from 'src/app/shared/components/headers/header-category/header-category.component';
+import { IUser } from 'src/app/core/interfaces/user';
+import { AppState } from '@capacitor/app';
+import { Store } from '@ngrx/store';
+import { loadUser } from 'src/app/core/store/action/user.action';
+import { selectUser } from 'src/app/core/store/selector/user.selector';
 
 @Component({
   selector: 'app-account',
@@ -47,6 +53,10 @@ import { HeaderCategoryComponent } from 'src/app/shared/components/headers/heade
 export class AccountPage implements OnInit {
   public isModalOpen: boolean;
   private modalSubscription: Subscription;
+  private localStorageService = inject(LocalStorageService);
+  store = inject(Store<AppState>);
+  user: IUser | null;
+
   constructor(
     private router: Router,
     private modalStateService: ModalStateService
@@ -68,7 +78,20 @@ export class AccountPage implements OnInit {
   //   },
   // ];
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('[HOME] Dispatching loadUser action...');
+    this.store.dispatch(loadUser());
+
+    this.store.select(selectUser).subscribe({
+      next: (user) => {
+        console.log('[DEBUG] User in subscription:', user);
+        this.user = user;
+      },
+      error: (err) => {
+        console.error('[DEBUG] Error in subscription:', err);
+      },
+    });
+  }
 
   editProfile() {
     this.router.navigate(['home/edit-profile']);

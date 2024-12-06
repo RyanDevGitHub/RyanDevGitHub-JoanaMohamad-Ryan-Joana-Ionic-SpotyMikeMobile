@@ -24,6 +24,8 @@ import { musicReducer } from './app/core/store/reducer/song.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { MusicEffects } from './app/core/store/effect/song.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { userReducer } from './app/core/store/reducer/user.reducer';
+import { UserEffects } from './app/core/store/effect/user.effects';
 
 if (environment.production) {
   enableProdMode();
@@ -40,9 +42,10 @@ bootstrapApplication(AppComponent, {
     MinimizePlayerAudioService,
     AngularFireAuth,
     provideStore({
-      music: musicReducer, // Enregistrez votre reducer ici
+      music: musicReducer,
+      user: userReducer, // Enregistrez votre reducer ici
     }),
-    provideEffects([MusicEffects]),
+    provideEffects([MusicEffects, UserEffects]),
     provideStoreDevtools(),
     provideIonicAngular(),
     provideStoreDevtools({

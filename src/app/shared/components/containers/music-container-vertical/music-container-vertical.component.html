@@ -1,0 +1,27 @@
+<ion-grid>
+  <ion-row>
+    <ion-col
+      class="song"
+      size="12"
+      size-md="4"
+      size-lg="3"
+      (click)="openPlayer()"
+    >
+      <ion-row>
+        <ion-col size="12">
+          <ion-img [src]="song.cover"></ion-img>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <p>{{ song.title }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <p>{{ song.duration }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>

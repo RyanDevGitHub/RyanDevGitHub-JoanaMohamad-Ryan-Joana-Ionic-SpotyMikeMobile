@@ -83,6 +83,7 @@ export class RegisterPage implements OnInit {
     email: '',
     sexe: '',
     favorites: [],
+    role: 'user',
     artiste: {
       id: '',
       label: '',
@@ -299,6 +300,7 @@ export class RegisterPage implements OnInit {
           this.form.get('artistName')?.value || 'artistName non fournie';
         this.user.artiste!.label =
           this.form.get('label')?.value || 'label non fournie';
+        this.user.role = 'artist';
         console.log('test!!!!!!!!!!!');
         console.log(this.user.artiste);
       }

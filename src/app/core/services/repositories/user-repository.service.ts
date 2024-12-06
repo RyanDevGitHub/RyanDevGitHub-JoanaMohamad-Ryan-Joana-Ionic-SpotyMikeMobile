@@ -38,6 +38,7 @@ export class UserRepositoryService {
       email: user.email,
       tel: user.tel || null,
       sexe: user.sexe,
+      role: user.role,
       favorites: user.favorites || [],
       lastsplayeds: user.lastsplayeds || [],
       created_at: user.created_at,

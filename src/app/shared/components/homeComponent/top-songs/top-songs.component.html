@@ -8,22 +8,9 @@
   <ion-row>
     <div class="scroll-container">
       @for (song of items; track song) {
-
-      <ion-col class="song" size="4">
-        <ion-row>
-          <ion-col size="auto"><ion-img [src]="song.cover"></ion-img></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="auto"
-            ><p>{{ song.title }}</p></ion-col
-          >
-        </ion-row>
-        <ion-row>
-          <ion-col size="auto"
-            ><p>{{ song.duration }}</p></ion-col
-          >
-        </ion-row>
-      </ion-col>
+      <app-music-container-vertical
+        [song]="song"
+      ></app-music-container-vertical>
       } @if (items?.length === 0) {
       <ion-row>
         <ion-col>No songs available.</ion-col>

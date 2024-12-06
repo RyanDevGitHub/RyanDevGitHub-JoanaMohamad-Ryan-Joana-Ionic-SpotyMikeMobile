@@ -48,7 +48,6 @@ export class HomePage implements OnInit, OnDestroy {
   public isModalOpen: boolean;
   private modalSubscription: Subscription;
   songs: IMusic[] = [];
-  listSongs$ = this.store.select(selectAllSongs);
   constructor(private modalStateService: ModalStateService) {
     addIcons({ book, home });
     this.modalSubscription = modalStateService.modalOpen$.subscribe(

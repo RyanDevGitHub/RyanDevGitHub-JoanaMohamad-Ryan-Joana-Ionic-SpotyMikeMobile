@@ -1,0 +1,6 @@
+.song ion-img::part(image) {
+  width: 6em; /* Remplit la largeur du conteneur parent */
+
+  object-fit: cover; /* Remplit l'espace tout en conservant les proportions */
+  border-radius: 10px; /* Facultatif, ajoute des coins arrondis */
+}

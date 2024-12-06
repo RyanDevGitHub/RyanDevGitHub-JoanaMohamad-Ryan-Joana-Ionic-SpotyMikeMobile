@@ -35,6 +35,7 @@ export interface IUserDataBase {
   playlists: IPlaylist[];
   lastsplayeds: string[];
   created_at: string;
+  role: ERoleUser;
 }
 
 export interface IUserUpdateDataBase {

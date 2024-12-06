@@ -14,6 +14,8 @@ import { SeeAllComponent } from '../../button/see-all/see-all.component';
 import { Observable, of } from 'rxjs';
 import { IMusic } from 'src/app/core/interfaces/music';
 import { CommonModule } from '@angular/common';
+import { MusicContainerComponent } from '../../containers/music-container/music-container.component';
+import { MusicContainerVerticalComponent } from '../../containers/music-container-vertical/music-container-vertical.component';
 
 @Component({
   selector: 'app-top-songs',
@@ -31,6 +33,7 @@ import { CommonModule } from '@angular/common';
     IonInfiniteScroll,
     IonInfiniteScrollContent,
     CommonModule,
+    MusicContainerVerticalComponent,
   ],
 })
 export class TopSongsComponent implements OnInit {
