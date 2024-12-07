@@ -1,3 +1,4 @@
+import { SongManagementPage } from './pages/song-management/song-management.page';
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guard/auth.guard';
 
@@ -138,6 +139,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/music-genre/music-genre.page').then(
             (m) => m.MusicGenrePage
+          ),
+      },
+      {
+        path: 'song-management',
+        loadComponent: () =>
+          import('./pages/song-management/song-management.page').then(
+            (m) => m.SongManagementPage
           ),
       },
     ],

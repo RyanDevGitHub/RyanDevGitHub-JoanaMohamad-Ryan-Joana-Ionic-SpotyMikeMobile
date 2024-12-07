@@ -1,7 +1,7 @@
 import { ModalStateService } from '../../../../core/services/modal-state.service';
 import { SongOptionComponent } from '../../button/song-option/song-option.component';
 import { Component, Input, OnInit } from '@angular/core';
-import { IonCol, ModalController } from '@ionic/angular/standalone';
+import { IonCol, ModalController, IonContent } from '@ionic/angular/standalone';
 import { IonImg, IonRow } from '@ionic/angular/standalone';
 import { PlaySongPage } from '../../../modal/play-song/play-song.page';
 import { LikeSongComponent } from '../../button/like-song/like-song.component';
@@ -13,6 +13,7 @@ import { ShareSongComponent } from '../../button/share-song/share-song.component
   styleUrls: ['./music-container.component.scss'],
   standalone: true,
   imports: [
+    IonContent,
     IonRow,
     IonImg,
     SongOptionComponent,

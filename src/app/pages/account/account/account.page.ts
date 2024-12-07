@@ -97,6 +97,10 @@ export class AccountPage implements OnInit {
     this.router.navigate(['home/edit-profile']);
   }
 
+  songManagement() {
+    this.router.navigate(['home/song-management']);
+  }
+
   ngOnDestroy() {
     if (this.modalSubscription) {
       this.modalSubscription.unsubscribe();
