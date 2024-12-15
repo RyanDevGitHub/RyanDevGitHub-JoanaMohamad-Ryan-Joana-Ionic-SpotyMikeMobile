@@ -7,3 +7,12 @@ row {
   flex-direction: row;
   justify-content: space-between;
 }
+.music-name h6 {
+  word-wrap: break-word; /* Forcer le saut de ligne si nécessaire */
+  overflow-wrap: break-word; /* Assure la compatibilité avec plus de navigateurs */
+  text-align: center; /* Centrer le texte */
+  white-space: normal; /* Permet d’avoir plusieurs lignes */
+  overflow: hidden; /* Empêche le dépassement visuel */
+  text-overflow: ellipsis; /* Ajoute des points de suspension si nécessaire */
+  max-width: 100%; /* Limite la largeur au conteneur */
+}

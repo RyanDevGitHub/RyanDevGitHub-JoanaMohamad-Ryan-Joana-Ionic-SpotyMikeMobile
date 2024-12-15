@@ -4,3 +4,12 @@
   object-fit: cover; /* Remplit l'espace tout en conservant les proportions */
   border-radius: 10px; /* Facultatif, ajoute des coins arrondis */
 }
+.music-name {
+  word-wrap: break-word; /* Forcer le saut de ligne si nécessaire */
+  overflow-wrap: break-word; /* Assure la compatibilité avec plus de navigateurs */
+  text-align: center; /* Centrer le texte */
+  white-space: normal; /* Permet d’avoir plusieurs lignes */
+  overflow: hidden; /* Empêche le dépassement visuel */
+  text-overflow: ellipsis; /* Ajoute des points de suspension si nécessaire */
+  max-width: 100%; /* Limite la largeur au conteneur */
+}

@@ -43,8 +43,11 @@ describe('SongRepositoryService', () => {
     const newSong: IMusic = {
       id: 'mockId2',
       title: 'Test Song',
-      artist: 'Test Artist',
+      artistId: 'Test Artist',
       duration: '180',
+      featuring: [],
+      listeningCount: '',
+      lyrics: '',
       cover: 'mock-url',
       url: 'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/song%2F%5BPlaylist%5D%20%EC%9D%B4%20%EA%B0%80%EC%88%98%EB%8A%94%20%EC%96%B4%EB%95%8C%20%EC%9A%94%EC%95%84%EC%86%8C%EB%B9%84(YOASOBI)%20%EB%85%B8%EB%9E%98%EB%AA%A8%EC%9D%8C%20(J-POP)%20.mp3?alt=media&token=254a81a9-a722-410d-b459-0471bbd562e9',
     };

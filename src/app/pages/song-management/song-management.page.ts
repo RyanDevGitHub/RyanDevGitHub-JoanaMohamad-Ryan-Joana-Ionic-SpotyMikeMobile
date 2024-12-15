@@ -8,6 +8,7 @@ import {
   IonList,
   InfiniteScrollCustomEvent,
   IonButton,
+  ModalController,
 } from '@ionic/angular/standalone';
 import { HeaderCategoryComponent } from '../../shared/components/headers/header-category/header-category.component';
 import { SectionWithDropdownComponent } from 'src/app/shared/components/section-with-dropdown/section-with-dropdown.component';
@@ -18,6 +19,7 @@ import { Store } from '@ngrx/store';
 import { loadSong } from 'src/app/core/store/action/song.action';
 import { debugSelectAllSongs } from 'src/app/core/store/selector/song.selector';
 import { Subject, takeUntil } from 'rxjs';
+import { AddSongModalComponent } from 'src/app/shared/modal/add-song-modal/add-song-modal.component';
 
 @Component({
   selector: 'app-song-management',
@@ -40,7 +42,7 @@ export class SongManagementPage implements OnInit {
   songs: IMusic[] = [];
   store = inject(Store<AppState>);
   private unsubscribe$ = new Subject<void>();
-  constructor() {}
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {
     this.store.dispatch(loadSong());
@@ -65,7 +67,19 @@ export class SongManagementPage implements OnInit {
     }, 5000);
   }
 
-  openModalAddSong() {}
+  async openModalAddSong() {
+    const modal = await this.modalController.create({
+      component: AddSongModalComponent, // Modal
+      cssClass: 'add-song-modal-class', // Classe CSS optionnelle
+    });
+    await modal.present();
+
+    // Récupérer les données après fermeture du modal (si nécessaire)
+    const { data } = await modal.onDidDismiss();
+    if (data) {
+      console.log('Nouveau son ajouté :', data);
+    }
+  }
 
   ngOnDestroy() {
     this.unsubscribe$.next();

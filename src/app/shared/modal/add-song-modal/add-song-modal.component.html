@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Add New Song</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()" color="primary">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="songForm" (ngSubmit)="onSubmit()" class="form-container">
+    <ion-item class="input-item">
+      <ion-label position="floating"></ion-label>
+      <ion-input
+        formControlName="title"
+        type="text"
+        placeholder="Enter song title"
+      ></ion-input>
+    </ion-item>
+
+    <div class="file-input-container">
+      <label class="file-label">Cover Image</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event, 'cover')"
+        accept="image/*"
+        class="file-input"
+      />
+    </div>
+
+    <div class="file-input-container">
+      <label class="file-label">MP3 File</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event, 'file')"
+        accept=".mp3"
+        class="file-input"
+      />
+    </div>
+
+    <ion-button
+      expand="block"
+      type="submit"
+      color="primary"
+      class="submit-button"
+    >
+      Add Song
+    </ion-button>
+  </form>
+</ion-content>

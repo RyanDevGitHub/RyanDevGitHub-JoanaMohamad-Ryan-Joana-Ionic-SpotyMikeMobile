@@ -1,0 +1,52 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacement entre les éléments */
+  align-items: center;
+}
+
+.input-item {
+  width: 90%;
+  max-width: 400px;
+}
+
+.file-input-container {
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.file-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.file-input {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.submit-button {
+  margin-top: 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 50px; /* Coins arrondis */
+}
+
+ion-toolbar {
+  --background: #f8f8f8; /* Couleur d'arrière-plan */
+  --color: #333; /* Couleur du texte */
+}
+
+ion-title {
+  font-weight: bold;
+}
+
+ion-content {
+  --background: #ffffff; /* Fond blanc */
+}

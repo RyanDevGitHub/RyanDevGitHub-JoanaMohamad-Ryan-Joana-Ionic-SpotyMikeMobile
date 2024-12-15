@@ -10,6 +10,8 @@ import {
 } from '@ionic/angular/standalone';
 import { BackButtonComponent } from '../../button/back-button/back-button.component';
 import { FilterOptionComponent } from '../../filter-option/filter-option.component';
+import { addIcons } from 'ionicons';
+import { ellipsisVerticalOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-header-category',
@@ -32,7 +34,9 @@ export class HeaderCategoryComponent implements OnInit {
   @Input() title: string;
   @Input() backButton: boolean;
   @Input() filter: boolean = true;
-  constructor() {}
+  constructor() {
+    addIcons({ ellipsisVerticalOutline });
+  }
 
   ngOnInit() {}
 
