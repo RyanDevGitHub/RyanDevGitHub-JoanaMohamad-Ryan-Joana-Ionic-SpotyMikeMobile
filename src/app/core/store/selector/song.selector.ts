@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { adapter, SongState } from '../reducer/song.reducer';
+import { MusicGenre } from '../../interfaces/music';
 // Sélecteur pour récupérer l'état de la musique
 export const selectMusicState = createFeatureSelector<SongState>('music');
 
@@ -43,3 +44,24 @@ export const debugSelectAllSongs = createSelector(selectAllSongs, (songs) => {
   console.log('[DEBUG] Songs from selectAllSongs:', songs);
   return songs;
 });
+
+export const selectRecentSongs = createSelector(selectAllSongs, (songs) => {
+  return songs
+    .filter((song) => song.createAt)
+    .sort((a, b) => toDate(b.createAt).getTime() - toDate(a.createAt).getTime())
+    .slice(0, 3);
+});
+
+function toDate(timestamp: { seconds: number; nanoseconds: number }): Date {
+  return new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1e6);
+}
+
+// Sélecteur pour récupérer toutes les chansons d'un genre spécifique ou toutes si le genre est "All"
+export const selectSongsByGenre = (genre: MusicGenre | 'All') =>
+  createSelector(selectAllSongs, (songs) => {
+    console.log('[DEBUG] Filtering songs by genre:', genre);
+    if (genre === 'All') {
+      return songs; // Retourne toutes les chansons si le genre est "All"
+    }
+    return songs.filter((song) => song.genre === genre);
+  });

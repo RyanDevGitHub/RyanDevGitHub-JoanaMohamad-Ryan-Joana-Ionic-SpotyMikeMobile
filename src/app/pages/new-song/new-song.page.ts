@@ -1,5 +1,5 @@
 import { IMusic } from './../../core/interfaces/music';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -16,6 +16,10 @@ import { DisplayItemComponent } from 'src/app/shared/components/display-item/dis
 import { IPlaylist } from 'src/app/core/interfaces/playlistes';
 import { Subscription } from 'rxjs';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
+import { Store } from '@ngrx/store';
+import { selectRecentSongs } from 'src/app/core/store/selector/song.selector';
+import { AppState } from '@capacitor/app';
+import { loadSong } from 'src/app/core/store/action/song.action';
 
 @Component({
   selector: 'app-new-song',
@@ -104,36 +108,10 @@ export class NewSongPage implements OnInit {
   //   },
   // ];
 
-  public listMusics: IMusic[] = [];
-  // = [
-  //   {
-  //     cover:
-  //       'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/cover%2Fzelda-breath-of-the-wild-1655249167687.jpg?alt=media&token=5411b64e-3d8f-40b7-a6e8-4a16b10ba3f9',
-  //     title: 'MusicTitle',
-  //     artistId: 'Ryan',
-  //     duration: '3.12',
-  //     url: 'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/%F0%9F%8E%A4COUTINHO%20GETS%20SOLD!%F0%9F%8E%A4%20Messi%20%26%20Suarez%20sort%20a%20transfer!%20Man%20Utd%20Liverpool%20PSG.mp3?alt=media&token=87fdfd7b-ea78-4e73-a93d-49691e584a78',
-  //     id: '41sdsds2',
-  //     featuring: [],
-  //     listeningCount: '0',
-  //     lyrics: 'lyrics',
-  //   },
-  //   {
-  //     cover:
-  //       'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/cover%2Fzelda-breath-of-the-wild-1655249167687.jpg?alt=media&token=5411b64e-3d8f-40b7-a6e8-4a16b10ba3f9',
-  //     title: 'MusicTitle',
-  //     artistId: 'Ryan',
-  //     duration: '3.12',
-  //     url: 'https://firebasestorage.googleapis.com/v0/b/spotytest-e89c6.appspot.com/o/%F0%9F%8E%A4COUTINHO%20GETS%20SOLD!%F0%9F%8E%A4%20Messi%20%26%20Suarez%20sort%20a%20transfer!%20Man%20Utd%20Liverpool%20PSG.mp3?alt=media&token=87fdfd7b-ea78-4e73-a93d-49691e584a78',
-  //     id: '41dds2',
-  //     featuring: [],
-  //     listeningCount: '0',
-  //     lyrics: 'lyrics',
-  //   },
-  // ];
-
   public isModalOpen: boolean;
   private modalSubscription: Subscription;
+  store = inject(Store<AppState>);
+  songs: IMusic[] = [];
   constructor(private modalStateService: ModalStateService) {
     this.modalSubscription = modalStateService.modalOpen$.subscribe(
       (value) => (this.isModalOpen = value)
@@ -141,6 +119,17 @@ export class NewSongPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log('init last played component');
+    console.log('[HOME] Dispatching loadSong action...');
+    this.store.dispatch(loadSong());
+
+    this.store.select(selectRecentSongs).subscribe({
+      next: (songs) => {
+        console.log('[DEBUG] Recent Songs in subscription:', songs);
+        this.songs = songs; // Doit être un tableau
+      },
+      error: (err) => {
+        console.error('[DEBUG] Error in subscription:', err);
+      },
+    });
   }
 }

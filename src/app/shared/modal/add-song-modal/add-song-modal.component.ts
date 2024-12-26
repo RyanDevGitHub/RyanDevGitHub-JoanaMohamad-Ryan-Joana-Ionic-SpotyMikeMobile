@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { SongRepositoryService } from 'src/app/core/services/repositories/song-repository.service';
-import { IMusic } from 'src/app/core/interfaces/music';
+import { IMusic, IMusicDate, MusicGenre } from 'src/app/core/interfaces/music';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   IonButton,
   IonButtons,
+  IonChip,
   IonContent,
   IonHeader,
   IonInput,
@@ -35,12 +36,15 @@ import { Observable } from 'rxjs';
     IonItem,
     IonInput,
     ReactiveFormsModule,
+    IonChip,
   ],
 })
 export class AddSongModalComponent {
   songForm: FormGroup;
   coverFile: File | null = null;
   songFile: File | null = null;
+  genres = Object.values(MusicGenre); // Liste des genres à afficher
+  selectedGenre: MusicGenre | null = null; // Genre sélectionné
 
   constructor(
     private fb: FormBuilder,
@@ -135,7 +139,7 @@ export class AddSongModalComponent {
 
       // Étape 4 : Construire l'objet IMusic
 
-      const newSong: IMusic = {
+      const newSong: IMusicDate = {
         id: '', // Sera ajouté par le service
         title: formValues.title || '', // Valeur par défaut si undefined
         cover: coverUrl || '', // Si l'URL est undefined
@@ -147,6 +151,8 @@ export class AddSongModalComponent {
           : [], // Garantir un tableau vide si undefined
         listeningCount: '0', // Valeur par défaut
         lyrics: formValues.lyrics || '',
+        createAt: new Date(),
+        genre: MusicGenre.Pop, // Valeur par défaut
       };
 
       // Étape 5 : Ajouter dans la base de données
@@ -157,6 +163,11 @@ export class AddSongModalComponent {
     } catch (error) {
       console.error('Error adding song:', error);
     }
+  }
+
+  selectGenre(genre: MusicGenre) {
+    this.selectedGenre = genre;
+    this.songForm.patchValue({ genre }); // Met à jour la valeur du formulaire
   }
 
   dismissModal() {

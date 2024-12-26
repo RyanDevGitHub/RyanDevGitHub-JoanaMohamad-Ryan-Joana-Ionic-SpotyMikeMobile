@@ -9,6 +9,7 @@ import {
   InfiniteScrollCustomEvent,
   IonButton,
   ModalController,
+  IonButtons,
 } from '@ionic/angular/standalone';
 import { HeaderCategoryComponent } from '../../shared/components/headers/header-category/header-category.component';
 import { SectionWithDropdownComponent } from 'src/app/shared/components/section-with-dropdown/section-with-dropdown.component';
@@ -18,8 +19,9 @@ import { AppState } from '@capacitor/app';
 import { Store } from '@ngrx/store';
 import { loadSong } from 'src/app/core/store/action/song.action';
 import { debugSelectAllSongs } from 'src/app/core/store/selector/song.selector';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { AddSongModalComponent } from 'src/app/shared/modal/add-song-modal/add-song-modal.component';
+import { ModalStateService } from 'src/app/core/services/modal-state.service';
 
 @Component({
   selector: 'app-song-management',
@@ -41,8 +43,15 @@ import { AddSongModalComponent } from 'src/app/shared/modal/add-song-modal/add-s
 export class SongManagementPage implements OnInit {
   songs: IMusic[] = [];
   store = inject(Store<AppState>);
+  modalStateService = inject(ModalStateService);
   private unsubscribe$ = new Subject<void>();
-  constructor(private modalController: ModalController) {}
+  public isModalOpen: boolean;
+  private modalSubscription: Subscription;
+  constructor(private modalController: ModalController) {
+    this.modalSubscription = this.modalStateService.modalOpen$.subscribe(
+      (value) => (this.isModalOpen = value)
+    );
+  }
 
   ngOnInit() {
     this.store.dispatch(loadSong());
@@ -84,5 +93,8 @@ export class SongManagementPage implements OnInit {
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+    if (this.modalSubscription) {
+      this.modalSubscription.unsubscribe();
+    }
   }
 }

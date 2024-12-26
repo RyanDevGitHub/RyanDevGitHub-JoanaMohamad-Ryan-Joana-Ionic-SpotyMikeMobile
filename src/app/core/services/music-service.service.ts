@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { catchError, from, map, Observable, Subject } from 'rxjs';
 import { SongRepositoryService } from './repositories/song-repository.service';
-import { IMusic } from '../interfaces/music';
+import { IMusic, IMusicDate } from '../interfaces/music';
 
 @Injectable({
   providedIn: 'root',
@@ -78,7 +78,7 @@ export class MusicServiceService {
   }
 
   // Ajouter une musique
-  addSong(song: IMusic): Observable<void> {
+  addSong(song: IMusicDate): Observable<void> {
     return from(this.songRepository.addSong(song));
   }
 }

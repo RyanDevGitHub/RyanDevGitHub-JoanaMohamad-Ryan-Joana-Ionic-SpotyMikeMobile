@@ -12,7 +12,7 @@ import {
 } from 'firebase/firestore';
 
 import { environment } from 'src/environments/environment';
-import { IMusic } from '../../interfaces/music';
+import { IMusic, IMusicDate } from '../../interfaces/music';
 import { IAlbum } from '../../interfaces/album';
 import { v4 as uuidv4 } from 'uuid'; // Assure-toi d'installer cette dépendance via `npm install uuid`
 import { Store } from '@ngrx/store';
@@ -73,7 +73,7 @@ export class SongRepositoryService {
   }
 
   // Ajouter une nouvelle chanson
-  async addSong(song: IMusic, albumId?: string): Promise<void> {
+  async addSong(song: IMusicDate, albumId?: string): Promise<void> {
     // Génère un identifiant unique si la chanson n'en a pas
     const songWithId = {
       ...song,

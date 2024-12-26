@@ -1,4 +1,8 @@
-import { PlaybackMode } from '../../../../core/interfaces/music';
+import {
+  IMusicDate,
+  MusicGenre,
+  PlaybackMode,
+} from '../../../../core/interfaces/music';
 import { addIcons } from 'ionicons';
 import {
   IonButton,
@@ -32,7 +36,7 @@ import { Subscription } from 'rxjs';
 })
 export class MusicNavBarComponent implements OnInit, OnDestroy {
   @Input() isMini: boolean;
-  private musicPrev: IMusic = {
+  private musicPrev: IMusicDate = {
     cover: 'cover',
     title: 'title',
     artistId: 'artist',
@@ -42,9 +46,11 @@ export class MusicNavBarComponent implements OnInit, OnDestroy {
     featuring: [],
     listeningCount: '0',
     lyrics: 'lyrics',
+    createAt: new Date(),
+    genre: MusicGenre.Rock,
   };
 
-  private musicAfter: IMusic = {
+  private musicAfter: IMusicDate = {
     cover: 'cover',
     title: 'title',
     artistId: 'artist',
@@ -54,9 +60,11 @@ export class MusicNavBarComponent implements OnInit, OnDestroy {
     featuring: [],
     listeningCount: '0',
     lyrics: 'lyrics',
+    createAt: new Date(),
+    genre: MusicGenre.Rock,
   };
 
-  private music: IMusic = {
+  private music: IMusicDate = {
     cover: 'cover',
     title: 'title',
     artistId: 'artist',
@@ -66,9 +74,15 @@ export class MusicNavBarComponent implements OnInit, OnDestroy {
     featuring: [],
     listeningCount: '0',
     lyrics: 'lyrics',
+    createAt: new Date(),
+    genre: MusicGenre.Rock,
   };
 
-  private musicsList: IMusic[] = [this.musicPrev, this.music, this.musicAfter];
+  private musicsList: IMusicDate[] = [
+    this.musicPrev,
+    this.music,
+    this.musicAfter,
+  ];
 
   isPlaying: boolean = true;
   currentTime: number = 0;

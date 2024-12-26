@@ -23,6 +23,12 @@ import { PlaySongPage } from 'src/app/shared/modal/play-song/play-song.page';
 import { Subscription } from 'rxjs';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
 import { ModalController } from '@ionic/angular/standalone';
+import { AppState } from '@capacitor/app';
+import { Store } from '@ngrx/store';
+import { selectSongsByGenre } from 'src/app/core/store/selector/song.selector';
+import { IMusic, MusicGenre } from 'src/app/core/interfaces/music';
+import { MusicContainerComponent } from 'src/app/shared/components/containers/music-container/music-container.component';
+import { loadSong } from 'src/app/core/store/action/song.action';
 
 @Component({
   selector: 'app-music-genre',
@@ -45,13 +51,16 @@ import { ModalController } from '@ionic/angular/standalone';
     ShareSongComponent,
     IonGrid,
     SongOptionComponent,
+    MusicContainerComponent,
   ],
 })
 export class MusicGenrePage implements OnInit {
-  genre: string;
+  genre: MusicGenre;
   // route = inject(ActivatedRoute)
   public isModalOpen: boolean;
   private modalSubscription: Subscription;
+  store = inject(Store<AppState>);
+  songs: IMusic[] = [];
   constructor(
     private route: ActivatedRoute,
     private modalCtrl: ModalController,
@@ -62,69 +71,21 @@ export class MusicGenrePage implements OnInit {
     );
   }
 
-  public listFavorite: IFavorite[] = [];
-  //  = [
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '56',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '54',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '53',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '444',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '24',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '645',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '744',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '8488',
-  //   },
-  // ];
-
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.genre = params['genre'];
+    });
+
+    console.log('[HOME] Dispatching loadSong action...');
+    this.store.dispatch(loadSong());
+    this.store.select(selectSongsByGenre(this.genre)).subscribe({
+      next: (songs) => {
+        console.log('[DEBUG] Songs Genre in subscription:', songs);
+        this.songs = songs; // Doit être un tableau
+      },
+      error: (err) => {
+        console.error('[DEBUG] Error in subscription:', err);
+      },
     });
   }
 
