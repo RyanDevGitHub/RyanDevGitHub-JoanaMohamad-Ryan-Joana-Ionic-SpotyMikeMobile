@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { adapter, SongState } from '../reducer/song.reducer';
-import { MusicGenre } from '../../interfaces/music';
+import { IMusic, MusicGenre } from '../../interfaces/music';
 // Sélecteur pour récupérer l'état de la musique
 export const selectMusicState = createFeatureSelector<SongState>('music');
 
@@ -65,3 +65,30 @@ export const selectSongsByGenre = (genre: MusicGenre | 'All') =>
     }
     return songs.filter((song) => song.genre === genre);
   });
+
+// Sélecteur pour les 5 chansons avec le plus de listeningCount
+export const selectTopSongsByListeningCount = createSelector(
+  selectAllSongs,
+  (songs) => {
+    console.log('[DEBUG] Filtering top 5 songs by listeningCount:', songs);
+    return songs
+      .sort((a, b) => b.listeningCount - a.listeningCount) // Trier par listeningCount décroissant
+      .slice(0, 5); // Limiter à 5 chansons
+  }
+);
+
+import { selectUser } from './user.selector';
+
+export const selectLastSongsByUser = createSelector(
+  selectUser,
+  selectAllSongs,
+  (user, songs): IMusic[] => {
+    console.log('[DEBUG] User last songs IDs:', user?.lastsplayeds);
+    if (!user || !user.lastsplayeds) {
+      return []; // Retourner une liste vide si l'utilisateur ou lastSongs est indéfini
+    }
+    return user.lastsplayeds
+      .map((songId) => songs.find((song) => song.id === songId))
+      .filter((song): song is IMusic => song !== undefined); // Filtrer et garantir le type
+  }
+);

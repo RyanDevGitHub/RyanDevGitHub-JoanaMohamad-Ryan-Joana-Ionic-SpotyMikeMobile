@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   IonCol,
   IonGrid,
@@ -18,6 +18,9 @@ import { SeeAllComponent } from '../../button/see-all/see-all.component';
 import { IPlaylist } from 'src/app/core/interfaces/playlistes';
 import { SectionWithDropdownComponent } from '../../section-with-dropdown/section-with-dropdown.component';
 import { IMusic } from 'src/app/core/interfaces/music';
+import { selectLastSongsByUser } from 'src/app/core/store/selector/song.selector';
+import { Store } from '@ngrx/store';
+import { AppState } from '@capacitor/app';
 
 @Component({
   selector: 'app-last-played',
@@ -42,7 +45,8 @@ import { IMusic } from 'src/app/core/interfaces/music';
   ],
 })
 export class LastPlayedComponent implements OnInit {
-  public musicList: IMusic[];
+  musicList: IMusic[];
+  store = inject(Store<AppState>);
   // = [
   //   {
   //     cover:
@@ -97,6 +101,15 @@ export class LastPlayedComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.store.select(selectLastSongsByUser).subscribe({
+      next: (songs) => {
+        console.log('[DEBUG] TopsSongs in subscription:', songs);
+        this.musicList = songs; // Doit être un tableau
+      },
+      error: (err) => {
+        console.error('[DEBUG] Error in subscription:', err);
+      },
+    });
     this.generateItems();
   }
 

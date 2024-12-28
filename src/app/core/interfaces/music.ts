@@ -6,7 +6,7 @@ export interface IMusic {
   url: string;
   id: string;
   featuring: string[];
-  listeningCount: string;
+  listeningCount: number;
   lyrics: string;
   createAt: { seconds: number; nanoseconds: number };
   genre: MusicGenre;

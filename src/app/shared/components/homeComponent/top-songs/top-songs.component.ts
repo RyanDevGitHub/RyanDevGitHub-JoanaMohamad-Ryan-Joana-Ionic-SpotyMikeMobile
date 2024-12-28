@@ -38,8 +38,6 @@ import { MusicContainerVerticalComponent } from '../../containers/music-containe
 })
 export class TopSongsComponent implements OnInit {
   @Input() items: IMusic[];
-  song: [];
-
   constructor() {}
 
   ngOnInit() {}

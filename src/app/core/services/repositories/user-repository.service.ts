@@ -68,14 +68,21 @@ export class UserRepositoryService {
     console.log('Success : User Created with Playlists and Artist Info');
   }
 
-  // get a User in collection
-  async getUser(UserId: string) {
-    const docSnap = await getDoc(
-      doc(this.db, environment.collection.users, UserId)
-    );
-    return docSnap.data();
-  }
+  async getUserByField(fieldId: string): Promise<IUserDataBase> {
+    const usersCollection = collection(this.db, 'Users'); // Référence à la collection
+    const q = query(usersCollection, where('id', '==', fieldId)); // Requête sur le champ `id`
 
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const docSnap = querySnapshot.docs[0]; // Supposons qu'un seul utilisateur correspond
+      console.log('[DEBUG] User found by field:', docSnap.data());
+      return docSnap.data() as IUserDataBase;
+    } else {
+      console.warn('[DEBUG] No user found with field ID:', fieldId);
+      return {} as IUserDataBase;
+    }
+  }
   // get a Users in collection by field
   getUsersByField(fieldName: string, value: string): Observable<any | null> {
     const querySnapshotPromise = getDocs(

@@ -1,6 +1,7 @@
 import {
   debugSelectAllSongs,
   selectMusicState,
+  selectTopSongsByListeningCount,
 } from 'src/app/core/store/selector/song.selector';
 import { loadSong } from 'src/app/core/store/action/song.action';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
@@ -26,6 +27,7 @@ import {
   selectAllSongs,
   SongState,
 } from 'src/app/core/store/reducer/song.reducer';
+import { loadUser } from 'src/app/core/store/action/user.action';
 
 @Component({
   selector: 'app-home-home',
@@ -47,7 +49,7 @@ export class HomePage implements OnInit, OnDestroy {
   store = inject(Store<AppState>);
   public isModalOpen: boolean;
   private modalSubscription: Subscription;
-  songs: IMusic[] = [];
+  topsSongs: IMusic[] = [];
   constructor(private modalStateService: ModalStateService) {
     addIcons({ book, home });
     this.modalSubscription = modalStateService.modalOpen$.subscribe(
@@ -59,10 +61,13 @@ export class HomePage implements OnInit, OnDestroy {
     console.log('[HOME] Dispatching loadSong action...');
     this.store.dispatch(loadSong());
 
-    this.store.select(debugSelectAllSongs).subscribe({
+    console.log('[HOME] Dispatching loadUser action...');
+    this.store.dispatch(loadUser());
+
+    this.store.select(selectTopSongsByListeningCount).subscribe({
       next: (songs) => {
-        console.log('[DEBUG] Songs in subscription:', songs);
-        this.songs = songs; // Doit être un tableau
+        console.log('[DEBUG] TopsSongs in subscription:', songs);
+        this.topsSongs = songs; // Doit être un tableau
       },
       error: (err) => {
         console.error('[DEBUG] Error in subscription:', err);
