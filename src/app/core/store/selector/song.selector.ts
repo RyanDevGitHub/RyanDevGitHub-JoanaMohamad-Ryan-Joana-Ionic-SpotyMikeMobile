@@ -92,3 +92,20 @@ export const selectLastSongsByUser = createSelector(
       .filter((song): song is IMusic => song !== undefined); // Filtrer et garantir le type
   }
 );
+
+export const selectSongsBySearchTerm = (searchTerm: string) =>
+  createSelector(selectAllSongs, (songs) => {
+    console.log(
+      '[DEBUG] selectSongsBySearchTerm: Songs before filtering:',
+      songs
+    ); // Avant filtrage
+    const lowerCaseTerm = searchTerm.toLowerCase();
+    const filteredSongs = songs.filter((song) =>
+      song.title.toLowerCase().includes(lowerCaseTerm)
+    );
+    console.log(
+      '[DEBUG] selectSongsBySearchTerm: Filtered songs:',
+      filteredSongs
+    ); // Après filtrage
+    return filteredSongs;
+  });

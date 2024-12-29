@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AppState } from './../../core/store/app.state';
+import { Store } from '@ngrx/store';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -15,12 +17,13 @@ import { ResearchComponent } from 'src/app/shared/components/research/research.c
 import { IPlaylist } from 'src/app/core/interfaces/playlistes';
 import { PlaylistContainerComponent } from 'src/app/shared/components/containers/playlist-container/playlist-container.component';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IMusic } from 'src/app/core/interfaces/music';
 import { MusicContainerComponent } from 'src/app/shared/components/containers/music-container/music-container.component';
 import { IArtist } from 'src/app/core/interfaces/user';
 import { IArtistContainer } from 'src/app/core/interfaces/artist';
 import { ArtistContainerComponent } from 'src/app/shared/components/containers/artist-container/artist-container.component';
+import { selectSongsBySearchTerm } from 'src/app/core/store/selector/song.selector';
 
 @Component({
   selector: 'app-search',
@@ -130,6 +133,9 @@ export class SearchPage implements OnInit {
   // ];
   public isModalOpen: boolean;
   private modalSubscription: Subscription;
+  searchTerm: string = '';
+  store = inject(Store<AppState>);
+  filteredSongs$: Observable<IMusic[]>;
   constructor(private modalStateService: ModalStateService) {
     this.modalSubscription = modalStateService.modalOpen$.subscribe(
       (value) => (this.isModalOpen = value)
@@ -138,5 +144,22 @@ export class SearchPage implements OnInit {
 
   ngOnInit() {
     console.log('init last played component');
+  }
+  onSearchTermChange(term: string) {
+    console.log('[DEBUG] search.page: Search term received:', term); // Log pour vérifier le terme
+    this.searchTerm = term;
+
+    // Met à jour les flux d'observables en fonction du terme de recherche
+    this.store.select(selectSongsBySearchTerm(term)).subscribe({
+      next: (songs) => {
+        console.log('[DEBUG] Search songs in subscription:', songs);
+        this.musicPlaylist = songs; // Doit être un tableau
+      },
+      error: (err) => {
+        console.error('[DEBUG] Error in subscription:', err);
+      },
+    });
+    this.filteredSongs$ = this.store.select(selectSongsBySearchTerm(term));
+    console.log('[DEBUG] search.page: filteredSongs$ observable updated.'); // Log après la mise à jour des chansons
   }
 }

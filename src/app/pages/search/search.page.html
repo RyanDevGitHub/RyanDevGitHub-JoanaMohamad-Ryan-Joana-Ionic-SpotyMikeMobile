@@ -1,5 +1,5 @@
 <ion-grid fixed [class.modal-open]="isModalOpen">
-  <app-research></app-research>
+  <app-research (searchChange)="onSearchTermChange($event)"></app-research>
   <ion-content>
     <ion-row>
       <ion-col size="12">
@@ -11,7 +11,6 @@
               ><app-artist-container
                 [cover]="artist.cover"
                 [artistName]="artist.name"
-                [artistId]="artist.id"
               ></app-artist-container>
             </ion-col>
           </ion-row>
@@ -24,7 +23,7 @@
                 [title]="music.title"
                 [duration]="music.duration"
                 [cover]="music.cover"
-                [artistName]="music.artistId"
+                [artistName]="music.title"
                 [id]="music.id"
               ></app-music-container>
             </ion-col>
@@ -42,7 +41,8 @@
               ></app-playlist-container
             ></ion-col>
           </ion-row>
-          } }@else{
+          } }@if (listPlaylistes.length === 0 && musicPlaylist.length === 0 &&
+          artistLists.length === 0){
           <ion-row class="empty-result">
             <ion-col size="12">
               <ion-text class="ion-text-center">
