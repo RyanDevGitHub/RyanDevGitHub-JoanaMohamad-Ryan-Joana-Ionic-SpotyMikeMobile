@@ -109,3 +109,17 @@ export const selectSongsBySearchTerm = (searchTerm: string) =>
     ); // Après filtrage
     return filteredSongs;
   });
+
+export const selectFavoriteSongsByUser = createSelector(
+  selectUser,
+  selectAllSongs,
+  (user, songs): IMusic[] => {
+    console.log('[DEBUG] User favorite song IDs:', user);
+    if (!user || !user.favorites) {
+      return []; // Retourner une liste vide si l'utilisateur ou favorites est indéfini
+    }
+    return user.favorites
+      .map((songId) => songs.find((song) => song.id === songId))
+      .filter((song): song is IMusic => song !== undefined); // Filtrer et garantir le type
+  }
+);

@@ -4,11 +4,18 @@ type ERoleUser = 'user' | 'artist';
 
 export interface IUser {
   role: ERoleUser;
-
   email: string;
-
   id: string;
   lastsplayeds: string[];
+  firstName: string;
+  lastName: string;
+  password: string;
+  tel?: string;
+  sexe: string;
+  favorites: string[];
+  artiste?: IArtist;
+  playlists: IPlaylist[];
+  created_at: string;
 }
 export interface IToken {
   token: string;

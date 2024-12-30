@@ -1,5 +1,5 @@
 import { IFavorite } from './../../core/interfaces/favorites';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -21,6 +21,17 @@ import { SongOptionComponent } from 'src/app/shared/components/button/song-optio
 import { HeaderCategoryComponent } from 'src/app/shared/components/headers/header-category/header-category.component';
 import { Subscription } from 'rxjs';
 import { ModalStateService } from 'src/app/core/services/modal-state.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '@capacitor/app';
+import { selectFavoriteSongsByUser } from 'src/app/core/store/selector/song.selector';
+import { IMusic } from 'src/app/core/interfaces/music';
+import {
+  loadSong,
+  loadSongSuccess,
+} from 'src/app/core/store/action/song.action';
+import { selectUser } from 'src/app/core/store/selector/user.selector';
+import { loadUser } from 'src/app/core/store/action/user.action';
+import { selectAllSongs } from 'src/app/core/store/reducer/song.reducer';
 
 @Component({
   selector: 'app-favorie',
@@ -49,6 +60,7 @@ import { ModalStateService } from 'src/app/core/services/modal-state.service';
 export class FavoriePage implements OnInit, OnDestroy {
   public isModalOpen: boolean;
   private modalSubscription: Subscription;
+  store = inject(Store<AppState>);
   constructor(
     private modalCtrl: ModalController,
     private modalStateService: ModalStateService
@@ -58,67 +70,19 @@ export class FavoriePage implements OnInit, OnDestroy {
     );
   }
 
-  public listFavorite: IFavorite[];
-  // = [
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '56',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '54',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '53',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '444',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '24',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '645',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '744',
-  //   },
-  //   {
-  //     cover: 'assets/avatar/album-photo.jpg',
-  //     title: 'Work Instrument',
-  //     artist: 'NamaUser',
-  //     nbSong: '20',
-  //     id: '8488',
-  //   },
-  // ];
+  public listFavorite: IMusic[];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.select(selectFavoriteSongsByUser).subscribe({
+      next: (songs) => {
+        console.log('[DEBUG] TopsSongs in subscription:', songs);
+        this.listFavorite = songs; // Doit être un tableau
+      },
+      error: (err) => {
+        console.error('[DEBUG] Error in subscription:', err);
+      },
+    });
+  }
 
   async openModal() {
     const modal = await this.modalCtrl.create({
